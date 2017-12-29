@@ -14,15 +14,15 @@ const Icon = (props: Props) => {
       verticalAlign: "middle"
     },
     path: {
-      fill: props.color || "#fff"
+      fill: props.color || "#000"
     }
   };
 
   return (
     <svg
       style={styles.svg}
-      width={`${props.size}px`}
-      height={`${props.size}px`}
+      width={`${props.size || 20}px`}
+      height={`${props.size || 20}px`}
       viewBox="0 0 1024 1024"
     >
       <path style={styles.path} d={props.icon} />

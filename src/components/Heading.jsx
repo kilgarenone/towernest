@@ -1,6 +1,6 @@
 // @flow
-import * as React from "react";
-import { StyleSheet, css } from "aphrodite/no-important";
+import React from "react";
+import { css } from "react-emotion";
 import {
   tagMapping,
   fontSize,
@@ -11,45 +11,45 @@ import { colors } from "./../styles/base/colors";
 
 type Props = {
   children: React.Node,
-  tag: any
+  tag: string
 };
 
 function Heading(props: Props) {
   const { children, tag: Tag } = props;
-  return <Tag className={css(styles[tagMapping[Tag]])}>{children}</Tag>;
+  return <Tag className={styles[tagMapping[Tag]]}>{children}</Tag>;
 }
 
 export default Heading;
 
-export const styles = StyleSheet.create({
-  displayLarge: {
-    fontSize: fontSize.displayLarge,
-    fontWeight: fontWeight.bold,
-    lineHeight: lineHeight.displayLarge,
-    color: colors.text
-  },
-  displayMedium: {
-    fontSize: fontSize.displayMedium,
-    fontWeight: fontWeight.normal,
-    lineHeight: lineHeight.displayLarge,
-    color: colors.text
-  },
-  displaySmall: {
-    fontSize: fontSize.displaySmall,
-    fontWeight: fontWeight.bold,
-    lineHeight: lineHeight.displaySmall,
-    color: colors.text
-  },
-  heading: {
-    fontSize: fontSize.heading,
-    fontWeight: fontWeight.bold,
-    lineHeight: lineHeight.heading,
-    color: colors.text
-  },
-  subheading: {
-    fontSize: fontSize.subheading,
-    fontWeight: fontWeight.bold,
-    lineHeight: lineHeight.subheading,
-    color: colors.text
-  }
-});
+const styles = {
+  displayLarge: css`
+    font-size: ${fontSize.displayLarge};
+    font-weight: ${fontWeight.bold};
+    line-height: ${lineHeight.displayLarge};
+    color: ${colors.textOnLightBg};
+  `,
+  displayMedium: css`
+    font-size: ${fontSize.displayMedium};
+    font-weight: ${fontWeight.normal};
+    line-height: ${lineHeight.displayLarge};
+    color: ${colors.textOnLightBg};
+  `,
+  displaySmall: css`
+    font-size: ${fontSize.displaySmall};
+    font-weight: ${fontWeight.bold};
+    line-height: ${lineHeight.displaySmall};
+    color: ${colors.textOnLightBg};
+  `,
+  heading: css`
+    font-size: ${fontSize.heading};
+    font-weight: ${fontWeight.bold};
+    line-height: ${lineHeight.heading};
+    color: ${colors.textOnLightBg};
+  `,
+  subheading: css`
+    font-size: ${fontSize.subheading};
+    font-weight: ${fontWeight.bold};
+    line-height: ${lineHeight.subheading};
+    color: ${colors.textOnLightBg};
+  `
+};
