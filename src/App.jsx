@@ -2,24 +2,25 @@
 import * as React from "react";
 import "./App.css";
 import Button from "./components/Button";
-import Heading from "./components/Heading";
 import ICONS from "./styles/base/icons";
 import Icon from "./components/Icon";
 import NavBar from "./components/Navbar";
+import Input from "./components/Input";
+import Wrapper from "./components/Wrapper";
 
 const App = () => (
   <div className="App">
     <NavBar>
-      <div>
+      <Wrapper yAlign="center">
         <Icon icon={ICONS.BUBBLE} />
-      </div>
-      <div>
-        <Button secondary onClick={() => console.log("hahahah")}>
-          Hellow wold!!!
-        </Button>
-        <span>sdsdsds908098</span>
-        {/* <Heading tag="h1">Damn sont!!</Heading> */}
-      </div>
+        <Wrapper>
+          <Input type="email" />
+          <Button secondary onClick={() => console.log("hahahah")}>
+            Hellow wold!!!
+          </Button>
+        </Wrapper>
+      </Wrapper>
+      <div />
     </NavBar>
   </div>
 );

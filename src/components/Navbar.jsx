@@ -4,9 +4,9 @@ import styled from "react-emotion";
 import spacing from "./../styles/base/spacing";
 import { colors } from "./../styles/base/colors";
 
-type Props = {
-  children: React.Node
-};
+// type Props = {
+//   children: React.Node
+// };
 
 const HeaderWrapper = styled("header")`
   padding-top: ${spacing.space1};
