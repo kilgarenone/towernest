@@ -22,8 +22,8 @@ const Button = styled("button")`
   text-transform: uppercase;
   padding: 19px 40px 20px;
   display: block;
-  flex-basis: 100%;
-  width: 100%;
+  flex-basis: auto;
+  width: auto;
 `;
 
 export default Button;
