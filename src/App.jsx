@@ -29,7 +29,7 @@ const LookupTickerByNameBase = ({
             color: black;
           `}
         >
-          {ticker}
+          {""}
         </span>
         <Container marginLeft={spacing.space5} width="100%">
           <Input
