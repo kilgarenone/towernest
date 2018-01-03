@@ -13,12 +13,10 @@ import spacing from "./styles/base/spacing";
 import store from "./redux/configureStore";
 import { searchForTicker } from "./redux/tickerLookup";
 
-const LookupTickerByNameBase = ({
-  dispatch,
-  ticker,
-  value,
-  handleSearchInputs
-}) => (
+const DisplayTickerCodes = ({ tickers }) => (
+  <ul>{tickers.map(ticker => <li key={ticker}>{ticker}</li>)}</ul>
+);
+const LookupTickerByNameBase = ({ getTicker, value, handleSearchInputs }) => (
   <div className="App">
     <NavBar>
       <Container yAlign="center" width="60%">
@@ -31,23 +29,26 @@ const LookupTickerByNameBase = ({
         >
           {""}
         </span>
-        <Container marginLeft={spacing.space5} width="100%">
-          <Input
-            value={value}
-            onChange={e => {
-              handleSearchInputs(e);
-              dispatch(searchForTicker(e.target.value));
-            }}
-          />
-          <span
-            className={css`
-              position: relative;
-              left: -35px;
-              top: 15px;
-            `}
-          >
-            <Icon icon={ICONS.SEARCH} />
-          </span>
+        <Container direction="column" marginLeft={spacing.space5} width="100%">
+          <Container>
+            <Input
+              value={value}
+              onChange={e => {
+                handleSearchInputs(e);
+                getTicker(e.target.value);
+              }}
+            />
+            <span
+              className={css`
+                position: relative;
+                left: -35px;
+                top: 15px;
+              `}
+            >
+              <Icon icon={ICONS.SEARCH} />
+            </span>
+          </Container>
+          <DisplayTickerCodes />
         </Container>
       </Container>
       <Container>
@@ -60,8 +61,11 @@ const LookupTickerByNameBase = ({
 );
 
 const mapStateToProps = state => ({ ticker: state.tickerLookupReducer });
+const mapDispatchToProps = { getTicker: searchForTicker };
 
-const LookupTickerByName = connect(mapStateToProps)(LookupTickerByNameBase);
+const LookupTickerByName = connect(mapStateToProps, mapDispatchToProps)(
+  LookupTickerByNameBase
+);
 
 class App extends Component {
   state = {
