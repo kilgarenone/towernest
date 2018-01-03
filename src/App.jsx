@@ -16,6 +16,8 @@ import { searchForTicker } from "./redux/tickerLookup";
 const DisplayTickerCodes = ({ tickers }) => (
   <ul>{tickers.map(ticker => <li key={ticker}>{ticker}</li>)}</ul>
 );
+
+// const DisplayTickerCodes = connect(())
 const LookupTickerByNameBase = ({ getTicker, value, handleSearchInputs }) => (
   <div className="App">
     <NavBar>
