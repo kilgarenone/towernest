@@ -1,9 +1,9 @@
+// @flow
 import { ofType } from "redux-observable";
 // Look here to optimize bundle size on rxjs operators
 // https://github.com/ReactiveX/rxjs/blob/master/doc/lettable-operators.md
 import { debounceTime, switchMap, map } from "rxjs/operators";
 import { ajax } from "rxjs/observable/dom/ajax";
-// import "rxjs/add/operator/map";
 
 const GET_TICKER_CODE_BY_NAME = "matisa/tickerLookup/searching";
 const RECEIVED_TICKER_CODE_BY_NAME = "matisa/tickerLookup/results";
@@ -11,12 +11,12 @@ const RECEIVED_TICKER_CODE_BY_NAME = "matisa/tickerLookup/results";
 const buildTickerLookupApi = query =>
   `http://d.yimg.com/aq/autoc?query=${query}&region=US&lang=en-US`;
 
-const initialState = "";
+const initialState = [];
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case RECEIVED_TICKER_CODE_BY_NAME:
-      return action.payload;
+      return action.payload.ResultSet.Result;
     default:
       return state;
   }
@@ -37,3 +37,6 @@ export const getTickerByName = action$ =>
       payload
     }))
   );
+
+export const getTickerByExchange = (state: State) =>
+  state.tickerLookup.filter(stock => stock.exch && stock.exch === "NYQ");

@@ -11,13 +11,21 @@ import Input from "./components/Input";
 import Container from "./components/Container";
 import spacing from "./styles/base/spacing";
 import store from "./redux/configureStore";
-import { searchForTicker } from "./redux/tickerLookup";
+import { searchForTicker, getTickerByExchange } from "./redux/tickerLookup";
 
-const DisplayTickerCodes = ({ tickers }) => (
-  <ul>{tickers.map(ticker => <li key={ticker}>{ticker}</li>)}</ul>
-);
+const DisplayTickerCodesBase = ({ tickers }) => {
+  if (!tickers.length) {
+    return null;
+  }
+  return (
+    <ul>{tickers.map(ticker => <li key={ticker.symbol}>{ticker.name}</li>)}</ul>
+  );
+};
 
-// const DisplayTickerCodes = connect(())
+export const DisplayTickerCodes = connect(state => ({
+  tickers: getTickerByExchange(state)
+}))(DisplayTickerCodesBase);
+
 const LookupTickerByNameBase = ({ getTicker, value, handleSearchInputs }) => (
   <div className="App">
     <NavBar>
@@ -62,10 +70,9 @@ const LookupTickerByNameBase = ({ getTicker, value, handleSearchInputs }) => (
   </div>
 );
 
-const mapStateToProps = state => ({ ticker: state.tickerLookupReducer });
 const mapDispatchToProps = { getTicker: searchForTicker };
 
-const LookupTickerByName = connect(mapStateToProps, mapDispatchToProps)(
+const LookupTickerByName = connect(null, mapDispatchToProps)(
   LookupTickerByNameBase
 );
 

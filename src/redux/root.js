@@ -1,9 +1,14 @@
+// @flow
 import { combineEpics } from "redux-observable";
 import { combineReducers } from "redux";
-import tickerLookupReducer, { getTickerByName } from "./tickerLookup";
+import tickerLookup, { getTickerByName } from "./tickerLookup";
+
+export type State = {
+  tickerLookup: any
+};
 
 export const rootEpic = combineEpics(getTickerByName);
 
 export const rootReducer = combineReducers({
-  tickerLookupReducer
+  tickerLookup
 });
