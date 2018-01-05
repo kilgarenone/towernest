@@ -2,16 +2,15 @@
 import React, { Component } from "react";
 import { Provider, connect } from "react-redux";
 import { css } from "react-emotion";
-import "./App.css";
 // import Button from "./components/Button";
-import ICONS from "./styles/base/icons";
-import Icon from "./components/Icon";
-import NavBar from "./components/Navbar";
-import Input from "./components/Input";
-import Container from "./components/Container";
-import spacing from "./styles/base/spacing";
-import store from "./redux/configureStore";
-import { searchForTicker, getTickerByExchange } from "./redux/tickerLookup";
+import ICONS from "../styles/base/icons";
+import Icon from "../components/Icon";
+import NavBar from "../components/Navbar";
+import Input from "../components/Input";
+import Container from "../components/Container";
+import spacing from "../styles/base/spacing";
+import { searchForTicker, getTickerByExchange } from "../redux/tickerLookup";
+import configureStore from "../redux/configureStore";
 
 const DisplayTickerCodesBase = ({ tickers }) => {
   if (!tickers.length) {
@@ -75,6 +74,8 @@ const mapDispatchToProps = { getTicker: searchForTicker };
 const LookupTickerByName = connect(null, mapDispatchToProps)(
   LookupTickerByNameBase
 );
+
+const store = configureStore();
 
 class App extends Component {
   state = {
