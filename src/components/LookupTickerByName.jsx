@@ -1,11 +1,17 @@
+// @flow
 import React, { Component } from "react";
 import { css } from "react-emotion";
 import { connect } from "react-redux";
 import Input from "./Input";
 import Icon from "./Icon";
 import ICONS from "./../styles/base/icons";
-import { searchForTicker, getTickerByExchange } from "../redux/tickerLookup";
+import {
+  getTicker,
+  getStockDetails,
+  getTickerByExchangeSelector
+} from "../redux/tickerLookup";
 import Container from "./Container";
+import { List, ListItem } from "./List";
 
 class LookupTickerByName extends Component {
   state = {
@@ -18,6 +24,11 @@ class LookupTickerByName extends Component {
     this.props.getTicker(e.target.value);
   };
 
+  handlerGetStockDetailsByTicker = item => {
+    console.log("hahaha", item);
+    // this.props.getStockDetails(item.code);
+  };
+
   render() {
     return (
       <Container direction="column">
@@ -28,28 +39,43 @@ class LookupTickerByName extends Component {
           />
           <span
             className={css`
-              position: relative;
-              left: -35px;
+              position: absolute;
+              right: 5px;
               top: 15px;
             `}
           >
             <Icon icon={ICONS.SEARCH} />
           </span>
         </Container>
-        <ul>
-          {this.props.tickers.map(ticker => (
-            <li key={ticker.symbol}>{ticker.name}</li>
+        <List className={styles.tickers}>
+          {this.props.tickers.map((ticker, index) => (
+            <ListItem
+              item={ticker}
+              onItemClick={this.handlerGetStockDetailsByTicker}
+              key={index} // eslint-disable-line react/no-array-index-key
+              tabIndex={index}
+            >
+              {ticker.name}
+            </ListItem>
           ))}
-        </ul>
+        </List>
       </Container>
     );
   }
 }
 
+const styles = {
+  tickers: css`
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+  `
+};
 const mapStateToProps = state => ({
-  tickers: getTickerByExchange(state)
+  tickers: getTickerByExchangeSelector(state)
 });
 
-const mapDispatchToProps = { getTicker: searchForTicker };
+const mapDispatchToProps = { getTicker, getStockDetails };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LookupTickerByName);

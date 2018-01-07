@@ -7,7 +7,7 @@ import LookupTickerByName from "./LookupTickerByName";
 
 const Header = () => (
   <NavBar>
-    <Container yAlign="center" width="60%">
+    <Container yAlign="center">
       <span
         className={css`
           font-weight: 700;
@@ -17,7 +17,7 @@ const Header = () => (
       >
         Matisa
       </span>
-      <Container direction="column" marginLeft={spacing.space5} width="100%">
+      <Container marginLeft={spacing.space5}>
         <LookupTickerByName />
       </Container>
     </Container>

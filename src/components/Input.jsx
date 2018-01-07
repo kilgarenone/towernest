@@ -3,7 +3,7 @@ import styled from "react-emotion";
 const Input = styled("input")`
   font-family: "Playfair Display", san-serif;
   background-color: #fff;
-  width: 100%;
+  flex: 1 1 100%;
   color: rgba(0, 0, 0, 0.76);
   text-decoration: none;
   font-weight: 400;

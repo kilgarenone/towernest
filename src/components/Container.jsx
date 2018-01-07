@@ -14,11 +14,11 @@ function buildWrapperStyles(props) {
     props.xAlign = propsClone.yAlign;
   }
   return {
+    position: "relative",
     display: "flex",
-    "flex-direction": props.direction || "row",
-    "flex-basis": props.width,
-    "align-items": props.xAlign || "flex-start",
-    "justify-content": props.yAlign || "flex-start",
+    "flex-direction": props.direction, // default is 'row'
+    "align-items": props.xAlign, // default is 'stretch'
+    "justify-content": props.yAlign, // default is 'flex-start'
     padding: props.padding,
     margin: props.margin,
     "padding-left": props.paddingLeft,

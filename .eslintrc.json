@@ -1,17 +1,17 @@
 {
   "extends": [
     "airbnb",
-    "plugin:prettier/recommended",
-    "plugin:flowtype/recommended"
+    "plugin:flowtype/recommended",
+    "plugin:prettier/recommended"
   ],
   "plugins": ["flowtype", "prettier"],
   "parser": "babel-eslint",
   "rules": {
     "prettier/prettier": "error",
-    "import/prefer-default-export": "warn",
     "react/prop-types": "off",
     "no-use-before-define": "off",
-    "no-param-reassign": [2, { "props": false }]
+    "no-param-reassign": [2, { "props": false }],
+    "react/jsx-no-bind": [2, { "allowArrowFunctions": false }]
   },
   "env": {
     "browser": true
