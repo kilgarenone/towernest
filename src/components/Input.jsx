@@ -15,10 +15,9 @@ const Input = styled("input")`
   box-shadow: none;
   padding: 1.15rem 1rem;
   display: inline-block;
-
-  @media screen and (min-width: 48rem) {
-    max-width: 340px;
-  }
 `;
+// @media screen and (min-width: 48rem) {
+//   max-width: 340px;
+// }
 
 export default Input;

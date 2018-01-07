@@ -21,11 +21,6 @@ const Header = () => (
         <LookupTickerByName />
       </Container>
     </Container>
-    <Container>
-      {/* <Button secondary onClick={() => console.log("hahahah")}>
-            Hellow wold!!!
-          </Button> */}
-    </Container>
   </NavBar>
 );
 

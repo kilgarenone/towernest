@@ -22,7 +22,10 @@ const listItemStyle = css`
   font-size: 18px;
 `;
 class ListItem extends PureComponent {
-  handleItemClick = () => this.props.onItemClick(this.props.item);
+  handleItemClick = e => {
+    e.stopPropagation();
+    this.props.onItemClick(this.props.item);
+  };
 
   render() {
     return (

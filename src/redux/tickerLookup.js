@@ -7,9 +7,6 @@ import { ajax } from "rxjs/observable/dom/ajax";
 
 const GET_TICKER_CODE_BY_NAME = "matisa/tickerLookup/searching";
 const RECEIVED_TICKER_CODE_BY_NAME = "matisa/tickerLookup/results";
-const GET_STOCK_DETAILS_BY_TICKER = "matisa/tickerLookup/getStockDetails";
-const RECEIVED_STOCK_DETAILS_BY_TICKER =
-  "matisa/tickerLookup/receivedStockDetails";
 
 const buildTickerLookupApi = query =>
   `http://d.yimg.com/aq/autoc?query=${query}&region=US&lang=en-US`;
@@ -30,11 +27,6 @@ export const getTicker = searchString => ({
   payload: searchString
 });
 
-export const getStockDetails = ticker => ({
-  type: GET_STOCK_DETAILS_BY_TICKER,
-  payload: ticker
-});
-
 export const getTickerByName = action$ =>
   action$.pipe(
     ofType(GET_TICKER_CODE_BY_NAME),
@@ -42,17 +34,6 @@ export const getTickerByName = action$ =>
     switchMap(action => ajax.getJSON(buildTickerLookupApi(action.payload))),
     map(payload => ({
       type: RECEIVED_TICKER_CODE_BY_NAME,
-      payload
-    }))
-  );
-
-export const getStockDetailsByTicker = action$ =>
-  action$.pipe(
-    ofType(GET_STOCK_DETAILS_BY_TICKER),
-    debounceTime(500),
-    switchMap(action => ajax.getJSON(buildTickerLookupApi(action.payload))),
-    map(payload => ({
-      type: RECEIVED_STOCK_DETAILS_BY_TICKER,
       payload
     }))
   );
