@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "date-fns": "^1.29.0",
     "emotion": "^8.0.12",
     "flow-bin": "^0.61.0",
     "react": "^16.2.0",

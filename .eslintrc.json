@@ -10,8 +10,9 @@
     "prettier/prettier": "error",
     "react/prop-types": "off",
     "no-use-before-define": "off",
-    "no-param-reassign": [2, { "props": false }],
-    "react/jsx-no-bind": [2, { "allowArrowFunctions": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "react/jsx-no-bind": ["error", { "allowArrowFunctions": false }],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
   },
   "env": {
     "browser": true
