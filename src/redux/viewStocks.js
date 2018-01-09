@@ -3,6 +3,9 @@ import { ofType } from "redux-observable";
 import { switchMap, map } from "rxjs/operators";
 import { ajax } from "rxjs/observable/dom/ajax";
 import { combineReducers } from "redux";
+import subYears from "date-fns/sub_years";
+import isAfter from "date-fns/is_after";
+import getTime from "date-fns/get_time";
 
 const GET_STOCK_DETAILS_BY_TICKER = "matisa/tickerLookup/getStockDetails";
 const RECEIVED_STOCK_DETAILS_BY_TICKER =
@@ -52,7 +55,9 @@ const viewStocks = combineReducers({
 export default viewStocks;
 
 export const getSelectedStocksDetails = state =>
-  state.viewStocks.stockDetails[state.viewStocks.selectedTickers[0]];
+  getYearsBoundData(
+    state.viewStocks.stockDetails[state.viewStocks.selectedTickers[0]]
+  );
 
 export const getStockDetails = ticker => ({
   type: GET_STOCK_DETAILS_BY_TICKER,
@@ -63,10 +68,24 @@ export const getStockDetailsByTicker = action$ =>
   action$.pipe(
     ofType(GET_STOCK_DETAILS_BY_TICKER),
     switchMap(action =>
-      ajax.getJSON(buildStockMonthlyTimeSeriesApi(action.payload))
+      ajax.getJSON(buildStockMonthlyTimeSeriesApi(action.ticker))
     ),
     map(payload => ({
       type: RECEIVED_STOCK_DETAILS_BY_TICKER,
       payload
     }))
   );
+
+function getYearsBoundData(data = []) {
+  const dates = [];
+  const someYearsAgo = subYears(Date.now(), 10);
+  for (let i = data.length - 1; i >= 0; i--) {
+    const date = new Date(data[i].x);
+    if (isAfter(date, someYearsAgo)) {
+      dates.push({ x: getTime(date), y: data[i].y });
+    } else {
+      break;
+    }
+  }
+  return dates;
+}
