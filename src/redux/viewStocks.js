@@ -31,7 +31,7 @@ const stockDetails = (state = initialState, action = {}) => {
   switch (action.type) {
     case RECEIVED_STOCK_DETAILS_BY_TICKER: {
       const stock = processThirdPartyStock(action.payload);
-      return { ...state, stock };
+      return { ...state, ...stock };
     }
     default:
       return state;
@@ -77,15 +77,19 @@ export const getStockDetailsByTicker = action$ =>
   );
 
 function getYearsBoundData(data = []) {
+  console.log("dataaa", data);
   const dates = [];
+  const dateArray = Object.keys(data);
   const someYearsAgo = subYears(Date.now(), 10);
-  for (let i = data.length - 1; i >= 0; i--) {
-    const date = new Date(data[i].x);
+  for (let i = dateArray.length - 1; i >= 0; i--) {
+    const date = new Date(dateArray[i]);
+    console.log("1", date);
+    console.log("2", someYearsAgo);
     if (isAfter(date, someYearsAgo)) {
-      dates.push({ x: getTime(date), y: data[i].y });
+      dates.push({ x: getTime(date), y: data[dateArray[i]]["4. close"] });
     } else {
-      break;
     }
   }
+  console.log("deeeee", dates);
   return dates;
 }
