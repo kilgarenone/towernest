@@ -77,19 +77,17 @@ export const getStockDetailsByTicker = action$ =>
   );
 
 function getYearsBoundData(data = []) {
-  console.log("dataaa", data);
   const dates = [];
   const dateArray = Object.keys(data);
   const someYearsAgo = subYears(Date.now(), 10);
   for (let i = dateArray.length - 1; i >= 0; i--) {
     const date = new Date(dateArray[i]);
-    console.log("1", date);
-    console.log("2", someYearsAgo);
     if (isAfter(date, someYearsAgo)) {
-      dates.push({ x: getTime(date), y: data[dateArray[i]]["4. close"] });
-    } else {
+      dates.push({
+        x: getTime(date),
+        y: parseInt(data[dateArray[i]]["4. close"], 10)
+      });
     }
   }
-  console.log("deeeee", dates);
   return dates;
 }
