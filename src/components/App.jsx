@@ -19,8 +19,7 @@ const App = ({ stocks = [] }) => (
     <Header />
     <main>
       <Heading tag="h4">Apple</Heading>
-      <XYPlot xType="time" height={300} width={300}>
-        <VerticalGridLines />
+      <XYPlot xType="time" height={600} width={600} yPadding="5">
         <HorizontalGridLines />
         <XAxis />
         <YAxis />

@@ -6,23 +6,18 @@ import { combineReducers } from "redux";
 import subYears from "date-fns/sub_years";
 import isAfter from "date-fns/is_after";
 import getTime from "date-fns/get_time";
+import { getChartBySymbolAndRangeApi } from "../config";
 
 const GET_STOCK_DETAILS_BY_TICKER = "matisa/tickerLookup/getStockDetails";
 const RECEIVED_STOCK_DETAILS_BY_TICKER =
   "matisa/tickerLookup/receivedStockDetails";
 
-const ALPHA_VANTAGE_API_KEY = "1Q83SFIMSPGAD8ZZ";
-
-const buildStockMonthlyTimeSeriesApi = ticker =>
-  `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=${ticker}&apikey=${ALPHA_VANTAGE_API_KEY}`;
-
 const initialState = {};
 
-function processThirdPartyStock(payload) {
+function processThirdPartyStock(payload, tickerName) {
   const stock = {};
 
-  stock[payload["Meta Data"]["2. Symbol"]] =
-    payload["Monthly Adjusted Time Series"];
+  stock[tickerName] = payload;
 
   return stock;
 }
@@ -30,7 +25,7 @@ function processThirdPartyStock(payload) {
 const stockDetails = (state = initialState, action = {}) => {
   switch (action.type) {
     case RECEIVED_STOCK_DETAILS_BY_TICKER: {
-      const stock = processThirdPartyStock(action.payload);
+      const stock = processThirdPartyStock(action.payload, action.ticker);
       return { ...state, ...stock };
     }
     default:
@@ -38,10 +33,10 @@ const stockDetails = (state = initialState, action = {}) => {
   }
 };
 
-const selectedTickers = (state = [], action) => {
+const selectedTickers = (state = "", action) => {
   switch (action.type) {
     case GET_STOCK_DETAILS_BY_TICKER:
-      return [...state, action.ticker];
+      return action.ticker;
     default:
       return state;
   }
@@ -56,7 +51,7 @@ export default viewStocks;
 
 export const getSelectedStocksDetails = state =>
   getYearsBoundData(
-    state.viewStocks.stockDetails[state.viewStocks.selectedTickers[0]]
+    state.viewStocks.stockDetails[state.viewStocks.selectedTickers]
   );
 
 export const getStockDetails = ticker => ({
@@ -64,30 +59,32 @@ export const getStockDetails = ticker => ({
   ticker
 });
 
-export const getStockDetailsByTicker = action$ =>
+export const getStockDetailsByTicker = (action$, state) =>
   action$.pipe(
     ofType(GET_STOCK_DETAILS_BY_TICKER),
     switchMap(action =>
-      ajax.getJSON(buildStockMonthlyTimeSeriesApi(action.ticker))
+      ajax.getJSON(getChartBySymbolAndRangeApi(action.ticker, "5y"))
     ),
     map(payload => ({
       type: RECEIVED_STOCK_DETAILS_BY_TICKER,
+      ticker: state.getState().viewStocks.selectedTickers,
       payload
     }))
   );
 
 function getYearsBoundData(data = []) {
   const dates = [];
-  const dateArray = Object.keys(data);
   const someYearsAgo = subYears(Date.now(), 10);
-  for (let i = dateArray.length - 1; i >= 0; i--) {
-    const date = new Date(dateArray[i]);
+  for (let i = data.length - 1; i >= 0; i--) {
+    const date = new Date(data[i].date);
     if (isAfter(date, someYearsAgo)) {
       dates.push({
         x: getTime(date),
-        y: parseInt(data[dateArray[i]]["4. close"], 10)
+        y: data[i].close
       });
+    } else {
+      break;
     }
   }
-  return dates;
+  return dates.reverse();
 }
