@@ -12,7 +12,8 @@
     "no-use-before-define": "off",
     "no-param-reassign": ["error", { "props": false }],
     "react/jsx-no-bind": ["error", { "allowArrowFunctions": false }],
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-console": ["error", { "allow": ["log", "group", "groupEnd", "warn"] }]
   },
   "env": {
     "browser": true
