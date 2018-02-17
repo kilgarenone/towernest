@@ -1,10 +1,11 @@
 import React, { PureComponent } from "react";
 import styled, { css } from "react-emotion";
 
-const List = styled("ul")`
-  width: 100%;
-`;
-
+function List() {
+  return styled("ul")`
+    width: 100%;
+  `;
+}
 // const List = ({ items, handleItemClick }) => (
 //   <ul>
 //     {items.map((item, index) => (

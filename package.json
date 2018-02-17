@@ -5,14 +5,13 @@
   "dependencies": {
     "date-fns": "^1.29.0",
     "emotion": "^8.0.12",
-    "flow-bin": "^0.61.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-emotion": "^8.0.12",
     "react-onclickoutside": "^6.7.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17",
+    "react-scripts": "^1.0.17",
     "react-vis": "^1.8.1",
     "redux": "^3.7.2",
     "redux-observable": "^0.17.0",
@@ -36,6 +35,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.4.0",
     "eslint-plugin-react": "^7.5.1",
+    "flow-bin": "^0.65.0",
     "prettier": "^1.9.2"
   }
 }
