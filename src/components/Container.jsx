@@ -1,9 +1,9 @@
 import * as React from "react";
 import { css } from "react-emotion";
 
-function Container({ tag: Tag = "div", children, ...props }) {
-  return <Tag className={css(buildWrapperStyles(props))}>{children}</Tag>;
-}
+const Container = ({ tag: Tag = "div", children, ...props }) => (
+  <Tag className={css(buildWrapperStyles(props))}>{children}</Tag>
+);
 
 function buildWrapperStyles(props) {
   // Unified x and y axes intuitive alignment for flex's

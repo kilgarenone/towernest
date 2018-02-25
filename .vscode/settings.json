@@ -1,5 +1,4 @@
 {
   "javascript.validate.enable": false,
-  "flow.useNPMPackagedFlow": true,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "flow.useNPMPackagedFlow": true
 }

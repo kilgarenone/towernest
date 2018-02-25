@@ -1,5 +1,5 @@
 // @flow
-import * as React from "react";
+import React from "react";
 import { css } from "react-emotion";
 import {
   tagMapping,

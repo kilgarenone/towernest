@@ -6,8 +6,7 @@ type Props = {
   primary: boolean
 };
 
-function Button() {
-  return styled("button")`
+const Button = styled("button")`
     font-size: 17px;
     background: 0 0;
     background-color: ${(props: Props) =>
@@ -26,6 +25,6 @@ function Button() {
     flex-basis: auto;
     width: auto;
   `;
-}
+
 
 export default Button;

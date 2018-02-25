@@ -11,7 +11,7 @@ import { getStockDetails } from "../redux/viewStocks";
 import Container from "./Container";
 import { List, ListItem } from "./List";
 
-class LookupTickerByName extends Component<any, any> {
+class LookupTickerByName extends Component {
   state = {
     searchInputs: "",
     isAutoCompletePanelOpen: false
