@@ -23,10 +23,15 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "flow": "flow"
+    "flow": "flow",
+    "dummy-start":
+      "concurrently -k -n \"app, jsonServer\" \"npm start\" \"npm run json-server\"",
+    "json-server": "node scripts/jsonServer.js"
   },
+  "proxy": "http://localhost:3001",
   "devDependencies": {
     "babel-eslint": "^8.1.2",
+    "concurrently": "^3.5.1",
     "eslint": "^4.14.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
@@ -35,6 +40,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.4.0",
     "eslint-plugin-react": "^7.5.1",
+    "express": "^4.16.2",
     "flow-bin": "^0.65.0",
     "prettier": "^1.9.2"
   }
