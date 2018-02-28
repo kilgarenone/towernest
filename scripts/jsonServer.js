@@ -8,6 +8,10 @@ app.get("/testApi", (req, res) => {
   res.json({ hello: "world" });
 });
 
+app.get("/auth/getAccessToken", (req, res) => {
+  res.json({ access_token: "1234" });
+});
+
 const port = 3001;
 
 app.listen(port, () =>

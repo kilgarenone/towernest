@@ -3,7 +3,7 @@ import { combineEpics } from "redux-observable";
 import { combineReducers } from "redux";
 import tickerLookup, { getTickerByName } from "./tickerLookup";
 import viewStocks, { getStockDetailsByTicker } from "./viewStocks";
-import getAccessTokenReducer, { getAccessToken } from "../modules/auth/state";
+import accessToken, { getAccessToken } from "../modules/auth/state";
 
 export type State = {
   tickerLookup: any,
@@ -19,5 +19,5 @@ export const rootEpic = combineEpics(
 export const rootReducer = combineReducers({
   tickerLookup,
   viewStocks,
-  getAccessTokenReducer
+  accessToken
 });

@@ -2,21 +2,19 @@
 import { ofType } from "redux-observable";
 // Look here to optimize bundle size on rxjs operators
 // https://github.com/ReactiveX/rxjs/blob/master/doc/lettable-operators.md
-import { switchMap, map } from "rxjs/operators";
+import { switchMap, map, tap } from "rxjs/operators";
 import { ajax } from "rxjs/observable/dom/ajax";
 import { CLIENT_ID, CLIENT_SECRET } from "./../../config";
 
 const GET_ACCESS_TOKEN = "matisa/modules/auth/getAccessToken";
 const SET_ACCESS_TOKEN = "matisa/modules/auth/setAccessToken";
 
-const initialState = [];
+const initialState = "";
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case SET_ACCESS_TOKEN: {
-      console.log("res", action);
-      return "haha";
-    }
+    case SET_ACCESS_TOKEN:
+      return action.accessToken;
     default:
       return state;
   }
@@ -38,9 +36,10 @@ export const getAccessToken = action$ => {
   return action$.pipe(
     ofType(GET_ACCESS_TOKEN),
     switchMap(() => ajax(payload)),
-    map(response => ({
+    // tap(data => console.log(data)), // this is how u debug rxjs
+    map(data => ({
       type: SET_ACCESS_TOKEN,
-      response
+      accessToken: data.response.access_token
     }))
   );
 };
