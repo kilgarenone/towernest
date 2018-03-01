@@ -5,6 +5,7 @@ import { ofType } from "redux-observable";
 import { switchMap, map, tap } from "rxjs/operators";
 import { ajax } from "rxjs/observable/dom/ajax";
 import { CLIENT_ID, CLIENT_SECRET } from "./../../config";
+import { CALL_API } from "./../../redux/api";
 
 const GET_ACCESS_TOKEN = "matisa/modules/auth/getAccessToken";
 const SET_ACCESS_TOKEN = "matisa/modules/auth/setAccessToken";
@@ -13,8 +14,10 @@ const initialState = "";
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case SET_ACCESS_TOKEN:
+    case SET_ACCESS_TOKEN: {
+      console.log("actionsss", action);
       return action.accessToken;
+    }
     default:
       return state;
   }
@@ -23,6 +26,13 @@ export default function reducer(state = initialState, action = {}) {
 export function getAccessTokenAction() {
   return {
     type: GET_ACCESS_TOKEN
+  };
+}
+
+export function helloWorld() {
+  return {
+    type: CALL_API,
+    endPoint: "/testApi"
   };
 }
 

@@ -3,8 +3,10 @@ import React, { Component } from "react";
 import Auth from "../modules/auth/container";
 
 // import { connect } from "react-redux";
+import { helloWorld } from "./../modules/auth/state";
+import { connect } from "react-redux";
 
-export default class App extends Component<any, any> {
+class App extends Component<any, any> {
   // state = {
   //   userName: "",
   //   passWord: ""
@@ -26,11 +28,16 @@ export default class App extends Component<any, any> {
   render() {
     return (
       // const App = ({ stocks = [] }) => (
-      <Auth />
+      <div>
+        <Auth />
+        <button onClick={() => this.props.helloWorld()}>
+          CALL AUTHENTICATED API
+        </button>
+      </div>
     );
   }
 }
 
-// export default connect(null, {
-//   getAccessTokenAction
-// })(App);
+export default connect(null, {
+  helloWorld
+})(App);
