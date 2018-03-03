@@ -1,5 +1,5 @@
 import { ajax } from "rxjs/observable/dom/ajax";
-import { switchMap, map, tap } from "rxjs/operators";
+import { switchMap, map, tap, delay } from "rxjs/operators";
 import { ofType } from "redux-observable";
 
 function callApi(endPoint, httpMethod, store, authenticated) {
@@ -47,8 +47,12 @@ export default (action$, store) => {
   return action$.pipe(
     ofType(CALL_API),
     switchMap(({ endPoint, httpMethod = GET, authenticated = true }) =>
-      callApi(endPoint, httpMethod, store.getState(), authenticated)
+      callApi(endPoint, httpMethod, store.getState(), authenticated).pipe(
+        map(response => [response, "hahahaha"]),
+        delay(1000)
+      )
     ),
+    tap(response => console.log("ressss", response)),
     map(response => ({
       type: "matisa/modules/auth/setAccessToken",
       accessToken: "sadasdsa"

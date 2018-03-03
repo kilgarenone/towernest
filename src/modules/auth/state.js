@@ -9,6 +9,8 @@ import { CALL_API } from "./../../redux/api";
 
 const GET_ACCESS_TOKEN = "matisa/modules/auth/getAccessToken";
 const SET_ACCESS_TOKEN = "matisa/modules/auth/setAccessToken";
+const SUCCESS_HELLO_WORLD = "matisa/modules/auth/successHelloWorld";
+const ERROR_HELLO_WORLD = "matisa/modules/auth/errorHelloWorld";
 
 const initialState = "";
 
@@ -32,7 +34,9 @@ export function getAccessTokenAction() {
 export function helloWorld() {
   return {
     type: CALL_API,
-    endPoint: "/testApi"
+    endPoint: "/testApi",
+    successType: SUCCESS_HELLO_WORLD,
+    failureType: ERROR_HELLO_WORLD
   };
 }
 
