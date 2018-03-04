@@ -17,8 +17,10 @@ const initialState = "";
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case SET_ACCESS_TOKEN: {
-      console.log("actionsss", action);
       return action.accessToken;
+    }
+    case ERROR_HELLO_WORLD: {
+      return action.error.status;
     }
     default:
       return state;

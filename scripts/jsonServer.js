@@ -5,6 +5,7 @@ const app = express();
 // app.use(cors());
 
 app.get("/testApi", (req, res) => {
+  // res.statusCode = 404;
   res.json({ hello: "world" });
 });
 
