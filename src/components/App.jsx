@@ -1,10 +1,11 @@
 // @flow
 import React, { Component } from "react";
-import Auth from "../modules/auth/container";
+// import Auth from "../modules/auth/container";
 
 // import { connect } from "react-redux";
 import { helloWorld } from "./../modules/auth/state";
 import { connect } from "react-redux";
+import Questionnaire from "./../modules/questionnaire/view";
 
 class App extends Component<any, any> {
   // state = {
@@ -29,10 +30,7 @@ class App extends Component<any, any> {
     return (
       // const App = ({ stocks = [] }) => (
       <div>
-        <Auth />
-        <button onClick={() => this.props.helloWorld()}>
-          CALL AUTHENTICATED API
-        </button>
+        <Questionnaire />
       </div>
     );
   }
