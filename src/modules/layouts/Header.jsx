@@ -1,9 +1,8 @@
 import React from "react";
 import { css } from "react-emotion";
-import NavBar from "./Navbar";
-import Container from "./Container";
-import spacing from "./../styles/base/spacing";
-import LookupTickerByName from "./LookupTickerByName";
+import NavBar from "./../../components/Navbar";
+import Container from "./../../components/Container";
+import spacing from "./../../styles/base/spacing";
 
 const Header = () => (
   <NavBar>
@@ -18,7 +17,7 @@ const Header = () => (
         Matisa
       </span>
       <Container marginLeft={spacing.space5}>
-        <LookupTickerByName />
+        <p>hahaha</p>
       </Container>
     </Container>
   </NavBar>

@@ -6,6 +6,9 @@ import React, { Component } from "react";
 import { helloWorld } from "./../modules/auth/state";
 import { connect } from "react-redux";
 import Questionnaire from "./../modules/questionnaire/view";
+import SimpleHeader from "./../modules/layouts/SimpleHeader";
+import Container from "./Container";
+import spacing from "./../styles/base/spacing";
 
 class App extends Component<any, any> {
   // state = {
@@ -30,7 +33,12 @@ class App extends Component<any, any> {
     return (
       // const App = ({ stocks = [] }) => (
       <div>
-        <Questionnaire />
+        <SimpleHeader />
+        <Container xAlign="center">
+          <div style={{ maxWidth: "600px", paddingTop: spacing.space5 }}>
+            <Questionnaire />
+          </div>
+        </Container>
       </div>
     );
   }

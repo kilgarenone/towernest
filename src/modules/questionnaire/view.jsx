@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Card from "../../components/Card";
 import Input from "./../../components/Input";
 import Button from "./../../components/Button";
+import Container from "./../../components/Container";
 
 function FirstQuestion() {
   return (
@@ -10,17 +11,30 @@ function FirstQuestion() {
       <div>
         <span>I plan to begin taking money from my investments in:</span>
       </div>
-      <label htmlFor="timeHorizon">
-        <Input
-          name="timeHorizon"
-          data-parse="haha"
-          id="timeHorizon"
-          value="5"
-          type="radio"
-          required
-        />
-        3 - 5 years
-      </label>
+      <Container direction="column">
+        <label htmlFor="timeHorizon">
+          <Input
+            name="timeHorizon"
+            data-parse="haha"
+            id="timeHorizon"
+            value="5"
+            type="radio"
+            required
+          />
+          3 - 5 years
+        </label>
+        <label htmlFor="timeHorizon">
+          <Input
+            name="timeHorizon"
+            data-parse="haha"
+            id="timeHorizon"
+            value="10"
+            type="radio"
+            required
+          />
+          more than 10 years
+        </label>
+      </Container>
     </div>
   );
 }
@@ -32,7 +46,7 @@ class Questionnaire extends Component<any> {
       // form is invalid! so we do nothing
       return;
     }
-    console.log("formmm", event.currentTarget.elements.timeHorizon.dataset);
+    console.log("formmm", event.currentTarget.elements.timeHorizon.value);
   };
   render() {
     return (

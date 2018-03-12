@@ -24,10 +24,12 @@ const Header = styled("div")`
   margin-left: auto;
 `;
 
-const NavBar = ({ children }) => (
-  <HeaderWrapper>
-    <Header>{children}</Header>
-  </HeaderWrapper>
-);
+function NavBar({ children }) {
+  return (
+    <HeaderWrapper>
+      <Header>{children}</Header>
+    </HeaderWrapper>
+  );
+}
 
 export default NavBar;
