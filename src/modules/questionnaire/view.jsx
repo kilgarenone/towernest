@@ -4,6 +4,12 @@ import Card from "../../components/Card";
 import Input from "./../../components/Input";
 import Button from "./../../components/Button";
 import Container from "./../../components/Container";
+import RadioButton from "./../../components/RadioButton";
+
+const firstQuestions = [
+  { name: "timeHorizon", value: 5, text: "3 - 5 years" },
+  { name: "timeHorizon", value: 10, text: "more than 10 years" }
+];
 
 function FirstQuestion() {
   return (
@@ -12,28 +18,11 @@ function FirstQuestion() {
         <span>I plan to begin taking money from my investments in:</span>
       </div>
       <Container direction="column">
-        <label htmlFor="timeHorizon">
-          <Input
-            name="timeHorizon"
-            data-parse="haha"
-            id="timeHorizon"
-            value="5"
-            type="radio"
-            required
-          />
-          3 - 5 years
-        </label>
-        <label htmlFor="timeHorizon">
-          <Input
-            name="timeHorizon"
-            data-parse="haha"
-            id="timeHorizon"
-            value="10"
-            type="radio"
-            required
-          />
-          more than 10 years
-        </label>
+        {firstQuestions.map(q => (
+          <RadioButton key={q.value} name={q.name} value={q.value}>
+            {q.text}
+          </RadioButton>
+        ))}
       </Container>
     </div>
   );
