@@ -7,10 +7,18 @@ type Props = {
   value: any,
   required?: boolean,
   parseType?: string,
-  children: any | React.Node
+  children: any | React.Node,
+  onChange: (value: any) => any | void
 };
 
-function RadioButton({ name, value, required, parseType, children }: Props) {
+function RadioButton({
+  name,
+  value,
+  required,
+  parseType,
+  onChange,
+  children
+}: Props) {
   return (
     <label htmlFor={`${name}-${value}`}>
       <Input
@@ -20,6 +28,7 @@ function RadioButton({ name, value, required, parseType, children }: Props) {
         required={required}
         type="radio"
         data-parse={parseType}
+        onChange={onChange}
       />
       {children}
     </label>
