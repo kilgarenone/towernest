@@ -6,7 +6,7 @@ import React, { Component } from "react";
 import { helloWorld } from "./../modules/auth/state";
 import { connect } from "react-redux";
 import Questionnaire from "./../modules/questionnaire/view";
-import SimpleHeader from "./../modules/layouts/SimpleHeader";
+import SimpleHeader from "../layouts/SimpleHeader";
 import Container from "./Container";
 import spacing from "./../styles/base/spacing";
 

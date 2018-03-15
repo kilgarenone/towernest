@@ -5,6 +5,9 @@ import Button from "./../../components/Button";
 import Container from "./../../components/Container";
 import RadioButton from "./../../components/RadioButton";
 import ErrorMsg from "./../../components/ErrorMsg";
+import { ruleRunner, run } from "./../../validation/ruleRunner";
+import { required } from "./../../validation/rules";
+import { minLength } from "./../../validation/errorMessages";
 
 const firstQuestions = [
   { name: "timeHorizon", value: 5, text: "3 - 5 years" },
@@ -28,6 +31,7 @@ function FirstQuestion({ onInputChange, errText }) {
             {q.text}
           </RadioButton>
         ))}
+        <input name="firstName" onChange={onInputChange} />
       </Container>
       <ErrorMsg text={errText} />
     </div>
@@ -38,11 +42,30 @@ function SecondQuestion() {
   return <div>pppp</div>;
 }
 
+const fieldValidations = [
+  ruleRunner("firstName", "First Name", required, minLength(6))
+];
+
 class Questionnaire extends Component<
   any,
   { step: number, timeHorizon: number }
 > {
-  state = { step: 1, timeHorizon: "" };
+  state = {
+    step: 1,
+    showErrors: false,
+    validationErrors: {},
+    timeHorizon: "",
+    firstName: ""
+  };
+
+  componentWillMount() {
+    // Run validations on initial state
+    this.setState({ validationErrors: run(this.state, fieldValidations) });
+  }
+
+  errorFor = field => {
+    return this.state.validationErrors[field] || "";
+  };
 
   handleInputChange = event => {
     const { target } = event;

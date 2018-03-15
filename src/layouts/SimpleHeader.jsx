@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { css } from "react-emotion";
-import Container from "../../components/Container";
-import Navbar from "../../components/Navbar";
+import Container from "../components/Container";
+import Navbar from "../components/Navbar";
 
 // eslint-disable-next-line
 class SimpleHeader extends Component {
