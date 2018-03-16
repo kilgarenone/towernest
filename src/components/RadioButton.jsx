@@ -1,5 +1,5 @@
 // @flow
-import React from "react";
+import * as React from "react";
 import Input from "./Input";
 
 type Props = {

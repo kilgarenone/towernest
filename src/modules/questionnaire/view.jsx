@@ -6,15 +6,17 @@ import Container from "./../../components/Container";
 import RadioButton from "./../../components/RadioButton";
 import ErrorMsg from "./../../components/ErrorMsg";
 import { ruleRunner, run } from "./../../validation/ruleRunner";
-import { required } from "./../../validation/rules";
-import { minLength } from "./../../validation/errorMessages";
+import { required, minLength } from "./../../validation/rules";
+import update from "immutability-helper";
+import { isEmptyObject } from "./../../utils/functions";
+import OptionallyDisplayed from "./../../components/OptionallyDisplayed";
 
 const firstQuestions = [
   { name: "timeHorizon", value: 5, text: "3 - 5 years" },
   { name: "timeHorizon", value: 10, text: "more than 10 years" }
 ];
 
-function FirstQuestion({ onInputChange, errText }) {
+function FirstQuestion({ onInputChange, showError, errorFor }) {
   return (
     <div>
       <div>
@@ -31,9 +33,10 @@ function FirstQuestion({ onInputChange, errText }) {
             {q.text}
           </RadioButton>
         ))}
-        <input name="firstName" onChange={onInputChange} />
       </Container>
-      <ErrorMsg text={errText} />
+      <OptionallyDisplayed display={showError}>
+        <ErrorMsg text={errorFor("timeHorizon")} />
+      </OptionallyDisplayed>
     </div>
   );
 }
@@ -42,9 +45,7 @@ function SecondQuestion() {
   return <div>pppp</div>;
 }
 
-const fieldValidations = [
-  ruleRunner("firstName", "First Name", required, minLength(6))
-];
+const fieldValidations = [ruleRunner("timeHorizon", "Time horizon", required)];
 
 class Questionnaire extends Component<
   any,
@@ -54,8 +55,7 @@ class Questionnaire extends Component<
     step: 1,
     showErrors: false,
     validationErrors: {},
-    timeHorizon: "",
-    firstName: ""
+    timeHorizon: ""
   };
 
   componentWillMount() {
@@ -63,28 +63,27 @@ class Questionnaire extends Component<
     this.setState({ validationErrors: run(this.state, fieldValidations) });
   }
 
-  errorFor = field => {
-    return this.state.validationErrors[field] || "";
-  };
-
-  handleInputChange = event => {
+  handleFieldChanged = event => {
     const { target } = event;
-    console.log("target", target);
-
     const value = target.type === "checkbox" ? target.checked : target.value;
     const { name } = target;
-
-    this.setState({
-      [name]: value
+    // update() is provided by React Immutability Helpers
+    const newState = update(this.state, {
+      [name]: { $set: value }
     });
+    newState.validationErrors = run(newState, fieldValidations);
+    this.setState(newState);
   };
+
+  errorFor = field => this.state.validationErrors[field] || "";
+
   handleSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!event.currentTarget.checkValidity()) {
-      console.log(event.target.elements.timeHorizon.checkValidity());
-      // form is invalid! so we do nothing
-      return;
+    this.setState({ showErrors: true });
+    if (!isEmptyObject(this.state.validationErrors)) {
+      return null;
     }
+
     if (this.state.step < 3) {
       this.setState({ step: this.state.step + 1 });
     } else {
@@ -98,10 +97,20 @@ class Questionnaire extends Component<
           {(() => {
             switch (this.state.step) {
               case 1:
-                return <FirstQuestion onInputChange={this.handleInputChange} />;
+                return (
+                  <FirstQuestion
+                    showError={this.state.showErrors}
+                    onInputChange={this.handleFieldChanged}
+                    errorFor={this.errorFor}
+                  />
+                );
               case 2:
                 return (
-                  <SecondQuestion onInputChange={this.handleInputChange} />
+                  <SecondQuestion
+                    showError={this.state.showErrors}
+                    onInputChange={this.handleFieldChanged}
+                    errorFor={this.errorFor}
+                  />
                 );
               default:
                 return null;

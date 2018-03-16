@@ -1,7 +1,11 @@
 import React from "react";
 
 function ErrorMsg({ text }) {
-  return <p>{text}</p>;
+  return (
+    <div className="validation-error">
+      <span className="text">{text}</span>
+    </div>
+  );
 }
 
 export default ErrorMsg;
