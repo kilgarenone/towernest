@@ -106,41 +106,46 @@ class Questionnaire extends Component<
       console.log("formmm", this.state);
     }
   };
+
+  handleBackBtnClick = () => {
+    this.setState({ step: this.state.step - 1 });
+  };
   render() {
     return (
-      <Card>
-        <form noValidate onSubmit={this.handleSubmit}>
-          {(() => {
-            switch (this.state.step) {
-              case 1:
-                return (
-                  <QuestionWithRadioButtons
-                    questionText={firstQuestionDesc}
-                    showError={this.state.showErrors}
-                    onInputChange={this.handleFieldChanged}
-                    errorFor={this.errorFor}
-                    questions={firstQuestions}
-                    fieldName="timeHorizon"
-                  />
-                );
-              case 2:
-                return (
-                  <QuestionWithRadioButtons
-                    questionText={secondQuestionDesc}
-                    showError={this.state.showErrors}
-                    onInputChange={this.handleFieldChanged}
-                    errorFor={this.errorFor}
-                    questions={secondQuestions}
-                    fieldName="riskTolerance"
-                  />
-                );
-              default:
-                return null;
-            }
-          })()}
-          <ControlButtonsGroup />
-        </form>
-      </Card>
+      <form noValidate onSubmit={this.handleSubmit}>
+        {(() => {
+          switch (this.state.step) {
+            case 1:
+              return (
+                <QuestionWithRadioButtons
+                  questionText={firstQuestionDesc}
+                  showError={this.state.showErrors}
+                  onInputChange={this.handleFieldChanged}
+                  errorFor={this.errorFor}
+                  questions={firstQuestions}
+                  fieldName="timeHorizon"
+                />
+              );
+            case 2:
+              return (
+                <QuestionWithRadioButtons
+                  questionText={secondQuestionDesc}
+                  showError={this.state.showErrors}
+                  onInputChange={this.handleFieldChanged}
+                  errorFor={this.errorFor}
+                  questions={secondQuestions}
+                  fieldName="riskTolerance"
+                />
+              );
+            default:
+              return null;
+          }
+        })()}
+        <ControlButtonsGroup
+          displayBackBtn={this.state.step > 1}
+          handleBackBtnClick={this.handleBackBtnClick}
+        />
+      </form>
     );
   }
 }
