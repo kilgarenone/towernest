@@ -11,6 +11,7 @@ import { required, minLength } from "./../../validation/rules";
 import { isEmptyObject } from "./../../utils/functions";
 import OptionallyDisplayed from "./../../components/OptionallyDisplayed";
 import spacing from "./../../styles/base/spacing";
+import ControlButtonsGroup from "./../../components/ControlButtonsGroup";
 
 const firstQuestionDesc =
   "I plan to begin taking money from my investments in:";
@@ -137,7 +138,7 @@ class Questionnaire extends Component<
                 return null;
             }
           })()}
-          <Button>Continue</Button>
+          <ControlButtonsGroup />
         </form>
       </Card>
     );

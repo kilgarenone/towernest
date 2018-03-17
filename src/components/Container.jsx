@@ -1,8 +1,15 @@
 import * as React from "react";
-import { css } from "react-emotion";
+import { css, cx } from "react-emotion";
 
-const Container = ({ tag: Tag = "div", children, ...props }) => (
-  <Tag className={css(buildWrapperStyles(props))}>{children}</Tag>
+const Container = ({
+  tag: Tag = "div",
+  children,
+  className = null,
+  ...props
+}) => (
+  <Tag className={cx(css(buildWrapperStyles(props)), className)}>
+    {children}
+  </Tag>
 );
 
 function buildWrapperStyles(props) {

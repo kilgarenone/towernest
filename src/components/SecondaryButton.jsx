@@ -8,32 +8,31 @@ type Props = {
   large?: boolean
 };
 
-function setBgColor(props) {
-  if (props.invert) {
-    return "#fff";
-  }
-  if (props.primary) {
-    return colors.primary;
-  }
-  return colors.secondary;
-}
+// function setBgColor(props) {
+//   if (props.invert) {
+//     return "#fff";
+//   }
+//   if (props.primary) {
+//     return colors.primary;
+//   }
+//   return colors.secondary;
+// }
 
-const Button = styled("button")((props: Props) => ({
+const SecondaryButton = styled("button")((props: Props) => ({
   fontSize: props.large ? fontSize.displaySmall : fontSize.text,
   fontWeight: "700",
-  backgroundColor: setBgColor(props),
-  color: props.invert ? "#000" : "#fff",
-  padding: props.large ? "14px 32px 16px" : "6px 35px",
+  backgroundColor: "#fff",
+  color: "#ccc",
+  padding: props.large ? "14px 32px 16px" : "6px 14px 6px",
   borderRadius: ".25rem",
-  border: "none",
+  border: "2px solid #ccc",
   userSelect: "none",
   textDecoration: "none",
   cursor: "pointer",
-  textShadow: "0 1px 1px rgba(0,0,0,.1)",
   textAlign: "center",
   lineHeight: "1.5rem",
   letterSpacing: "normal",
   display: "inline-block"
 }));
 
-export default Button;
+export default SecondaryButton;
