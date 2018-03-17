@@ -2,7 +2,7 @@
 import * as React from "react";
 import { css } from "react-emotion";
 import Input from "./Input";
-import spacing from './../styles/base/spacing';
+import spacing from "./../styles/base/spacing";
 
 type Props = {
   name: string,
@@ -10,7 +10,8 @@ type Props = {
   required?: boolean,
   parseType?: string,
   children: any | React.Node,
-  onChange: (value: any) => any | void
+  onChange: (value: any) => any | void,
+  isChecked: boolean
 };
 
 const customRadioStyle = css`
@@ -41,8 +42,10 @@ function RadioButton({
   required,
   parseType,
   onChange,
-  children
+  children,
+  isChecked
 }: Props) {
+  console.log("ischec", isChecked);
   return (
     <label className={customRadioStyle} htmlFor={`${name}-${value}`}>
       <Input
@@ -53,6 +56,7 @@ function RadioButton({
         type="radio"
         data-parse={parseType}
         onChange={onChange}
+        checked={isChecked}
       />
       <i />
       {children}

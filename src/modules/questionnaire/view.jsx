@@ -34,7 +34,8 @@ function QuestionWithRadioButtons({
   showError,
   errorFor,
   questions,
-  fieldName
+  fieldName,
+  checkedValue
 }) {
   return (
     <div style={{ minHeight: "250px" }}>
@@ -48,6 +49,7 @@ function QuestionWithRadioButtons({
             onChange={onInputChange}
             name={q.name}
             value={q.value}
+            isChecked={q.value === parseInt(checkedValue, 10)}
           >
             {q.text}
           </RadioButton>
@@ -124,6 +126,7 @@ class Questionnaire extends Component<
                   errorFor={this.errorFor}
                   questions={firstQuestions}
                   fieldName="timeHorizon"
+                  checkedValue={this.state.timeHorizon}
                 />
               );
             case 2:
@@ -135,6 +138,7 @@ class Questionnaire extends Component<
                   errorFor={this.errorFor}
                   questions={secondQuestions}
                   fieldName="riskTolerance"
+                  checkedValue={this.state.riskTolerance}
                 />
               );
             default:
