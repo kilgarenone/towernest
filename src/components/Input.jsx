@@ -1,4 +1,5 @@
 import styled from "react-emotion";
+import { fontSize } from "./../styles/base/typography";
 
 const Input = styled("input")`
   font-family: "Playfair Display", san-serif;
@@ -9,7 +10,7 @@ const Input = styled("input")`
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: normal;
-  font-size: 19px;
+  font-size: ${fontSize.text};
   border: 1px solid #ebebeb;
   border-radius: 4px;
   box-shadow: none;

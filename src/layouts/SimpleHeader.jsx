@@ -16,7 +16,7 @@ class SimpleHeader extends Component {
               color: black;
             `}
           >
-            Matisa
+            Duller
           </span>
         </Container>
       </Navbar>

@@ -1,29 +1,39 @@
 // @flow
-import styled from "react-emotion";
+import styled, { css } from "react-emotion";
 import { colors } from "./../styles/base/colors";
+import { fontSize } from "./../styles/base/typography";
 
 type Props = {
-  primary: boolean
+  primary: boolean,
+  large?: boolean
 };
 
-const Button = styled("button")`
-  font-size: 17px;
-  background: 0 0;
-  background-color: ${(props: Props) =>
-    props.primary ? colors.primary : colors.secondary};
-  background-color: ${(props: Props) => (props.invert ? "#fff" : "")};
-  border-radius: 4px;
-  border: none;
-  text-align: center;
-  line-height: 1.5;
-  cursor: pointer;
-  letter-spacing: normal;
-  color: ${(props: Props) => (props.invert ? "#fff" : "#000")};
-  text-transform: uppercase;
-  padding: 19px 40px 20px;
-  display: block;
-  flex-basis: auto;
-  width: auto;
-`;
+function setBgColor(props) {
+  if (props.invert) {
+    return "#fff";
+  }
+  if (props.primary) {
+    return colors.primary;
+  }
+  return colors.secondary;
+}
+
+const Button = styled("button")((props: Props) => ({
+  fontSize: props.large ? fontSize.displaySmall : fontSize.text,
+  fontWeight: "700",
+  backgroundColor: setBgColor(props),
+  color: props.invert ? "#000" : "#fff",
+  padding: props.large ? "14px 32px 16px" : "8px 14px 9px",
+  borderRadius: ".25rem",
+  border: "none",
+  userSelect: "none",
+  textDecoration: "none",
+  cursor: "pointer",
+  textShadow: "0 1px 1px rgba(0,0,0,.1)",
+  textAlign: "center",
+  lineHeight: "1.5rem",
+  letterSpacing: "normal",
+  display: "inline-block"
+}));
 
 export default Button;

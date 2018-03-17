@@ -4,7 +4,9 @@ export const fontSize = {
   displayMedium: "26px",
   displaySmall: "20px",
   heading: "18px",
-  subheading: "16px"
+  subheading: "16px",
+  text: "15px",
+  subText: "14px"
 
   // body
   // body: "17px",

@@ -35,7 +35,13 @@ class App extends Component<any, any> {
       <div>
         <SimpleHeader />
         <Container xAlign="center">
-          <div style={{ maxWidth: "600px", paddingTop: spacing.space5 }}>
+          <div
+            style={{
+              maxWidth: "600px",
+              minWidth: "600px",
+              paddingTop: spacing.space5
+            }}
+          >
             <Questionnaire />
           </div>
         </Container>

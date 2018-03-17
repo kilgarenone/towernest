@@ -5,7 +5,6 @@
   "dependencies": {
     "axios": "^0.18.0",
     "date-fns": "^1.29.0",
-    "emotion": "^8.0.12",
     "flow-bin": "^0.61.0",
     "immutability-helper": "^2.6.6",
     "react": "^16.2.0",
@@ -27,7 +26,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "flow": "flow",
-    "dummy-start": "concurrently -k -n \"app, jsonServer\" \"npm start\" \"npm run json-server\"",
+    "dummy-start":
+      "concurrently -k -n \"app, jsonServer\" \"npm start\" \"npm run json-server\"",
     "json-server": "node scripts/jsonServer.js"
   },
   "proxy": "http://localhost:3001",

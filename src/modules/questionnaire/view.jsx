@@ -1,31 +1,49 @@
 import React, { Component } from "react";
+import update from "immutability-helper";
 import Card from "../../components/Card";
 import Input from "./../../components/Input";
 import Button from "./../../components/Button";
 import Container from "./../../components/Container";
 import RadioButton from "./../../components/RadioButton";
-import ErrorMsg from "./../../components/ErrorMsg";
+import ErrorMessage from "./../../components/ErrorMessage";
 import { ruleRunner, run } from "./../../validation/ruleRunner";
 import { required, minLength } from "./../../validation/rules";
-import update from "immutability-helper";
 import { isEmptyObject } from "./../../utils/functions";
 import OptionallyDisplayed from "./../../components/OptionallyDisplayed";
+import spacing from "./../../styles/base/spacing";
 
+const firstQuestionDesc =
+  "I plan to begin taking money from my investments in:";
+const secondQuestionDesc =
+  "Imagine that in the past three months, the overall stock market lost 25% of its value. What would you do?";
 const firstQuestions = [
-  { name: "timeHorizon", value: 5, text: "3 - 5 years" },
-  { name: "timeHorizon", value: 10, text: "more than 10 years" }
+  { name: "timeHorizon", value: 0, text: "3 - 5 years" },
+  { name: "timeHorizon", value: 1, text: "more than 10 years" }
+];
+const secondQuestions = [
+  { name: "riskTolerance", value: 0, text: "Sell all of my shares" },
+  { name: "riskTolerance", value: 1, text: "Sell some of my shares" },
+  { name: "riskTolerance", value: 2, text: "Do nothing" },
+  { name: "riskTolerance", value: 3, text: "Buy more shares" }
 ];
 
-function FirstQuestion({ onInputChange, showError, errorFor }) {
+function QuestionWithRadioButtons({
+  questionText,
+  onInputChange,
+  showError,
+  errorFor,
+  questions,
+  fieldName
+}) {
   return (
-    <div>
-      <div>
-        <span>I plan to begin taking money from my investments in:</span>
+    <div style={{ minHeight: "250px" }}>
+      <div style={{ marginBottom: spacing.space1 }}>
+        <span>{questionText}</span>
       </div>
       <Container direction="column">
-        {firstQuestions.map(q => (
+        {questions.map(q => (
           <RadioButton
-            key={q.value}
+            key={`${q.name}_${q.value}`} // don't use array index as key! https://stackoverflow.com/a/43481841/73323
             onChange={onInputChange}
             name={q.name}
             value={q.value}
@@ -35,14 +53,10 @@ function FirstQuestion({ onInputChange, showError, errorFor }) {
         ))}
       </Container>
       <OptionallyDisplayed display={showError}>
-        <ErrorMsg text={errorFor("timeHorizon")} />
+        <ErrorMessage>{errorFor(fieldName)}</ErrorMessage>
       </OptionallyDisplayed>
     </div>
   );
-}
-
-function SecondQuestion() {
-  return <div>pppp</div>;
 }
 
 const fieldValidations = [ruleRunner("timeHorizon", "Time horizon", required)];
@@ -55,7 +69,8 @@ class Questionnaire extends Component<
     step: 1,
     showErrors: false,
     validationErrors: {},
-    timeHorizon: ""
+    timeHorizon: "",
+    riskTolerance: ""
   };
 
   componentWillMount() {
@@ -98,18 +113,24 @@ class Questionnaire extends Component<
             switch (this.state.step) {
               case 1:
                 return (
-                  <FirstQuestion
+                  <QuestionWithRadioButtons
+                    questionText={firstQuestionDesc}
                     showError={this.state.showErrors}
                     onInputChange={this.handleFieldChanged}
                     errorFor={this.errorFor}
+                    questions={firstQuestions}
+                    fieldName="timeHorizon"
                   />
                 );
               case 2:
                 return (
-                  <SecondQuestion
+                  <QuestionWithRadioButtons
+                    questionText={secondQuestionDesc}
                     showError={this.state.showErrors}
                     onInputChange={this.handleFieldChanged}
                     errorFor={this.errorFor}
+                    questions={secondQuestions}
+                    fieldName="riskTolerance"
                   />
                 );
               default:
