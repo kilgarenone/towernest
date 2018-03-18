@@ -11,6 +11,7 @@ const Progress = styled("div")`
   background-color: #67c8ac;
   height: 5px;
   width: ${props => (props.width ? `${props.width}%` : 0)};
+  min-width: 40px;
   transition: width, 0.5s;
 `;
 
