@@ -29,7 +29,6 @@ const customRadioStyle = css`
     vertical-align: middle;
     background-color: #fff;
     border: 2px solid #b4b4b4;
-    transition: 0.25s;
   }
   input:checked + i {
     background-color: #3197ee;
@@ -45,7 +44,6 @@ function RadioButton({
   children,
   isChecked
 }: Props) {
-  console.log("ischec", isChecked);
   return (
     <label className={customRadioStyle} htmlFor={`${name}-${value}`}>
       <Input
