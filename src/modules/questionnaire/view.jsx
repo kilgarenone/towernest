@@ -13,6 +13,8 @@ import OptionallyDisplayed from "./../../components/OptionallyDisplayed";
 import spacing from "./../../styles/base/spacing";
 import ControlButtonsGroup from "./../../components/ControlButtonsGroup";
 import ProgressBar from "./../../components/ProgressBar";
+import { fontSize } from "./../../styles/base/typography";
+import Heading from "./../../components/Heading";
 
 const firstQuestionDesc =
   "I plan to begin taking money from my investments in:";
@@ -39,8 +41,14 @@ function QuestionWithRadioButtons({
   checkedValue
 }) {
   return (
-    <div style={{ minHeight: "250px" }}>
-      <div style={{ marginBottom: spacing.space1 }}>
+    <div style={{ minHeight: "250px", marginTop: spacing.space4 }}>
+      <div
+        style={{
+          marginBottom: spacing.space1,
+          fontSize: fontSize.subHeading,
+          fontWeight: 500
+        }}
+      >
         <span>{questionText}</span>
       </div>
       <Container direction="column">
@@ -116,6 +124,7 @@ class Questionnaire extends Component<
   render() {
     return (
       <form noValidate onSubmit={this.handleSubmit}>
+        <Heading tag="h3">Let's get to know you</Heading>
         <ProgressBar width={this.state.step * 50} />
         {(() => {
           switch (this.state.step) {

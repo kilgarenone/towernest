@@ -6,8 +6,33 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
 }
+
+@font-face {
+  font-family: "Inter UI";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Inter UI"), url("./fonts/Inter-UI-Regular.woff2") format("woff2"),
+    url("./fonts/Inter-UI-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inter UI";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Inter UI"), url("./fonts/Inter-UI-Medium.woff2") format("woff2"),
+    url("./fonts/Inter-UI-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inter UI";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Inter UI"), url("./fonts/Inter-UI-Bold.woff2") format("woff2"),
+    url("./fonts/Inter-UI-Bold.woff") format("woff");
+}
+
 body {
-  font-family: "Playfair Display", Helvetica, Arial, sans-serif;
+  font-family: "Inter UI", Helvetica, Arial, sans-serif;
   font-size: 1.1rem;
   line-height: 1.5;
   margin: 0;

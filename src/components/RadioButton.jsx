@@ -3,6 +3,7 @@ import * as React from "react";
 import { css } from "react-emotion";
 import Input from "./Input";
 import spacing from "./../styles/base/spacing";
+import { fontSize } from './../styles/base/typography';
 
 type Props = {
   name: string,
@@ -15,6 +16,7 @@ type Props = {
 };
 
 const customRadioStyle = css`
+  font-size: ${fontSize.text};
   display: block;
   margin-bottom: ${spacing.space0};
   input {

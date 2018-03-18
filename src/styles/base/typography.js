@@ -1,12 +1,12 @@
 export const fontSize = {
   // heading
-  displayLarge: "32px",
-  displayMedium: "26px",
-  displaySmall: "20px",
-  heading: "18px",
-  subheading: "16px",
-  text: "15px",
-  subText: "14px"
+  displayLarge: "35px",
+  displayMedium: "32px",
+  displaySmall: "26px",
+  heading: "23px",
+  subHeading: "19px",
+  text: "16px",
+  subText: "15px"
 
   // body
   // body: "17px",
@@ -15,9 +15,8 @@ export const fontSize = {
 
 export const fontWeight = {
   bold: 700,
-  semibold: 600,
-  normal: 400,
-  light: 200
+  semibold: 500,
+  normal: 400
 };
 
 export const tagMapping = {
