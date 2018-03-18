@@ -12,6 +12,7 @@ import { isEmptyObject } from "./../../utils/functions";
 import OptionallyDisplayed from "./../../components/OptionallyDisplayed";
 import spacing from "./../../styles/base/spacing";
 import ControlButtonsGroup from "./../../components/ControlButtonsGroup";
+import ProgressBar from "./../../components/ProgressBar";
 
 const firstQuestionDesc =
   "I plan to begin taking money from my investments in:";
@@ -69,7 +70,7 @@ class Questionnaire extends Component<
   { step: number, timeHorizon: number }
 > {
   state = {
-    step: 1,
+    step: 0,
     showErrors: false,
     validationErrors: {},
     timeHorizon: "",
@@ -115,9 +116,10 @@ class Questionnaire extends Component<
   render() {
     return (
       <form noValidate onSubmit={this.handleSubmit}>
+        <ProgressBar width={this.state.step * 50} />
         {(() => {
           switch (this.state.step) {
-            case 1:
+            case 0:
               return (
                 <QuestionWithRadioButtons
                   questionText={firstQuestionDesc}
@@ -129,7 +131,7 @@ class Questionnaire extends Component<
                   checkedValue={this.state.timeHorizon}
                 />
               );
-            case 2:
+            case 1:
               return (
                 <QuestionWithRadioButtons
                   questionText={secondQuestionDesc}
