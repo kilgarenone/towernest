@@ -9,6 +9,8 @@ import Questionnaire from "./../modules/questionnaire/view";
 import SimpleHeader from "../layouts/SimpleHeader";
 import Container from "./Container";
 import spacing from "./../styles/base/spacing";
+import AssetAllocation from "./../modules/assetAllocation/view";
+import Main from "./../modules/Main";
 
 class App extends Component<any, any> {
   // state = {
@@ -31,7 +33,6 @@ class App extends Component<any, any> {
 
   render() {
     return (
-      // const App = ({ stocks = [] }) => (
       <div>
         <SimpleHeader />
         <Container xAlign="center">
@@ -42,7 +43,7 @@ class App extends Component<any, any> {
               paddingTop: spacing.space5
             }}
           >
-            <Questionnaire />
+            <Main />
           </div>
         </Container>
       </div>

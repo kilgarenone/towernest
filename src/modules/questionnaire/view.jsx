@@ -111,10 +111,10 @@ class Questionnaire extends Component<
       return null;
     }
 
-    if (this.state.step < 3) {
+    if (this.state.step < 1) {
       this.setState({ step: this.state.step + 1 });
     } else {
-      console.log("formmm", this.state);
+      this.props.history.push("/allocation");
     }
   };
 
