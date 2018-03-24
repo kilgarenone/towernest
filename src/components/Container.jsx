@@ -12,7 +12,7 @@ const Container = ({
   </Tag>
 );
 
-function buildWrapperStyles(props) {
+function buildWrapperStyles({ style, ...props }) {
   // Unified x and y axes intuitive alignment for flex's
   // row & column
   const propsClone = { ...props };
@@ -24,7 +24,6 @@ function buildWrapperStyles(props) {
     position: "relative",
     display: "flex",
     "flex-direction": props.direction, // default is 'row'
-    flex: "1 1 100%",
     "align-items": props.xAlign, // default is 'stretch'
     "justify-content": props.yAlign, // default is 'flex-start'
     padding: props.padding,
@@ -32,7 +31,8 @@ function buildWrapperStyles(props) {
     "padding-left": props.paddingLeft,
     "padding-bottom": props.paddingBottom,
     "margin-bottom": props.marginBottom,
-    "margin-left": props.marginLeft
+    "margin-left": props.marginLeft,
+    ...style
   };
 }
 

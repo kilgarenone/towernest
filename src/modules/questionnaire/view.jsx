@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import update from "immutability-helper";
-import Card from "../../components/Card";
-import Input from "./../../components/Input";
-import Button from "./../../components/Button";
 import Container from "./../../components/Container";
 import RadioButton from "./../../components/RadioButton";
 import ErrorMessage from "./../../components/ErrorMessage";
 import { ruleRunner, run } from "./../../validation/ruleRunner";
-import { required, minLength } from "./../../validation/rules";
+import { required } from "./../../validation/rules";
 import { isEmptyObject } from "./../../utils/functions";
 import OptionallyDisplayed from "./../../components/OptionallyDisplayed";
 import spacing from "./../../styles/base/spacing";
@@ -21,8 +18,8 @@ const firstQuestionDesc =
 const secondQuestionDesc =
   "Imagine that in the past three months, the overall stock market lost 25% of its value. What would you do?";
 const firstQuestions = [
-  { name: "timeHorizon", value: 0, text: "3 - 5 years" },
-  { name: "timeHorizon", value: 1, text: "more than 10 years" }
+  { name: "timeHorizon", value: 1, text: "3 - 5 years" },
+  { name: "timeHorizon", value: 3, text: "more than 10 years" }
 ];
 const secondQuestions = [
   { name: "riskTolerance", value: 0, text: "Sell all of my shares" },
@@ -114,7 +111,10 @@ class Questionnaire extends Component<
     if (this.state.step < 1) {
       this.setState({ step: this.state.step + 1 });
     } else {
-      this.props.history.push("/allocation");
+      this.props.history.push("/allocation", {
+        timeHorizon: this.state.timeHorizon,
+        riskTolerance: this.state.riskTolerance
+      });
     }
   };
 
@@ -123,44 +123,54 @@ class Questionnaire extends Component<
   };
   render() {
     return (
-      <form noValidate onSubmit={this.handleSubmit}>
-        <Heading tag="h3">Let's get to know you</Heading>
-        <ProgressBar width={this.state.step * 50} />
-        {(() => {
-          switch (this.state.step) {
-            case 0:
-              return (
-                <QuestionWithRadioButtons
-                  questionText={firstQuestionDesc}
-                  showError={this.state.showErrors}
-                  onInputChange={this.handleFieldChanged}
-                  errorFor={this.errorFor}
-                  questions={firstQuestions}
-                  fieldName="timeHorizon"
-                  checkedValue={this.state.timeHorizon}
-                />
-              );
-            case 1:
-              return (
-                <QuestionWithRadioButtons
-                  questionText={secondQuestionDesc}
-                  showError={this.state.showErrors}
-                  onInputChange={this.handleFieldChanged}
-                  errorFor={this.errorFor}
-                  questions={secondQuestions}
-                  fieldName="riskTolerance"
-                  checkedValue={this.state.riskTolerance}
-                />
-              );
-            default:
-              return null;
-          }
-        })()}
-        <ControlButtonsGroup
-          displayBackBtn={this.state.step > 1}
-          handleBackBtnClick={this.handleBackBtnClick}
-        />
-      </form>
+      <Container xAlign="center">
+        <div
+          style={{
+            maxWidth: "600px",
+            minWidth: "600px",
+            paddingTop: spacing.space5
+          }}
+        >
+          <form noValidate onSubmit={this.handleSubmit}>
+            <Heading tag="h3">Let's get to know you</Heading>
+            <ProgressBar width={this.state.step * 50} />
+            {(() => {
+              switch (this.state.step) {
+                case 0:
+                  return (
+                    <QuestionWithRadioButtons
+                      questionText={firstQuestionDesc}
+                      showError={this.state.showErrors}
+                      onInputChange={this.handleFieldChanged}
+                      errorFor={this.errorFor}
+                      questions={firstQuestions}
+                      fieldName="timeHorizon"
+                      checkedValue={this.state.timeHorizon}
+                    />
+                  );
+                case 1:
+                  return (
+                    <QuestionWithRadioButtons
+                      questionText={secondQuestionDesc}
+                      showError={this.state.showErrors}
+                      onInputChange={this.handleFieldChanged}
+                      errorFor={this.errorFor}
+                      questions={secondQuestions}
+                      fieldName="riskTolerance"
+                      checkedValue={this.state.riskTolerance}
+                    />
+                  );
+                default:
+                  return null;
+              }
+            })()}
+            <ControlButtonsGroup
+              displayBackBtn={this.state.step > 1}
+              handleBackBtnClick={this.handleBackBtnClick}
+            />
+          </form>
+        </div>
+      </Container>
     );
   }
 }
