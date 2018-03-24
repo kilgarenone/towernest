@@ -16,7 +16,7 @@ class SimpleHeader extends Component {
               color: black;
             `}
           >
-            Duller
+            duller
           </span>
         </Container>
       </Navbar>
