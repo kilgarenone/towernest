@@ -40,11 +40,11 @@ function AssetAllocation(props) {
       <Container
         style={{
           maxWidth: "1000px",
-          minWidth: "600px",
+          flex: "1",
           paddingTop: spacing.space5
         }}
       >
-        <PieChart style={{ width: "500px" }} animate data={data} />
+        <PieChart style={{ width: "50%" }} animate data={data} />
         <Container direction="column">
           <AssetAllocationLegends data={data} />
         </Container>

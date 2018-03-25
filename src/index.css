@@ -7,6 +7,14 @@ html {
   -moz-text-size-adjust: 100%;
 }
 
+#root,
+#root > div,
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 @font-face {
   font-family: "Inter UI";
   font-style: normal;
@@ -35,8 +43,6 @@ body {
   font-family: "Inter UI", Helvetica, Arial, sans-serif;
   font-size: 1.1rem;
   line-height: 1.5;
-  margin: 0;
-  padding: 0;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   word-wrap: break-word;
