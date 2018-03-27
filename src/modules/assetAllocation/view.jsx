@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "react-emotion";
-import PieChart from "react-minimal-pie-chart";
+import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import Container from "./../../components/Container";
 import spacing from "./../../styles/base/spacing";
 
@@ -10,25 +10,27 @@ const allocationByRiskProfile = {
       value: 2,
       key: 1,
       color: "#E38627",
-      text: "Total Stock Market Index Fund"
+      name: "Total Stock Market Index Fund"
     },
-    { value: 4, key: 2, color: "#C13C37", text: "Total Bond Market Index Fund" }
+    { value: 4, key: 2, color: "#C13C37", name: "Total Bond Market Index Fund" }
   ],
   6: [
     {
       value: 10,
       key: 1,
       color: "#E38627",
-      text: "Total Stock Market Index Fund"
+      name: "Total Stock Market Index Fund"
     },
     {
       value: 15,
       key: 2,
       color: "#C13C37",
-      text: "Total Bond Market Index Fund"
+      name: "Total Bond Market Index Fund"
     }
   ]
 };
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+
 function AssetAllocation(props) {
   const { location: { state: { timeHorizon, riskTolerance } } } = props;
   const totalRiskScore =
@@ -44,7 +46,18 @@ function AssetAllocation(props) {
           paddingTop: spacing.space5
         }}
       >
-        <PieChart style={{ width: "50%" }} animate data={data} />
+        <ResponsiveContainer width="50%" height={450}>
+          <PieChart>
+            <Pie data={data}>
+              {data.map((entry, index) => (
+                <Cell
+                  key={`as-${entry}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+          </PieChart>
+        </ResponsiveContainer>
         <Container direction="column">
           <AssetAllocationLegends data={data} />
         </Container>
@@ -70,7 +83,7 @@ function AssetAllocationLegends({ data }) {
         {Math.round(asset.value / total * 100)}%
       </Legend>
       <div>
-        <p style={{ paddingLeft: spacing.space1 }}>{asset.text}</p>
+        <p style={{ paddingLeft: spacing.space1 }}>{asset.name}</p>
       </div>
     </Container>
   ));
