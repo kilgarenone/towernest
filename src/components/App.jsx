@@ -11,6 +11,7 @@ import Container from "./Container";
 import spacing from "./../styles/base/spacing";
 import AssetAllocation from "./../modules/assetAllocation/view";
 import Main from "./../modules/Main";
+import Home from "./../modules/home/view";
 
 class App extends Component<any, any> {
   // state = {
@@ -31,10 +32,10 @@ class App extends Component<any, any> {
     this.props.getAccessTokenAction();
   };
 
+  // <Main />
   render() {
     return (
       <div>
-        <SimpleHeader />
         <Container xAlign="center">
           <div
             style={{
@@ -43,7 +44,7 @@ class App extends Component<any, any> {
               paddingTop: spacing.space5
             }}
           >
-            <Main />
+            <Home />
           </div>
         </Container>
       </div>

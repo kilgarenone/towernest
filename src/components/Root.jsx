@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SimpleHeader from "./../layouts/SimpleHeader";
 import Questionnaire from "./../modules/questionnaire/view";
 import AssetAllocation from "./../modules/assetAllocation/view";
+import App from "./App";
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -11,7 +12,7 @@ const Root = ({ store }) => (
       <div>
         <SimpleHeader />
         <Switch>
-          <Route exact path="/" component={Questionnaire} />
+          <Route exact path="/" component={App} />
           <Route exact path="/allocation" component={AssetAllocation} />
         </Switch>
       </div>
