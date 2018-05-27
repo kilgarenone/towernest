@@ -44,7 +44,7 @@ class App extends Component<any, any> {
               paddingTop: spacing.space5
             }}
           >
-            <Home />
+            <Main />
           </div>
         </Container>
       </div>
