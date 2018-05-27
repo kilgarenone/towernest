@@ -165,7 +165,7 @@ class Questionnaire extends Component<
               }
             })()}
             <ControlButtonsGroup
-              displayBackBtn={this.state.step > 1}
+              displayBackBtn={this.state.step > 0}
               handleBackBtnClick={this.handleBackBtnClick}
             />
           </form>
