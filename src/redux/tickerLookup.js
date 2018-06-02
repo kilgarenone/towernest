@@ -3,7 +3,7 @@ import { ofType } from "redux-observable";
 // Look here to optimize bundle size on rxjs operators
 // https://github.com/ReactiveX/rxjs/blob/master/doc/lettable-operators.md
 import { debounceTime, switchMap, map } from "rxjs/operators";
-import { ajax } from "rxjs/observable/dom/ajax";
+import { ajax } from "rxjs/ajax";
 
 const GET_TICKER_CODE_BY_NAME = "matisa/tickerLookup/searching";
 const RECEIVED_TICKER_CODE_BY_NAME = "matisa/tickerLookup/results";

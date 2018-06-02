@@ -1,5 +1,5 @@
-import { ajax } from "rxjs/observable/dom/ajax";
-import { switchMap, map, tap, catchError } from "rxjs/operators";
+import { ajax } from "rxjs/ajax";
+import { switchMap, map, catchError } from "rxjs/operators";
 import { of } from "rxjs/observable/of";
 import { _throw } from "rxjs/observable/throw";
 import { ofType } from "redux-observable";
@@ -38,8 +38,8 @@ function apiError(type, error) {
   };
 }
 
-export default (action$, store) => {
-  return action$.pipe(
+export default (action$, store) =>
+  action$.pipe(
     ofType(CALL_API),
     switchMap(action => {
       const {
@@ -68,4 +68,3 @@ export default (action$, store) => {
     })),
     catchError(errorAction => of(errorAction))
   );
-};

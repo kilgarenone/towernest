@@ -1,7 +1,7 @@
 // @flow
 import { ofType } from "redux-observable";
 import { switchMap, map } from "rxjs/operators";
-import { ajax } from "rxjs/observable/dom/ajax";
+import { ajax } from "rxjs/ajax";
 import { combineReducers } from "redux";
 import subYears from "date-fns/sub_years";
 import isAfter from "date-fns/is_after";

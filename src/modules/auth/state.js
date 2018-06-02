@@ -2,8 +2,8 @@
 import { ofType } from "redux-observable";
 // Look here to optimize bundle size on rxjs operators
 // https://github.com/ReactiveX/rxjs/blob/master/doc/lettable-operators.md
-import { switchMap, map, tap } from "rxjs/operators";
-import { ajax } from "rxjs/observable/dom/ajax";
+import { switchMap, map } from "rxjs/operators";
+import { ajax } from "rxjs/ajax";
 import { CLIENT_ID, CLIENT_SECRET } from "./../../config";
 import { CALL_API } from "./../../redux/api";
 
@@ -59,4 +59,3 @@ export const getAccessToken = action$ => {
     }))
   );
 };
-// export const getTickerByExchangeSelector = (state: State) => state.tickerLookup;

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   CartesianGrid,
   Tooltip,
-  ResponsiveContainer,
   AreaChart,
   Area,
   stop,

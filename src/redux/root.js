@@ -6,11 +6,6 @@ import viewStocks, { getStockDetailsByTicker } from "./viewStocks";
 import accessToken, { getAccessToken } from "../modules/auth/state";
 import api from "../redux/api";
 
-export type State = {
-  tickerLookup: any,
-  selectedStocksToView: any
-};
-
 export const rootEpic = combineEpics(
   api,
   getAccessToken,

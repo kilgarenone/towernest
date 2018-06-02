@@ -101,7 +101,7 @@ class Questionnaire extends Component<
 
   errorFor = field => this.state.validationErrors[field] || "";
 
-  handleSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
+  handleSubmit = event => {
     event.preventDefault();
     this.setState({ showErrors: true });
     if (!isEmptyObject(this.state.validationErrors)) {

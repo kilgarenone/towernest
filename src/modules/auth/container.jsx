@@ -33,6 +33,9 @@ class Auth extends Component<any, any> {
   }
 }
 
-export default connect(null, {
-  getAccessTokenAction
-})(Auth);
+export default connect(
+  null,
+  {
+    getAccessTokenAction
+  }
+)(Auth);
