@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from "react";
-// import Auth from "../modules/auth/container";
+import Auth from "../modules/auth/container";
 
 // import { connect } from "react-redux";
 import { helloWorld } from "./../modules/auth/state";
@@ -44,7 +44,7 @@ class App extends Component<any, any> {
               paddingTop: spacing.space5
             }}
           >
-            <Main />
+            <Auth />
           </div>
         </Container>
       </div>
@@ -52,6 +52,9 @@ class App extends Component<any, any> {
   }
 }
 
-export default connect(null, {
-  helloWorld
-})(App);
+export default connect(
+  null,
+  {
+    helloWorld
+  }
+)(App);

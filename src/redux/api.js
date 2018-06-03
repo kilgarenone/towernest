@@ -1,7 +1,6 @@
 import { ajax } from "rxjs/ajax";
 import { switchMap, map, catchError } from "rxjs/operators";
 import { of } from "rxjs/observable/of";
-import { _throw } from "rxjs/observable/throw";
 import { ofType } from "redux-observable";
 
 export const CALL_API = "CALL_API";
@@ -56,15 +55,13 @@ export default (action$, store) =>
         store.getState(),
         authenticated
       ).pipe(
-        map(response => [response, successType]),
-        catchError(error => _throw(apiError(failureType, error)))
+        // tap(response => console.log("ressss", response)),
+        map(res => ({
+          type: successType,
+          data: JSON.stringify(res.response)
+        })),
+        catchError(error => of(apiError(failureType, error)))
         // startWith(isSaving()) // {type: 'IS_SAVING'}
       );
-    }),
-    // tap(response => console.log("ressss", response)),
-    map(nextAction => ({
-      type: nextAction[1],
-      data: nextAction[0].response
-    })),
-    catchError(errorAction => of(errorAction))
+    })
   );

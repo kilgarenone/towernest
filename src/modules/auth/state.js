@@ -12,15 +12,21 @@ const SET_ACCESS_TOKEN = "matisa/modules/auth/setAccessToken";
 const SUCCESS_HELLO_WORLD = "matisa/modules/auth/successHelloWorld";
 const ERROR_HELLO_WORLD = "matisa/modules/auth/errorHelloWorld";
 
-const initialState = "";
+const initialState = { data: null, error: null };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case SET_ACCESS_TOKEN: {
-      return action.accessToken;
+      return {
+        ...state,
+        data: action.accessToken
+      };
     }
     case ERROR_HELLO_WORLD: {
-      return action.error.status;
+      return {
+        ...state,
+        error: action.error.status
+      };
     }
     default:
       return state;

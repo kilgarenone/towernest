@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getAccessTokenAction } from "./state";
+import { getAccessTokenAction, helloWorld } from "./state";
 import SignIn from "./view";
 
 class Auth extends Component<any, any> {
@@ -16,19 +16,24 @@ class Auth extends Component<any, any> {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.getAccessTokenAction();
+    this.props.helloWorld();
   };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <SignIn
-          userName={this.state.userName}
-          passWord={this.state.passWord}
-          handleChange={this.handleChange}
-        />
-        <input type="submit" value="Submit" />
-      </form>
+      <div>
+        <button onClick={() => this.props.getAccessTokenAction()}>
+          dosjds
+        </button>
+        <form onSubmit={this.handleSubmit}>
+          <SignIn
+            userName={this.state.userName}
+            passWord={this.state.passWord}
+            handleChange={this.handleChange}
+          />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     );
   }
 }
@@ -36,6 +41,7 @@ class Auth extends Component<any, any> {
 export default connect(
   null,
   {
+    helloWorld,
     getAccessTokenAction
   }
 )(Auth);
