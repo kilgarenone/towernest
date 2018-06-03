@@ -3,10 +3,10 @@ import styled from "react-emotion";
 import { colors } from "./../styles/base/colors";
 import { fontSize } from "./../styles/base/typography";
 
-type Props = {
-  secondary?: boolean,
-  large?: boolean
-};
+// type Props = {
+//   secondary?: boolean,
+//   large?: boolean
+// };
 
 const Button = styled("button")`
   display: inline-block;

@@ -1,38 +1,16 @@
 // @flow
 import React, { Component } from "react";
-import Auth from "../modules/auth/container";
-
-// import { connect } from "react-redux";
-import { helloWorld } from "./../modules/auth/state";
 import { connect } from "react-redux";
-import Questionnaire from "./../modules/questionnaire/view";
-import SimpleHeader from "../layouts/SimpleHeader";
+import Auth from "../modules/auth/container";
 import Container from "./Container";
 import spacing from "./../styles/base/spacing";
-import AssetAllocation from "./../modules/assetAllocation/view";
-import Main from "./../modules/Main";
-import Home from "./../modules/home/view";
 
 class App extends Component<any, any> {
-  // state = {
-  //   userName: "",
-  //   passWord: ""
-  // };
-
-  componentWillMount() {
-    // axios.get("testApi").then(res => console.log("res", res));
-  }
-
-  // handleChange = event => {
-  //   this.setState({ [event.target.name]: event.target.value });
-  // };
-
   handleSubmit = event => {
     event.preventDefault();
     this.props.getAccessTokenAction();
   };
 
-  // <Main />
   render() {
     return (
       <div>
@@ -52,9 +30,4 @@ class App extends Component<any, any> {
   }
 }
 
-export default connect(
-  null,
-  {
-    helloWorld
-  }
-)(App);
+export default connect()(App);

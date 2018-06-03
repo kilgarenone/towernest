@@ -1,6 +1,6 @@
 // @flow
 import * as React from "react";
-import styled, { css } from "react-emotion";
+import { css } from "react-emotion";
 import Input from "./Input";
 import spacing from "./../styles/base/spacing";
 import { fontSize } from "./../styles/base/typography";

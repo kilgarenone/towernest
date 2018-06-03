@@ -28,6 +28,12 @@ export default function reducer(state = initialState, action = {}) {
         error: action.error.status
       };
     }
+    case SUCCESS_HELLO_WORLD: {
+      return {
+        ...state,
+        data: action.error.status
+      };
+    }
     default:
       return state;
   }

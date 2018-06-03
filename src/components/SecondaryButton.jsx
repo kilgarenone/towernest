@@ -1,6 +1,5 @@
 // @flow
-import styled, { css } from "react-emotion";
-import { colors } from "./../styles/base/colors";
+import styled from "react-emotion";
 import { fontSize } from "./../styles/base/typography";
 
 type Props = {

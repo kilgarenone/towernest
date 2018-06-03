@@ -2,7 +2,6 @@ import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SimpleHeader from "./../layouts/SimpleHeader";
-import Questionnaire from "./../modules/questionnaire/view";
 import AssetAllocation from "./../modules/assetAllocation/view";
 import App from "./App";
 
