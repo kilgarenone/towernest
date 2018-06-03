@@ -1,17 +1,18 @@
 import { ajax } from "rxjs/ajax";
-import { switchMap, map, catchError } from "rxjs/operators";
+import { switchMap, map, catchError, tap } from "rxjs/operators";
 import { of } from "rxjs/observable/of";
 import { ofType } from "redux-observable";
+import { _throw } from "rxjs/observable/throw";
 
 export const CALL_API = "CALL_API";
 export const GET = "GET";
 export const POST = "POST";
 
-function callApi(endPoint, httpMethod, store, authenticated) {
-  const token = store.accessToken;
+function callApi(endPoint, httpMethod, store, hasAuthentication) {
+  const token = store.accessToken.data;
   let config = {};
 
-  if (authenticated) {
+  if (hasAuthentication) {
     if (token) {
       config = {
         headers: { Authorization: `Bearer ${token}` },
@@ -19,7 +20,7 @@ function callApi(endPoint, httpMethod, store, authenticated) {
         method: httpMethod
       };
     } else {
-      throw new Error("No token saved!");
+      return _throw(new Error("No token saved!"));
     }
   } else {
     config = {
@@ -40,28 +41,27 @@ function apiError(type, error) {
 export default (action$, store) =>
   action$.pipe(
     ofType(CALL_API),
-    switchMap(action => {
-      const {
+    switchMap(
+      ({
         endPoint,
         httpMethod = GET,
         successType,
         failureType,
-        authenticated = true
-      } = action;
-
-      return callApi(
-        endPoint,
-        httpMethod,
-        store.getState(),
-        authenticated
-      ).pipe(
-        // tap(response => console.log("ressss", response)),
-        map(res => ({
-          type: successType,
-          data: JSON.stringify(res.response)
-        })),
-        catchError(error => of(apiError(failureType, error)))
-        // startWith(isSaving()) // {type: 'IS_SAVING'}
-      );
-    })
+        hasAuthentication = true
+      }) =>
+        callApi(endPoint, httpMethod, store.getState(), hasAuthentication).pipe(
+          // tap(response => console.log("Api response", response)),
+          map(res => ({
+            type: successType,
+            data: JSON.stringify(res.response)
+          })),
+          catchError(
+            error => {
+              console.log(error);
+              return of(apiError(failureType, error));
+            }
+            // startWith(isSaving()) // {type: 'IS_SAVING'}
+          )
+        )
+    )
   );
