@@ -50,10 +50,10 @@ export default (action$, store) =>
         hasAuthentication = true
       }) =>
         callApi(endPoint, httpMethod, store.getState(), hasAuthentication).pipe(
-          // tap(response => console.log("Api response", response)),
+          tap(response => console.log("Api response", response)),
           map(res => ({
             type: successType,
-            data: JSON.stringify(res.response)
+            data: res.response
           })),
           catchError(
             error => {

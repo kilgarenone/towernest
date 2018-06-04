@@ -31,7 +31,7 @@ export default function reducer(state = initialState, action = {}) {
     case SUCCESS_HELLO_WORLD: {
       return {
         ...state,
-        data: action.error.status
+        data: action.data
       };
     }
     default:
