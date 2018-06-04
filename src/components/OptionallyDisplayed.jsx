@@ -1,6 +1,5 @@
 // @flow
 import * as React from "react";
-import Fragment from "./Fragment";
 
 function OptionallyDisplayed({
   display,
@@ -9,7 +8,7 @@ function OptionallyDisplayed({
   display: boolean,
   children: React.Node
 }) {
-  return display === true ? <Fragment>{children}</Fragment> : null;
+  return display === true ? <React.Fragment>{children}</React.Fragment> : null;
 }
 
 export default OptionallyDisplayed;

@@ -14,7 +14,7 @@ const Input = styled("input")`
   border: 1px solid #ebebeb;
   border-radius: 4px;
   box-shadow: none;
-  padding: 1.15rem 1rem;
+  padding: 1.15em 1em;
   display: inline-block;
 `;
 // @media screen and (min-width: 48rem) {

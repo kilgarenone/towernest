@@ -28,10 +28,6 @@ function buildWrapperStyles({ style, ...props }) {
     "justify-content": props.yAlign, // default is 'flex-start'
     padding: props.padding,
     margin: props.margin,
-    "padding-left": props.paddingLeft,
-    "padding-bottom": props.paddingBottom,
-    "margin-bottom": props.marginBottom,
-    "margin-left": props.marginLeft,
     ...style
   };
 }
