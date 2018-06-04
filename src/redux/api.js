@@ -50,14 +50,24 @@ export default (action$, store) =>
         hasAuthentication = true
       }) =>
         callApi(endPoint, httpMethod, store.getState(), hasAuthentication).pipe(
-          tap(response => console.log("Api response", response)),
+          tap(response =>
+            console.log(
+              "%c API RESPONSE ",
+              "background: lightgreen; color: black",
+              response
+            )
+          ),
           map(res => ({
             type: successType,
             data: res.response
           })),
           catchError(
             error => {
-              console.log(error);
+              console.log(
+                "%c API ERROR ",
+                "background: mediumvioletred; color: white",
+                error
+              );
               return of(apiError(failureType, error));
             }
             // startWith(isSaving()) // {type: 'IS_SAVING'}
