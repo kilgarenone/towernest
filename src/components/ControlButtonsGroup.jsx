@@ -4,7 +4,6 @@ import { css } from "react-emotion";
 import Button from "./Button";
 import Container from "./Container";
 import spacing from "./../styles/base/spacing";
-import SecondaryButton from "./SecondaryButton";
 import OptionallyDisplayed from "./OptionallyDisplayed";
 
 type Props = {
@@ -31,9 +30,9 @@ function ControlButtonsGroup({
   return (
     <Container className={cont}>
       <OptionallyDisplayed display={displayBackBtn}>
-        <SecondaryButton onClick={handleBackBtnClick}>
+        <Button secondary onClick={handleBackBtnClick}>
           {backBtnText}
-        </SecondaryButton>
+        </Button>
       </OptionallyDisplayed>
       <Button onClick={handleContinueBtnClick}>{continueBtnText}</Button>
     </Container>

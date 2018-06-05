@@ -1,6 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Input from "../../components/Input";
-import Fragment from "../../components/Fragment";
 
 function SignIn({ handleChange, userName, passWord }) {
   return (

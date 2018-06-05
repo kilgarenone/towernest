@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Auth from "../modules/auth/container";
 import Container from "./Container";
 import spacing from "./../styles/base/spacing";
+import Main from "./../modules/Main";
 
 class App extends Component<any, any> {
   handleSubmit = event => {
@@ -22,7 +23,7 @@ class App extends Component<any, any> {
               paddingTop: spacing.space5
             }}
           >
-            <Auth />
+            <Main />
           </div>
         </Container>
       </div>

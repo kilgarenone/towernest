@@ -8,13 +8,21 @@ import { fontSize } from "./../styles/base/typography";
 //   large?: boolean
 // };
 
+function getBgColor(props) {
+  if (props.secondary) {
+    return "#fff";
+  } else if (props.secondaryColor) {
+    return colors.secondary;
+  }
+  return colors.primary;
+}
+
 const Button = styled("button")`
   display: inline-block;
-  border: none;
+  border: ${props => (props.secondary ? "2px solid #ccc" : "none")};
   padding: ${props => (props.large ? "14px 32px 16px" : "6px 35px")};
-  background-color: ${props =>
-    props.secondary ? colors.secondary : colors.primary};
-  color: #fff;
+  background-color: ${props => getBgColor(props)};
+  color: ${props => (props.secondary ? "#ccc" : "#fff")};
   font-size: ${props => (props.large ? fontSize.displaySmall : fontSize.text)};
   margin: 0;
   text-decoration: none;
