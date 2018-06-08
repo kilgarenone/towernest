@@ -38,7 +38,7 @@ const Button = styled("button")`
 
   &:hover,
   &:focus {
-    background-color: #0053ba;
+    background-color: ${props => (props.secondary ? "#fff" : "#0053ba")};
   }
 
   /* &:focus {
