@@ -2,7 +2,6 @@ import styled from "react-emotion";
 import { fontSize } from "./../styles/base/typography";
 
 const Input = styled("input")`
-  font-family: "Playfair Display", san-serif;
   background-color: #fff;
   flex: 1 1 100%;
   color: rgba(0, 0, 0, 0.76);
