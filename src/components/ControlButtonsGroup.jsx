@@ -5,6 +5,7 @@ import Button from "./Button";
 import Container from "./Container";
 import spacing from "./../styles/base/spacing";
 import OptionallyDisplayed from "./OptionallyDisplayed";
+import ButtonWithSpinner from "./ButtonWithSpinner";
 
 type Props = {
   displayBackBtn: boolean,
@@ -25,7 +26,8 @@ function ControlButtonsGroup({
   handleBackBtnClick,
   backBtnText,
   continueBtnText,
-  handleContinueBtnClick
+  handleContinueBtnClick,
+  isSubmitting
 }: Props) {
   return (
     <Container className={cont}>
@@ -34,7 +36,10 @@ function ControlButtonsGroup({
           {backBtnText}
         </Button>
       </OptionallyDisplayed>
-      <Button onClick={handleContinueBtnClick}>{continueBtnText}</Button>
+      {/* <Button onClick={handleContinueBtnClick}>{continueBtnText}</Button> */}
+      <ButtonWithSpinner isSubmitting={isSubmitting}>
+        {continueBtnText}
+      </ButtonWithSpinner>
     </Container>
   );
 }

@@ -20,7 +20,7 @@ function getBgColor(props) {
 const Button = styled("button")`
   display: inline-block;
   border: ${props => (props.secondary ? "2px solid #ccc" : "none")};
-  padding: ${props => (props.large ? "14px 32px 16px" : "6px 35px")};
+  padding: ${props => (props.large ? "14px 32px 16px" : "15px 50px")};
   background-color: ${props => getBgColor(props)};
   color: ${props => (props.secondary ? "#ccc" : "#fff")};
   font-size: ${props => (props.large ? fontSize.displaySmall : fontSize.text)};
@@ -32,7 +32,8 @@ const Button = styled("button")`
   border-radius: 0.25em;
   text-align: center;
   user-select: none;
-  transition: background 250ms ease-in-out, transform 150ms ease;
+  transition: background 250ms ease-in-out, transform 150ms ease,
+    padding 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;
 

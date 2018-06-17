@@ -103,7 +103,7 @@ class Questionnaire extends Component<
 
   handleSubmit = event => {
     event.preventDefault();
-    this.setState({ showErrors: true });
+    this.setState({ showErrors: true, isSubmitting: true });
     if (!isEmptyObject(this.state.validationErrors)) {
       return null;
     }
@@ -165,6 +165,7 @@ class Questionnaire extends Component<
               }
             })()}
             <ControlButtonsGroup
+              isSubmitting={this.state.isSubmitting}
               displayBackBtn={this.state.step > 0}
               handleBackBtnClick={this.handleBackBtnClick}
             />
