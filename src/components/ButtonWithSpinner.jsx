@@ -4,17 +4,33 @@ import Spinner from "./Spinner";
 import Button from "./Button";
 
 const spinnerCls = css`
-  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  opacity: 0;
+  transition: opacity 0.4s;
+`;
+
+const showSpinner = css`
+  opacity: 1;
 `;
 
 const btnCls = css`
-  padding-left: 10px;
+  padding-right: 75px;
 `;
 
-const ButtonWithSpinner = ({ children, isSubmitting }) => (
-  <Button className={cx({ [btnCls]: isSubmitting })}>
-    <span>{isSubmitting ? "Submitting..." : children}</span>
-    <Spinner />
+const btnRelative = css`
+  position: relative;
+`;
+
+const ButtonWithSpinner = ({
+  children,
+  isSubmitting,
+  progressText = "Submitting..."
+}) => (
+  <Button className={cx({ [btnCls]: isSubmitting }, btnRelative)}>
+    {isSubmitting ? progressText : children}
+    <Spinner className={cx(spinnerCls, { [showSpinner]: isSubmitting })} />
   </Button>
 );
 

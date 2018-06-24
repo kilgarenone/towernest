@@ -24,18 +24,17 @@ const Button = styled("button")`
   background-color: ${props => getBgColor(props)};
   color: ${props => (props.secondary ? "#ccc" : "#fff")};
   font-size: ${props => (props.large ? fontSize.displaySmall : fontSize.text)};
-  margin: 0;
   text-decoration: none;
   font-weight: 700;
   line-height: 1.5em;
+  white-space: nowrap;
   cursor: pointer;
+  width: 100%;
   border-radius: 0.25em;
   text-align: center;
   user-select: none;
   transition: background 250ms ease-in-out, transform 150ms ease,
     padding 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 
   &:hover,
   &:focus {
