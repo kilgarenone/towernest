@@ -23,7 +23,7 @@ const scales = {
 };
 
 function kind(outline) {
-  return function(bg, color) {
+  return (bg, color) => {
     const boxShadowColor = outline ? bg : "transparent";
     const backgroundColor = outline ? "transparent" : bg;
 
