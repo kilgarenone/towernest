@@ -36,7 +36,6 @@ function ControlButtonsGroup({
           {backBtnText}
         </Button>
       </OptionallyDisplayed>
-      {/* <Button onClick={handleContinueBtnClick}>{continueBtnText}</Button> */}
       <ButtonWithSpinner isSubmitting={isSubmitting}>
         {continueBtnText}
       </ButtonWithSpinner>
