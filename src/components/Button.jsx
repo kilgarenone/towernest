@@ -24,19 +24,14 @@ const scales = {
 
 function kind(outline) {
   return (bg, color) => {
-    const boxShadowColor = outline ? bg : "transparent";
+    const borderColor = outline ? bg : "transparent";
     const backgroundColor = outline ? "transparent" : bg;
 
     return `
     background: ${backgroundColor};
-    box-shadow: inset 0 0 0 1px ${boxShadowColor};
+    border: 2px solid ${borderColor};
     color: ${outline ? bg : color};
     transition: all .2s;
-
-    &:hover {
-      box-shadow: inset 0 0 0 1000px ${boxShadowColor};
-      color: ${color};
-    }
   `;
   };
 }
@@ -65,16 +60,18 @@ const Button = styled("button")`
   ${getKind};
   ${getScale};
   display: inline-block;
-  border: none;
-  border-radius: 3px;
-  /* text-decoration: none; */
+  border-radius: 0.23em;
+  text-decoration: none;
   font-weight: 700;
-  /* line-height: 1.5em; */
   white-space: nowrap;
   cursor: pointer;
-  width: 100%;
-  /* text-align: center; */
-  /* user-select: none; */
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  vertical-align: middle;
+  touch-action: manipulation;
+  background-image: none;
+  user-select: none;
   /* transition: background 250ms ease-in-out, transform 150ms ease,
     padding 150ms ease; */
 
