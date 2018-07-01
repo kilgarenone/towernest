@@ -9,15 +9,15 @@ import { fontSize } from "./../styles/base/typography";
 // };
 const scales = {
   small: `
-    padding: 5px 10px;
+    padding: 10px 15px;
     font-size: 14px;
   `,
   normal: `
-    padding: 10px 20px;
+    padding: 10px 40px;
     font-size: 16px;
   `,
   big: `
-    padding: 20px 30px;
+    padding: 15px 45px;
     font-size: 18px;
   `
 };
@@ -60,9 +60,9 @@ const Button = styled("button")`
   ${getKind};
   ${getScale};
   display: inline-block;
-  border-radius: 0.23em;
+  border-radius: 500px;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 300;
   white-space: nowrap;
   cursor: pointer;
   text-align: center;
@@ -84,7 +84,7 @@ const Button = styled("button")`
     border-color: #0053ba;
   } */
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
   &:active {
     transform: scale(1);
