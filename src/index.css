@@ -12,6 +12,18 @@ html {
 #root > div,
 body,
 html {
+  font-family: 'Inter UI', Helvetica, Arial, sans-serif;
+  font-size: 1.1rem;
+  -webkit-text-size-adjust: 100%;
+  /* Font varient */
+  font-variant-ligatures: none;
+  -webkit-font-variant-ligatures: none;
+  /* Smoothing */
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -41,11 +53,7 @@ html {
 }
 
 body {
-  font-family: 'Inter UI', Helvetica, Arial, sans-serif;
-  font-size: 1.1rem;
   line-height: 1.5;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
   word-wrap: break-word;
 }
 h1,
