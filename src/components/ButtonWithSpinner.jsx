@@ -28,7 +28,7 @@ const ButtonWithSpinner = ({
   isSubmitting,
   progressText = children
 }) => (
-  <Button outline className={cx({ [btnCls]: isSubmitting }, btnRelative)}>
+  <Button className={cx({ [btnCls]: isSubmitting }, btnRelative)}>
     {isSubmitting ? progressText : children}
     <Spinner className={cx(spinnerCls, { [showSpinner]: isSubmitting })} />
   </Button>
