@@ -31,7 +31,7 @@ function kind(outline) {
     background: ${backgroundColor};
     border: 2px solid ${borderColor};
     color: ${outline ? bg : color};
-    transition: all .2s;
+    transition: padding .2s;
   `;
   };
 }
@@ -83,10 +83,12 @@ const Button = styled("button")`
   /* &:focus {
     border-color: #0053ba;
   } */
-
-  /* &:active {
-    background-color: #6a1b9a;
-  } */
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:active {
+    transform: scale(1);
+  }
 `;
 
 export default Button;
