@@ -1,16 +1,13 @@
-export const fontSize = {
-  // heading
-  displayLarge: "35px",
-  displayMedium: "32px",
-  displaySmall: "26px",
-  heading: "23px",
-  subHeading: "19px",
-  text: "16px",
-  subText: "15px"
+// http://type-scale.com/?size=18&scale=1.333&text=It%20is%20a%20beautiful%20out%20there%20RM%206%2C000&webfont=Arimo&font-family=%27Arimo%27,%20serif&font-weight=400&font-family-headers=&font-weight-headers=inherit&background-color=white&font-color=#333
 
-  // body
-  // body: "17px",
-  // caption: "15px"
+// Ratio: 1.333
+export const fontSize = {
+  headingXL: "3.157rem",
+  headingL: "2.369rem",
+  heading: "1.777rem",
+  subHeading: "1.333rem",
+  text: "1rem",
+  subText: "0.75rem"
 };
 
 export const fontWeight = {
@@ -20,22 +17,15 @@ export const fontWeight = {
 };
 
 export const tagMapping = {
-  h1: "displayLarge",
-  h2: "displayMedium",
-  h3: "displaySmall",
-  h4: "heading",
-  h5: "subheading"
+  h1: "headingXL",
+  h2: "headingL",
+  h3: "heading",
+  h4: "subheading"
 };
 
 export const lineHeight = {
-  // heading
-  displayLarge: "48px",
-  displayMedium: "48px",
-  displaySmall: "24px",
-  heading: "24px",
-  subheading: "24px"
-
-  // body
-  // body: "24px",
-  // caption: "24px"
+  headingXL: "3.5",
+  headingL: "2.6",
+  heading: "2",
+  subheading: "1.54"
 };
