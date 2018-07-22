@@ -41,10 +41,10 @@ function RadioButton({
   name,
   value,
   required,
-  parseType,
-  onChange,
   children,
-  isChecked
+  isChecked,
+  handleChange,
+  ...props
 }: Props) {
   return (
     <label className={customRadioStyle} htmlFor={`${name}-${value}`}>
@@ -54,9 +54,9 @@ function RadioButton({
         value={value}
         required={required}
         type="radio"
-        data-parse={parseType}
-        onChange={onChange}
         checked={isChecked}
+        onChange={handleChange}
+        {...props}
       />
       <i />
       {children}
