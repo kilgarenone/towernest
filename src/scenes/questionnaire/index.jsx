@@ -7,15 +7,12 @@ import spacing from "./../../styles/base/spacing";
 import { fontSize } from "./../../styles/base/typography";
 import Wizard from "./../../components/WizardForm";
 import { Field } from "formik";
+import * as Yup from "yup";
 
 function QuestionWithRadioButtons({
   questionText,
-  onInputChange,
-  showError,
-  errorFor,
   questions,
-  fieldName,
-  checkedValue
+  field: { name, value, onChange }
 }) {
   return (
     <div style={{ minHeight: "250px", marginTop: spacing.space4 }}>
@@ -31,11 +28,11 @@ function QuestionWithRadioButtons({
       <Container direction="column">
         {questions.map(q => (
           <RadioButton
-            key={`${q.name}_${q.value}`} // don't use array index as key! https://stackoverflow.com/a/43481841/73323
-            onChange={onInputChange}
-            name={q.name}
+            key={`${name}_${q.value}`} // don't use array index as key! https://stackoverflow.com/a/43481841/73323
+            handleChange={onChange}
+            name={name}
             value={q.value}
-            isChecked={q.value === parseInt(checkedValue, 10)}
+            isChecked={q.value === value}
           >
             {q.text}
           </RadioButton>
@@ -49,10 +46,11 @@ function QuestionWithRadioButtons({
 }
 
 const questions1 = [
-  { text: "haha", value: "damn" },
-  { text: "haha1", value: "damn2" },
-  { text: "haha2", value: "damn3" }
+  { text: "haha", value: "damn", name: "haha" },
+  { text: "haha1", value: "damn2", name: "haha1" },
+  { text: "haha2", value: "damn3", name: "haha2" }
 ];
+
 class Questionnaire extends Component {
   state = {};
 
@@ -73,7 +71,11 @@ class Questionnaire extends Component {
         }}
         onSubmit={this.handleSubmit}
       >
-        <Wizard.Page>
+        <Wizard.Page
+          validationSchema={Yup.object().shape({
+            age: Yup.string().required()
+          })}
+        >
           <Field
             name="age"
             questionText="what;s up"
