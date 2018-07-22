@@ -1,10 +1,10 @@
 // @flow
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Auth from "../modules/auth/container";
+import Auth from "../scenes/auth/container";
 import Container from "./Container";
 import spacing from "./../styles/base/spacing";
-import Main from "./../modules/Main";
+import Main from "./../scenes/Main";
 
 class App extends Component<any, any> {
   handleSubmit = event => {
