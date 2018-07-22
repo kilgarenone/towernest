@@ -23,7 +23,8 @@
     "redux-observable": "^0.18.0",
     "reselect": "^3.0.1",
     "rxjs": "^6.2.0",
-    "rxjs-compat": "^6.2.0"
+    "rxjs-compat": "^6.2.0",
+    "yup": "^0.26.0"
   },
   "scripts": {
     "start": "react-scripts start",
