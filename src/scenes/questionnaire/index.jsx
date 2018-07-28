@@ -8,14 +8,29 @@ import { fontSize } from "./../../styles/base/typography";
 import Wizard from "./../../components/WizardForm";
 import { Field } from "formik";
 import * as Yup from "yup";
+import Observer from "react-intersection-observer";
+import { css, cx } from "react-emotion";
+
+const opacity = css`
+  opacity: 0.2;
+  transition: opacity 1200ms;
+`;
+
+const radioBtn = css`
+  min-height: 250px;
+  margin-top: ${spacing.space4};
+`;
 
 function QuestionWithRadioButtons({
   questionText,
   questions,
+  inView,
+  refRoot,
   field: { name, value, onChange }
 }) {
+  console.log("inView", inView);
   return (
-    <div style={{ minHeight: "250px", marginTop: spacing.space4 }}>
+    <div ref={refRoot} className={cx(radioBtn, { [opacity]: !inView })}>
       <div
         style={{
           marginBottom: spacing.space1,
@@ -76,15 +91,36 @@ class Questionnaire extends Component {
             age: Yup.string().required()
           })}
         >
-          <Field
-            name="age"
-            questionText="what;s up"
-            component={QuestionWithRadioButtons}
-            questions={questions1}
-          />
+          <Observer threshold={0.6}>
+            {({ inView, ref }) => (
+              <Field
+                inView={inView}
+                refRoot={ref}
+                name="age"
+                questionText="what;s up"
+                component={QuestionWithRadioButtons}
+                questions={questions1}
+              />
+            )}
+          </Observer>
         </Wizard.Page>
-        <Wizard.Page>
-          <div>World</div>
+        <Wizard.Page
+          validationSchema={Yup.object().shape({
+            age: Yup.string().required()
+          })}
+        >
+          <Observer threshold={0.6}>
+            {({ inView, ref }) => (
+              <Field
+                inView={inView}
+                refRoot={ref}
+                name="age1"
+                questionText="what;s up"
+                component={QuestionWithRadioButtons}
+                questions={questions1}
+              />
+            )}
+          </Observer>
         </Wizard.Page>
       </Wizard>
     );
