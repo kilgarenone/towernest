@@ -6,7 +6,7 @@
 #root > div,
 body,
 html {
-  font-family: 'Helvetica Neue', HelveticaNeue, Arimo, Helvetica, Arial,
+  font-family: 'Helvetica Neue', HelveticaNeue, 'Roboto', Helvetica, Arial,
     sans-serif;
   font-size: 1.125em;
   -webkit-text-size-adjust: 100%;
