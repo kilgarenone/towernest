@@ -1,17 +1,19 @@
-import { Field } from "formik";
 import React, { Component } from "react";
-import { css, cx } from "react-emotion";
-import ScrollPercentage from "react-scroll-percentage";
-import * as Yup from "yup";
 import Container from "./../../components/Container";
+import ErrorMessage from "./../../components/ErrorMessage";
+import OptionallyDisplayed from "./../../components/OptionallyDisplayed";
 import RadioButton from "./../../components/RadioButton";
-import Wizard from "./../../components/WizardForm";
 import spacing from "./../../styles/base/spacing";
 import { fontSize } from "./../../styles/base/typography";
+import Wizard from "./../../components/WizardForm";
+import { Field } from "formik";
+import * as Yup from "yup";
+import Observer from "react-intersection-observer";
+import { css, cx } from "react-emotion";
 
 const opacity = css`
   opacity: 0.2;
-  transition: opacity 200ms;
+  transition: opacity 1200ms;
 `;
 
 const radioBtn = css`
@@ -24,18 +26,11 @@ function QuestionWithRadioButtons({
   questions,
   inView,
   refRoot,
-  percentage,
   field: { name, value, onChange }
 }) {
-  console.log("name", name);
-  console.log("inView", percentage);
+  console.log("inView", inView);
   return (
-    <div
-      ref={refRoot}
-      className={cx(radioBtn, {
-        [opacity]: percentage < 0.2 || percentage > 0.6
-      })}
-    >
+    <div ref={refRoot} className={cx(radioBtn, { [opacity]: !inView })}>
       <div
         style={{
           marginBottom: spacing.space1,
@@ -68,20 +63,9 @@ function QuestionWithRadioButtons({
 const questions1 = [
   { text: "haha", value: "damn", name: "haha" },
   { text: "haha1", value: "damn2", name: "haha1" },
-  { text: "haha2", value: "damn3", name: "haha2" },
-  { text: "haha", value: "damn4", name: "haha3" },
-  { text: "haha1", value: "damn5", name: "haha4" },
-  { text: "haha2", value: "damn6", name: "haha5" },
-  { text: "haha", value: "damn7", name: "haha6" },
-  { text: "haha1", value: "damn8", name: "haha7" },
-  { text: "haha2", value: "damn9", name: "haha9" }
-];
-
-const questions2 = [
-  { text: "haha", value: "damn", name: "haha" },
-  { text: "haha1", value: "damn2", name: "haha1" },
   { text: "haha2", value: "damn3", name: "haha2" }
 ];
+
 class Questionnaire extends Component {
   state = {};
 
@@ -107,54 +91,36 @@ class Questionnaire extends Component {
             age: Yup.string().required()
           })}
         >
-          <ScrollPercentage>
-            {({ percentage, inView }) => (
+          <Observer threshold={0.6}>
+            {({ inView, ref }) => (
               <Field
                 inView={inView}
-                percentage={percentage}
+                refRoot={ref}
                 name="age"
                 questionText="what;s up"
                 component={QuestionWithRadioButtons}
                 questions={questions1}
               />
             )}
-          </ScrollPercentage>
+          </Observer>
         </Wizard.Page>
         <Wizard.Page
           validationSchema={Yup.object().shape({
             age: Yup.string().required()
           })}
         >
-          <ScrollPercentage>
-            {({ percentage, inView }) => (
+          <Observer threshold={0.6}>
+            {({ inView, ref }) => (
               <Field
-                percentage={percentage}
                 inView={inView}
-                name="age2"
-                questionText="what;s up"
-                component={QuestionWithRadioButtons}
-                questions={questions2}
-              />
-            )}
-          </ScrollPercentage>
-        </Wizard.Page>
-        <Wizard.Page
-          validationSchema={Yup.object().shape({
-            age: Yup.string().required()
-          })}
-        >
-          <ScrollPercentage>
-            {({ percentage, inView }) => (
-              <Field
-                percentage={percentage}
-                inView={inView}
+                refRoot={ref}
                 name="age1"
                 questionText="what;s up"
                 component={QuestionWithRadioButtons}
                 questions={questions1}
               />
             )}
-          </ScrollPercentage>
+          </Observer>
         </Wizard.Page>
       </Wizard>
     );
