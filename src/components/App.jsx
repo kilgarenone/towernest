@@ -1,12 +1,17 @@
 // @flow
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Auth from "../scenes/auth/container";
+import SignIn from "../scenes/signIn/container";
 import Container from "./Container";
 import spacing from "./../styles/base/spacing";
 import Main from "./../scenes/Main";
+import { getAccessTokenAction } from "../scenes/signIn/state";
 
 class App extends Component<any, any> {
+  componentDidMount() {
+    console.log("hello");
+    this.props.getAccessTokenAction();
+  }
   handleSubmit = event => {
     event.preventDefault();
     this.props.getAccessTokenAction();
@@ -31,4 +36,7 @@ class App extends Component<any, any> {
   }
 }
 
-export default connect()(App);
+export default connect(
+  null,
+  { getAccessTokenAction }
+)(App);

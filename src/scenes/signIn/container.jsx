@@ -2,9 +2,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getAccessTokenAction, helloWorld } from "./state";
-import SignIn from "./view";
+import SignInFields from "./view";
 
-class Auth extends Component<any, any> {
+class SignIn extends Component<any, any> {
   state = {
     userName: "",
     passWord: ""
@@ -26,7 +26,7 @@ class Auth extends Component<any, any> {
           dosjds
         </button>
         <form onSubmit={this.handleSubmit}>
-          <SignIn
+          <SignInFields
             userName={this.state.userName}
             passWord={this.state.passWord}
             handleChange={this.handleChange}
@@ -44,4 +44,4 @@ export default connect(
     helloWorld,
     getAccessTokenAction
   }
-)(Auth);
+)(SignIn);

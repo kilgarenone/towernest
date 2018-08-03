@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Input from "../../components/Input";
 
-function SignIn({ handleChange, userName, passWord }) {
+function SignInFields({ handleChange, userName, passWord }) {
   return (
     <Fragment>
       <label htmlFor="userName">
@@ -21,4 +21,4 @@ function SignIn({ handleChange, userName, passWord }) {
   );
 }
 
-export default SignIn;
+export default SignInFields;

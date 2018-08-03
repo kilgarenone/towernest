@@ -4,13 +4,13 @@ import { ofType } from "redux-observable";
 // https://github.com/ReactiveX/rxjs/blob/master/doc/lettable-operators.md
 import { switchMap, map } from "rxjs/operators";
 import { ajax } from "rxjs/ajax";
-import { CLIENT_ID, CLIENT_SECRET } from "./../../config";
 import { CALL_API } from "./../../redux/api";
+import { tap } from "rxjs/operators";
 
-const GET_ACCESS_TOKEN = "matisa/modules/auth/getAccessToken";
-const SET_ACCESS_TOKEN = "matisa/modules/auth/setAccessToken";
-const SUCCESS_HELLO_WORLD = "matisa/modules/auth/successHelloWorld";
-const ERROR_HELLO_WORLD = "matisa/modules/auth/errorHelloWorld";
+const GET_ACCESS_TOKEN = "matisa/scenes/signIn/getAccessToken";
+const SET_ACCESS_TOKEN = "matisa/scenes/signIn/setAccessToken";
+const SUCCESS_HELLO_WORLD = "matisa/scenes/signIn/successHelloWorld";
+const ERROR_HELLO_WORLD = "matisa/scenes/signIn/errorHelloWorld";
 
 const initialState = { data: null, error: null };
 
@@ -55,16 +55,29 @@ export function helloWorld() {
 }
 
 export const getAccessToken = action$ => {
-  const base64ClientId = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
+  const {
+    REACT_APP_CLIENT_ID,
+    REACT_APP_CLIENT_SECRET,
+    REACT_APP_OAUTH_URL
+  } = process.env;
+
+  const base64ClientId = btoa(
+    `${REACT_APP_CLIENT_ID}:${REACT_APP_CLIENT_SECRET}`
+  );
+
+  console.log(base64ClientId);
+
   const payload = {
     headers: { Authorization: `Basic ${base64ClientId}` },
-    url: "/auth/getAccessToken"
+    url: REACT_APP_OAUTH_URL,
+    responseType: "json"
+    // crossDomain: true
   };
 
   return action$.pipe(
     ofType(GET_ACCESS_TOKEN),
     switchMap(() => ajax(payload)),
-    // tap(data => console.log(data)), // this is how u debug rxjs
+    tap(data => console.log(data)), // this is how u debug rxjs
     map(data => ({
       type: SET_ACCESS_TOKEN,
       accessToken: data.response.access_token
