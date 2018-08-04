@@ -1,11 +1,11 @@
 // @flow
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import SignIn from "../scenes/signIn/container";
+import SignIn from "../scenes/signIn/signIn.container";
 import Container from "./Container";
 import spacing from "./../styles/base/spacing";
 import Main from "./../scenes/Main";
-import { getAccessTokenAction } from "../scenes/signIn/state";
+import { getAccessTokenAction } from "../scenes/signIn/signIn.state";
 
 class App extends Component<any, any> {
   componentDidMount() {
