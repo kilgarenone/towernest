@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import AssetAllocation from "./assetAllocation/view";
 import Questionnaire from "./questionnaire";
-import SignIn from "./signIn/signIn.container";
+import SignIn from "./signIn/SignIn.container";
 
 function Main() {
   return (

@@ -12,26 +12,14 @@ const SET_ACCESS_TOKEN = "matisa/scenes/signIn/setAccessToken";
 const SUCCESS_HELLO_WORLD = "matisa/scenes/signIn/successHelloWorld";
 const ERROR_HELLO_WORLD = "matisa/scenes/signIn/errorHelloWorld";
 
-const initialState = { data: null, error: null };
+const initialState = { accessToken: null, error: null };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case SET_ACCESS_TOKEN: {
       return {
         ...state,
-        data: action.accessToken
-      };
-    }
-    case ERROR_HELLO_WORLD: {
-      return {
-        ...state,
-        error: action.error.status
-      };
-    }
-    case SUCCESS_HELLO_WORLD: {
-      return {
-        ...state,
-        data: action.data
+        accessToken: action.accessToken
       };
     }
     default:
@@ -45,15 +33,6 @@ export function getAccessTokenAction() {
   };
 }
 
-export function helloWorld() {
-  return {
-    type: CALL_API,
-    endPoint: "/testApi",
-    successType: SUCCESS_HELLO_WORLD,
-    failureType: ERROR_HELLO_WORLD
-  };
-}
-
 export const getAccessToken = action$ => {
   const {
     REACT_APP_CLIENT_ID,
@@ -64,8 +43,6 @@ export const getAccessToken = action$ => {
   const base64ClientId = btoa(
     `${REACT_APP_CLIENT_ID}:${REACT_APP_CLIENT_SECRET}`
   );
-
-  console.log(base64ClientId);
 
   const payload = {
     headers: { Authorization: `Basic ${base64ClientId}` },

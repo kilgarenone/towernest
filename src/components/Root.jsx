@@ -1,21 +1,26 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SimpleHeader from "./../modules/SimpleHeader";
 import AssetAllocation from "./../scenes/assetAllocation/view";
 import App from "./App";
+import EnsureLoggedInContainer from "./EnsureLoggedIn.container";
+import SignIn from "../scenes/signIn/SignIn.container";
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <BrowserRouter>
+    <Router>
       <div>
         <SimpleHeader />
-        <Switch>
-          <Route exact path="/" component={App} />
-          <Route exact path="/allocation" component={AssetAllocation} />
-        </Switch>
+        <Route exact path="/login" component={SignIn} />
+        <EnsureLoggedInContainer>
+          <Switch>
+            <Route exact path="/" component={App} />
+            <Route exact path="/allocation" component={AssetAllocation} />
+          </Switch>
+        </EnsureLoggedInContainer>
       </div>
-    </BrowserRouter>
+    </Router>
   </Provider>
 );
 
