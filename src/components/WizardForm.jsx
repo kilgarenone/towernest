@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Formik, Field } from "formik";
+import PrevAndNextBtn from "./PrevAndNextBtn";
 
 class Wizard extends Component {
   static Page = ({ children }) => children;
@@ -33,13 +34,13 @@ class Wizard extends Component {
         return {};
       }
       await activePage.props.validationSchema.validate(values);
-      setTimeout(() => this.next(values), 250);
     } catch (err) {
       console.log("err", err);
     }
   };
 
   handleSubmit = (values, bag) => {
+    console.log("hello");
     const { children, onSubmit } = this.props;
     const { page } = this.state;
     const isLastPage = page === React.Children.count(children) - 1;
@@ -69,19 +70,12 @@ class Wizard extends Component {
         {({ values, handleSubmit, isSubmitting, handleReset }) => (
           <form onSubmit={handleSubmit}>
             {activePage}
-            <div className="buttons">
-              {page > 0 && (
-                <button type="button" onClick={this.previous}>
-                  « Previous
-                </button>
-              )}
-              {!isLastPage && <button type="submit">Next »</button>}
-              {isLastPage && (
-                <button type="submit" disabled={isSubmitting}>
-                  Submit
-                </button>
-              )}
-            </div>
+            <PrevAndNextBtn
+              displayBackBtn={page > 0}
+              handleBackBtnClick={this.previous}
+              isLastPage={isLastPage}
+              isSubmitting={isSubmitting}
+            />
           </form>
         )}
       </Formik>
