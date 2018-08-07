@@ -21,32 +21,39 @@ const cont = css`
   }
 `;
 
-function ControlButtonsGroup({
+function PrevAndNextBtn({
   displayBackBtn = true,
   handleBackBtnClick,
   backBtnText,
   continueBtnText,
   handleContinueBtnClick,
-  isSubmitting
+  isSubmitting,
+  isLastPage
 }: Props) {
   return (
     <Container className={cont}>
       <OptionallyDisplayed display={displayBackBtn}>
-        <Button secondary onClick={handleBackBtnClick}>
+        <Button
+          type="button"
+          outline
+          disabled={isSubmitting}
+          secondary
+          onClick={handleBackBtnClick}
+        >
           {backBtnText}
         </Button>
       </OptionallyDisplayed>
-      <ButtonWithSpinner isSubmitting={isSubmitting}>
-        {continueBtnText}
+      <ButtonWithSpinner type="submit" isSubmitting={isSubmitting}>
+        {isLastPage ? "Submit" : continueBtnText}
       </ButtonWithSpinner>
     </Container>
   );
 }
 
-ControlButtonsGroup.defaultProps = {
+PrevAndNextBtn.defaultProps = {
   handleContinueBtnClick: null,
   backBtnText: "Back",
   continueBtnText: "Continue"
 };
 
-export default ControlButtonsGroup;
+export default PrevAndNextBtn;
