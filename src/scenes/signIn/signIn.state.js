@@ -12,7 +12,7 @@ const SET_ACCESS_TOKEN = "matisa/scenes/signIn/setAccessToken";
 const SUCCESS_HELLO_WORLD = "matisa/scenes/signIn/successHelloWorld";
 const ERROR_HELLO_WORLD = "matisa/scenes/signIn/errorHelloWorld";
 
-const initialState = { accessToken: null, error: null };
+const initialState = { accessToken: "null", error: null };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {

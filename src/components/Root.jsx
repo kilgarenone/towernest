@@ -6,6 +6,7 @@ import AssetAllocation from "./../scenes/assetAllocation/view";
 import App from "./App";
 import EnsureLoggedInContainer from "./EnsureLoggedIn.container";
 import SignIn from "../scenes/signIn/SignIn.container";
+import Questionnaire from "./../scenes/questionnaire/questionnaire.container";
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -13,12 +14,12 @@ const Root = ({ store }) => (
       <div>
         <SimpleHeader />
         <Route exact path="/login" component={SignIn} />
-        <EnsureLoggedInContainer>
+        <Route exact path="/" component={Questionnaire} />
+        {/* <EnsureLoggedInContainer>
           <Switch>
             <Route exact path="/" component={App} />
-            <Route exact path="/allocation" component={AssetAllocation} />
           </Switch>
-        </EnsureLoggedInContainer>
+        </EnsureLoggedInContainer> */}
       </div>
     </Router>
   </Provider>
