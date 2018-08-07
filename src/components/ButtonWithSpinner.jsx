@@ -26,9 +26,10 @@ const btnRelative = css`
 const ButtonWithSpinner = ({
   children,
   isSubmitting,
-  progressText = children
+  progressText = children,
+  ...props
 }) => (
-  <Button className={cx({ [btnCls]: isSubmitting }, btnRelative)}>
+  <Button {...props} className={cx({ [btnCls]: isSubmitting }, btnRelative)}>
     {isSubmitting ? progressText : children}
     <Spinner className={cx(spinnerCls, { [showSpinner]: isSubmitting })} />
   </Button>
