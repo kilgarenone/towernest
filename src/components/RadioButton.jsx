@@ -15,25 +15,41 @@ type Props = {
   isChecked: boolean
 };
 
-const customRadioStyle = css`
-  &:hover {
-    .svg {
-      opacity: 0.6;
-    }
-  }
+const cssRadioButton = css`
   font-size: ${fontSize.text};
   display: block;
   margin-bottom: ${spacing.space0};
+
   input {
     display: none;
   }
-  .svg {
+
+  &:hover {
+    .radioOutline {
+      opacity: 0.3;
+    }
+
+    .radioDot {
+      opacity: 0.2;
+    }
+  }
+
+  .radioDot {
+    opacity: 0.1;
+  }
+
+  .radioOutline {
     opacity: 0.2;
   }
+
   input:checked + svg {
-    opacity: 1;
+    .radioDot,
+    .radioOutline {
+      opacity: 1;
+    }
   }
 `;
+
 function RadioButton({
   name,
   value,
@@ -44,7 +60,7 @@ function RadioButton({
   ...props
 }: Props) {
   return (
-    <label className={customRadioStyle} htmlFor={`${name}-${value}`}>
+    <label className={cssRadioButton} htmlFor={`${name}-${value}`}>
       <Input
         id={`${name}-${value}`}
         name={name}
@@ -64,6 +80,7 @@ function RadioButton({
         viewBox="0 0 34 34"
       >
         <circle
+          className="radioOutline"
           cx="17"
           cy="17"
           r="15"
@@ -71,7 +88,7 @@ function RadioButton({
           stroke="black"
           strokeWidth="3"
         />
-        <circle cx="17" cy="17" r="8" fill="red" />
+        <circle className="radioDot" cx="17" cy="17" r="8" fill="red" />
       </svg>
       {children}
     </label>
