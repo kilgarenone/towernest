@@ -13,8 +13,8 @@ const scales = {
     font-size: 14px;
   `,
   normal: `
-    padding: 10px 40px;
-    font-size: 16px;
+    padding: 0.5em 2em;
+    font-size: ${fontSize.text};
   `,
   big: `
     padding: 15px 45px;
@@ -59,35 +59,34 @@ function getKind({ kind = "primary", outline = false }) {
 const Button = styled("button")`
   ${getKind};
   ${getScale};
+  font-family: inherit;
   display: inline-block;
   border-radius: 500px;
   text-decoration: none;
-  font-weight: 300;
+  font-weight: 700;
   white-space: nowrap;
   cursor: pointer;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  /* text-transform: uppercase; */
+  letter-spacing: 1px;
   vertical-align: middle;
   touch-action: manipulation;
   background-image: none;
   user-select: none;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,.075);
   /* transition: background 250ms ease-in-out, transform 150ms ease,
-    padding 150ms ease; */
-
+  padding 150ms ease; */
+  
   /* &:hover,
   &:focus {
     background-color: ${props => (props.secondary ? "#fff" : "#0053ba")};
   } */
-
+  
   /* &:focus {
     border-color: #0053ba;
   } */
-  &:hover {
-    transform: scale(1.05);
-  }
   &:active {
-    transform: scale(1);
+    transform: scale(0.95);
   }
 `;
 
