@@ -40,7 +40,6 @@ class Wizard extends Component {
   };
 
   handleSubmit = (values, bag) => {
-    console.log("hello");
     const { children, onSubmit } = this.props;
     const { page } = this.state;
     const isLastPage = page === React.Children.count(children) - 1;
