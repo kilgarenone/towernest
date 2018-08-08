@@ -9,7 +9,6 @@ type Props = {
   name: string,
   value: any,
   required?: boolean,
-  parseType?: string,
   children: any | React.Node,
   onChange: (value: any) => any | void,
   isChecked: boolean
@@ -17,20 +16,23 @@ type Props = {
 
 const cssRadioButton = css`
   font-size: ${fontSize.text};
-  display: block;
-  margin-bottom: ${spacing.space0};
+  display: flex;
+  margin-bottom: ${spacing.space2};
 
   input {
     display: none;
   }
 
-  &:hover {
-    .radioOutline {
-      opacity: 0.3;
-    }
+  .svg {
+    margin-right: ${spacing.space0};
+  }
 
+  &:hover {
     .radioDot {
       opacity: 0.2;
+    }
+    .radioOutline {
+      opacity: 0.3;
     }
   }
 
@@ -96,8 +98,7 @@ function RadioButton({
 }
 
 RadioButton.defaultProps = {
-  required: true,
-  parseType: null
+  required: true
 };
 
 export default RadioButton;
