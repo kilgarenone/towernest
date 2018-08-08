@@ -16,25 +16,22 @@ type Props = {
 };
 
 const customRadioStyle = css`
+  &:hover {
+    .svg {
+      opacity: 0.6;
+    }
+  }
   font-size: ${fontSize.text};
   display: block;
   margin-bottom: ${spacing.space0};
   input {
     display: none;
   }
-  i {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    margin-right: 5px;
-    vertical-align: middle;
-    background-color: #fff;
-    border: 2px solid #b4b4b4;
+  .svg {
+    opacity: 0.2;
   }
-  input:checked + i {
-    background-color: #3197ee;
-    box-shadow: inset 0 0 0 3px #f4f4f4;
+  input:checked + svg {
+    opacity: 1;
   }
 `;
 function RadioButton({
@@ -58,7 +55,24 @@ function RadioButton({
         onChange={handleChange}
         {...props}
       />
-      <i />
+      <svg
+        className="svg"
+        fill="currentColor"
+        preserveAspectRatio="xMidYMid meet"
+        height="34px"
+        width="34px"
+        viewBox="0 0 34 34"
+      >
+        <circle
+          cx="17"
+          cy="17"
+          r="15"
+          fill="none"
+          stroke="black"
+          strokeWidth="3"
+        />
+        <circle cx="17" cy="17" r="8" fill="red" />
+      </svg>
       {children}
     </label>
   );
