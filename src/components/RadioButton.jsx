@@ -77,8 +77,8 @@ function RadioButton({
         className="svg"
         fill="currentColor"
         preserveAspectRatio="xMidYMid meet"
-        height="34px"
-        width="34px"
+        height="34"
+        width="34"
         viewBox="0 0 34 34"
       >
         <circle
