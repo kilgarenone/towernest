@@ -7,7 +7,7 @@ type Props = {
   color: string
 };
 
-const Icon = (props: Props) => {
+function Icon(props: Props) {
   const styles = {
     svg: {
       display: "inline-block",
@@ -25,6 +25,6 @@ const Icon = (props: Props) => {
       <path style={styles.path} d={props.icon} />
     </svg>
   );
-};
+}
 
 export default Icon;
