@@ -8,6 +8,7 @@ import { fontSize } from "./../../styles/base/typography";
 import Wizard from "./../../components/WizardForm";
 import { Field } from "formik";
 import * as Yup from "yup";
+import CheckBox from "./../../components/CheckBox";
 
 function QuestionWithRadioButtons({
   questionText,
@@ -25,9 +26,9 @@ function QuestionWithRadioButtons({
       >
         <span>{questionText}</span>
       </div>
-      <Container direction="column">
+      <Container isColumn>
         {questions.map(q => (
-          <RadioButton
+          <CheckBox
             key={`${name}_${q.value}`} // don't use array index as key! https://stackoverflow.com/a/43481841/73323
             handleChange={onChange}
             name={name}
@@ -35,7 +36,7 @@ function QuestionWithRadioButtons({
             isChecked={q.value === value}
           >
             {q.text}
-          </RadioButton>
+          </CheckBox>
         ))}
       </Container>
       {/* <OptionallyDisplayed display={showError}>
