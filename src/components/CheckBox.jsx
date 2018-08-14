@@ -22,7 +22,7 @@ const cssCheckBoxContainer = css`
   transition: opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   opacity: 0.2;
   border: 2px solid;
-  border-radius: 20%;
+  border-radius: 5px;
 `;
 
 const cssCheckBox = css`
@@ -35,27 +35,17 @@ const cssCheckBox = css`
   }
 
   &:hover {
-    .radioDot {
-      opacity: 0.2;
-    }
-    .radioOutline {
-      opacity: 0.3;
+    .icon {
+      opacity: 0.5;
     }
   }
 
-  .radioDot {
-    opacity: 0.1;
-  }
-
-  .radioOutline {
+  .icon {
     opacity: 0.2;
   }
 
-  input:checked + svg {
-    .radioDot,
-    .radioOutline {
-      opacity: 1;
-    }
+  input:checked + div > .icon {
+    opacity: 1;
   }
 `;
 
@@ -80,6 +70,8 @@ function CheckBox({
         onChange={handleChange}
         {...props}
       />
+      {/* <input type="checkbox" checked /> */}
+      {/* <div style={{ height: "10px", width: "10px" }} /> */}
       <Container
         className={cssCheckBoxContainer}
         xAlign="center"
