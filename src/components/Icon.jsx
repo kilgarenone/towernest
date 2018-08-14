@@ -14,7 +14,7 @@ function Icon(props: Props) {
       verticalAlign: "middle"
     },
     path: {
-      fill: props.color || "rgba(0,0,0,.64)"
+      fill: props.color
     }
   };
 
@@ -27,6 +27,8 @@ function Icon(props: Props) {
       width={size}
       height={size}
       viewBox="0 0  24 24"
+      fill="currentColor"
+      preserveAspectRatio="xMidYMid meet"
     >
       <path className="icon-path" style={styles.path} d={props.icon} />
     </svg>
