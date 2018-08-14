@@ -32,7 +32,11 @@ const allocationByRiskProfile = {
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 function AssetAllocation(props) {
-  const { location: { state: { timeHorizon, riskTolerance } } } = props;
+  const {
+    location: {
+      state: { timeHorizon, riskTolerance }
+    }
+  } = props;
   const totalRiskScore =
     parseInt(timeHorizon, 10) + parseInt(riskTolerance, 10);
   console.log(totalRiskScore);
@@ -58,7 +62,7 @@ function AssetAllocation(props) {
             </Pie>
           </PieChart>
         </ResponsiveContainer>
-        <Container direction="column">
+        <Container isColumn>
           <AssetAllocationLegends data={data} />
         </Container>
       </Container>
@@ -80,7 +84,7 @@ function AssetAllocationLegends({ data }) {
   return data.map(asset => (
     <Container yAlign="flex-start" style={{ marginBottom: spacing.space2 }}>
       <Legend backgroundColor={asset.color}>
-        {Math.round(asset.value / total * 100)}%
+        {Math.round((asset.value / total) * 100)}%
       </Legend>
       <div>
         <p style={{ paddingLeft: spacing.space1 }}>{asset.name}</p>
