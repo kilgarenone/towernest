@@ -20,9 +20,10 @@ type Props = {
 const cssCheckBoxContainer = css`
   flex-shrink: 0;
   transition: opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-  opacity: 0.2;
-  border: 2px solid;
+  border: 2px solid #aaa;
   border-radius: 5px;
+  height: 1.5em;
+  width: 1.5em;
 `;
 
 const cssCheckBox = css`
@@ -35,17 +36,25 @@ const cssCheckBox = css`
   }
 
   &:hover {
+    .container {
+      border-color: #777;
+    }
     .icon {
-      opacity: 0.5;
+      opacity: 0.14;
     }
   }
 
   .icon {
-    opacity: 0.2;
+    opacity: 0.06;
   }
 
-  input:checked + div > .icon {
-    opacity: 1;
+  input:checked + div {
+    background-color: #5245c2;
+    border-color: transparent !important;
+    & > .icon {
+      opacity: 1;
+      color: #fff;
+    }
   }
 `;
 
@@ -70,14 +79,12 @@ function CheckBox({
         onChange={handleChange}
         {...props}
       />
-      {/* <input type="checkbox" checked /> */}
-      {/* <div style={{ height: "10px", width: "10px" }} /> */}
       <Container
         className={cssCheckBoxContainer}
         xAlign="center"
         yAlign="center"
       >
-        <Icon icon={ICONS.CHECKBOX} />
+        <Icon size="23" icon={ICONS.CHECKBOX} />
       </Container>
       {children}
     </label>
