@@ -12,23 +12,27 @@ const Container = ({
   </Tag>
 );
 
-function buildWrapperStyles({ style, ...props }) {
+function buildWrapperStyles(props) {
   // Unified x and y axes intuitive alignment for flex's
   // row & column
-  const propsClone = { ...props };
-  if (!propsClone.direction) {
-    props.yAlign = propsClone.xAlign;
-    props.xAlign = propsClone.yAlign;
+  let alignItems = props.yAlign;
+  let justifyContent = props.xAlign;
+  let flexDirection = "";
+
+  if (props.isColumn) {
+    flexDirection = "column";
+    alignItems = props.xAlign;
+    justifyContent = props.yAlign;
   }
+
   return {
     position: "relative",
     display: "flex",
-    "flex-direction": props.direction, // default is 'row'
-    "align-items": props.xAlign, // default is 'stretch'
-    "justify-content": props.yAlign, // default is 'flex-start'
+    "flex-direction": flexDirection, // default is 'row'
+    "align-items": alignItems, // default is 'stretch'
+    "justify-content": justifyContent, // default is 'flex-start'
     padding: props.padding,
-    margin: props.margin,
-    ...style
+    margin: props.margin
   };
 }
 
