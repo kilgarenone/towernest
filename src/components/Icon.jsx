@@ -21,8 +21,14 @@ function Icon(props: Props) {
   const size = props.size || 30;
 
   return (
-    <svg style={styles.svg} width={size} height={size} viewBox="0 0  25 25">
-      <path style={styles.path} d={props.icon} />
+    <svg
+      className="icon"
+      style={styles.svg}
+      width={size}
+      height={size}
+      viewBox="0 0  24 24"
+    >
+      <path className="icon-path" style={styles.path} d={props.icon} />
     </svg>
   );
 }
