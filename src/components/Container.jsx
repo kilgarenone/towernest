@@ -7,7 +7,7 @@ const Container = ({
   className = null,
   ...props
 }) => (
-  <Tag className={cx(css(buildWrapperStyles(props)), className)}>
+  <Tag className={cx("container", css(buildWrapperStyles(props)), className)}>
     {children}
   </Tag>
 );
