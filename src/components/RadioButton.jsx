@@ -23,10 +23,6 @@ const cssRadioButton = css`
     display: none;
   }
 
-  .svg {
-    margin-right: ${spacing.space0};
-  }
-
   &:hover {
     .radioDot {
       opacity: 0.2;
