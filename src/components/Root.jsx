@@ -1,12 +1,12 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SimpleHeader from "./../modules/SimpleHeader";
-import AssetAllocation from "./../scenes/assetAllocation/view";
+import SimpleHeader from "../modules/SimpleHeader";
+import AssetAllocation from "../scenes/assetAllocation/view";
 import App from "./App";
 import EnsureLoggedInContainer from "./EnsureLoggedIn.container";
-import SignIn from "../scenes/signIn/SignIn.container";
-import Questionnaire from "./../scenes/questionnaire/questionnaire.container";
+import SignIn from "../scenes/SignIn/SignIn.container";
+import Questionnaire from "../scenes/questionnaire/questionnaire.container";
 
 const Root = ({ store }) => (
   <Provider store={store}>

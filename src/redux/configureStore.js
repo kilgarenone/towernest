@@ -31,12 +31,14 @@ const configureStore = () => {
     // eslint-disable-next-line
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  const epicMiddleware = createEpicMiddleware(rootEpic);
+  const epicMiddleware = createEpicMiddleware();
 
   const store = createStore(
     rootReducer,
     composeEnhancers(applyMiddleware(epicMiddleware))
   );
+
+  epicMiddleware.run(rootEpic);
 
   // if (process.env.NODE_ENV !== "production") {
   //   store.dispatch = addLoggingToDispatch(store);

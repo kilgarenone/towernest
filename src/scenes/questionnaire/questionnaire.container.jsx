@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import Container from "./../../components/Container";
-import ErrorMessage from "./../../components/ErrorMessage";
-import OptionallyDisplayed from "./../../components/OptionallyDisplayed";
-import RadioButton from "./../../components/RadioButton";
-import spacing from "./../../styles/base/spacing";
-import { fontSize } from "./../../styles/base/typography";
-import Wizard from "./../../components/WizardForm";
 import { Field } from "formik";
 import * as Yup from "yup";
-import CheckBox from "./../../components/CheckBox";
+import Container from "../../components/Container";
+import ErrorMessage from "../../components/ErrorMessage";
+import OptionallyDisplayed from "../../components/OptionallyDisplayed";
+import RadioButton from "../../components/RadioButton";
+import spacing from "../../styles/base/spacing";
+import { fontSize } from "../../styles/base/typography";
+import Wizard from "../../components/WizardForm";
+import CheckBox from "../../components/CheckBox";
 
 function QuestionWithRadioButtons({
   questionText,
@@ -63,6 +63,7 @@ class Questionnaire extends Component {
     //  actions.setSubmitting(false);
     // });
   };
+
   render() {
     return (
       <Wizard

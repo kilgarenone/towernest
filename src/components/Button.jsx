@@ -1,7 +1,7 @@
 // @flow
 import styled from "react-emotion";
-import { colors } from "./../styles/base/colors";
-import { fontSize } from "./../styles/base/typography";
+import { colors } from "../styles/base/colors";
+import { fontSize } from "../styles/base/typography";
 
 // type Props = {
 //   secondary?: boolean,

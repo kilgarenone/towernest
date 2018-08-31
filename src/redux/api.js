@@ -38,7 +38,7 @@ function apiError(type, error) {
   };
 }
 
-export default (action$, store) =>
+export default (action$, state$) =>
   action$.pipe(
     ofType(CALL_API),
     switchMap(
@@ -49,7 +49,7 @@ export default (action$, store) =>
         failureType,
         hasAuthentication = true
       }) =>
-        callApi(endPoint, httpMethod, store.getState(), hasAuthentication).pipe(
+        callApi(endPoint, httpMethod, state$.value, hasAuthentication).pipe(
           tap(response =>
             console.log(
               "%c API RESPONSE ",
