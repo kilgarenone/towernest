@@ -4,8 +4,8 @@ import { ofType } from "redux-observable";
 // https://github.com/ReactiveX/rxjs/blob/master/doc/lettable-operators.md
 import { switchMap, map } from "rxjs/operators";
 import { ajax } from "rxjs/ajax";
-import { CALL_API } from "../../redux/api";
 import { tap } from "rxjs/operators";
+import { CALL_API } from "../../redux/api";
 
 const GET_ACCESS_TOKEN = "matisa/scenes/signIn/getAccessToken";
 const SET_ACCESS_TOKEN = "matisa/scenes/signIn/setAccessToken";
@@ -43,6 +43,8 @@ export const getAccessToken = action$ => {
   const base64ClientId = btoa(
     `${REACT_APP_CLIENT_ID}:${REACT_APP_CLIENT_SECRET}`
   );
+
+  console.log(base64ClientId);
 
   const payload = {
     headers: { Authorization: `Basic ${base64ClientId}` },

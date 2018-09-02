@@ -2,7 +2,11 @@ import React, { PureComponent } from "react";
 import styled, { css } from "react-emotion";
 
 const List = styled("ul")`
-  width: 100%;
+  list-style: none;
+  text-align: left;
+  border-radius: 8px;
+  border: 1px solid #e1e1e1;
+  overflow: hidden;
 `;
 
 // const List = ({ items, handleItemClick }) => (

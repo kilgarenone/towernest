@@ -1,6 +1,6 @@
 // @flow
 import * as React from "react";
-import { css } from "react-emotion";
+import { css, cx } from "react-emotion";
 import Input from "./Input";
 import spacing from "../styles/base/spacing";
 import { fontSize } from "../styles/base/typography";
@@ -17,7 +17,6 @@ type Props = {
 const cssRadioButton = css`
   font-size: ${fontSize.text};
   display: flex;
-  margin-bottom: ${spacing.space2};
 
   input {
     display: none;
@@ -55,10 +54,14 @@ function RadioButton({
   children,
   isChecked,
   handleChange,
+  className,
   ...props
 }: Props) {
   return (
-    <label className={cssRadioButton} htmlFor={`${name}-${value}`}>
+    <label
+      className={cx(cssRadioButton, className)}
+      htmlFor={`${name}-${value}`}
+    >
       <Input
         id={`${name}-${value}`}
         name={name}

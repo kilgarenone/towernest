@@ -6,7 +6,7 @@ import AssetAllocation from "../scenes/assetAllocation/view";
 import App from "./App";
 import EnsureLoggedInContainer from "./EnsureLoggedIn.container";
 import SignIn from "../scenes/SignIn/SignIn.container";
-import Questionnaire from "../scenes/questionnaire/questionnaire.container";
+import Questionnaire from "../scenes/Questionnaire/Questionnaire.container";
 
 const Root = ({ store }) => (
   <Provider store={store}>
