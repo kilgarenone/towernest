@@ -1,16 +1,14 @@
-import React, { Component } from "react";
 import { Field } from "formik";
-import * as Yup from "yup";
+import React, { Component } from "react";
 import { css } from "react-emotion";
+import * as Yup from "yup";
 import Container from "../../components/Container";
-import ErrorMessage from "../../components/ErrorMessage";
-import OptionallyDisplayed from "../../components/OptionallyDisplayed";
+import { List } from "../../components/List";
+import ProgressBar from "../../components/ProgressBar";
 import RadioButton from "../../components/RadioButton";
+import Wizard from "../../components/WizardForm";
 import spacing from "../../styles/base/spacing";
 import { fontSize } from "../../styles/base/typography";
-import Wizard from "../../components/WizardForm";
-import CheckBox from "../../components/CheckBox";
-import { List } from "../../components/List";
 
 const listContainerCss = css`
   & > li:not(:last-child) {
@@ -29,7 +27,7 @@ function QuestionWithRadioButtons({
   field: { name, value, onChange }
 }) {
   return (
-    <div style={{ marginTop: spacing.space4 }}>
+    <div style={{ paddingTop: spacing.space5 }}>
       <div
         style={{
           marginBottom: spacing.space1,
@@ -75,7 +73,7 @@ const wizardWrapperCss = css`
 `;
 
 class Questionnaire extends Component {
-  state = {};
+  state = { width: 5 };
 
   handleSubmit = (values, actions) => {
     console.log("values", values);
@@ -88,30 +86,59 @@ class Questionnaire extends Component {
 
   render() {
     return (
-      <div className={wizardWrapperCss}>
-        <Wizard
-          initialValues={{
-            age: "",
-            lastName: ""
-          }}
-          onSubmit={this.handleSubmit}
+      <div>
+        <Container
+          className={css`
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 3em;
+            background-color: #fff;
+            padding: 0 ${spacing.space3};
+          `}
+          yAlign="center"
         >
-          <Wizard.Page
-            validationSchema={Yup.object().shape({
-              age: Yup.string().required()
-            })}
+          <header
+            className={css`
+              font-weight: 700;
+              font-size: 27px;
+              color: black;
+            `}
           >
-            <Field
-              name="age"
-              questionText="Are you a United States resident?"
-              component={QuestionWithRadioButtons}
-              questions={questions1}
-            />
-          </Wizard.Page>
-          <Wizard.Page>
-            <div>World</div>
-          </Wizard.Page>
-        </Wizard>
+            duller
+          </header>
+          <ProgressBar
+            className={css`
+              margin-left: ${spacing.space1};
+            `}
+            width={this.state.width}
+          />
+        </Container>
+        <div className={wizardWrapperCss}>
+          <Wizard
+            initialValues={{
+              age: "",
+              lastName: ""
+            }}
+            onSubmit={this.handleSubmit}
+          >
+            <Wizard.Page
+              validationSchema={Yup.object().shape({
+                age: Yup.string().required()
+              })}
+            >
+              <Field
+                name="age"
+                questionText="Are you a United States resident?"
+                component={QuestionWithRadioButtons}
+                questions={questions1}
+              />
+            </Wizard.Page>
+            <Wizard.Page>
+              <div>World</div>
+            </Wizard.Page>
+          </Wizard>
+        </div>
       </div>
     );
   }

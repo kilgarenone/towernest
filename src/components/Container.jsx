@@ -17,7 +17,7 @@ function buildWrapperStyles(props) {
   // row & column
   let alignItems = props.yAlign;
   let justifyContent = props.xAlign;
-  let flexDirection = "";
+  let flexDirection = null;
 
   if (props.isColumn) {
     flexDirection = "column";

@@ -12,7 +12,7 @@ const Root = ({ store }) => (
   <Provider store={store}>
     <Router>
       <div>
-        <SimpleHeader />
+        {/* <SimpleHeader /> */}
         <Route exact path="/login" component={SignIn} />
         <Route exact path="/" component={Questionnaire} />
         {/* <EnsureLoggedInContainer>
