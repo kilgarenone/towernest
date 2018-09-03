@@ -1,8 +1,12 @@
+// @flow
 import React, { Component } from "react";
 import { Formik, Field } from "formik";
 import PrevAndNextBtn from "./PrevAndNextBtn";
 
-class Wizard extends Component {
+type Props = {
+  setProgressBarWidth: (num: number) => void
+};
+class Wizard extends Component<Props> {
   static Page = ({ children }) => children;
 
   constructor(props) {
@@ -42,10 +46,11 @@ class Wizard extends Component {
   handleSubmit = (values, bag) => {
     const { children, onSubmit, setProgressBarWidth } = this.props;
     const { page } = this.state;
-    const isLastPage = page === React.Children.count(children) - 1;
+    const childrenCount = React.Children.count(children);
+    const isLastPage = page === childrenCount - 1;
 
     if (setProgressBarWidth !== undefined) {
-      setProgressBarWidth(50);
+      setProgressBarWidth(((page + 1) / (childrenCount - 1)) * 100);
     }
 
     if (isLastPage) {

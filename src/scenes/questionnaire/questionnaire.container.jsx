@@ -143,6 +143,12 @@ class Questionnaire extends Component {
             <Wizard.Page>
               <div>World</div>
             </Wizard.Page>
+            <Wizard.Page>
+              <div>World2</div>
+            </Wizard.Page>
+            <Wizard.Page>
+              <div>World3</div>
+            </Wizard.Page>
           </Wizard>
         </div>
       </div>
