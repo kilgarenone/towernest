@@ -6,6 +6,7 @@ export const fontSize = {
   headingL: "2.369rem",
   heading: "1.777rem",
   subHeading: "1.333rem",
+  textL: "1.16rem",
   text: "1rem",
   subText: "0.75rem"
 };

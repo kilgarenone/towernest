@@ -40,9 +40,13 @@ class Wizard extends Component {
   };
 
   handleSubmit = (values, bag) => {
-    const { children, onSubmit } = this.props;
+    const { children, onSubmit, setProgressBarWidth } = this.props;
     const { page } = this.state;
     const isLastPage = page === React.Children.count(children) - 1;
+
+    if (setProgressBarWidth !== undefined) {
+      setProgressBarWidth(50);
+    }
 
     if (isLastPage) {
       return onSubmit(values);

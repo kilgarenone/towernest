@@ -31,7 +31,7 @@ function QuestionWithRadioButtons({
       <div
         style={{
           marginBottom: spacing.space1,
-          fontSize: fontSize.heading,
+          fontSize: fontSize.textL,
           fontWeight: 500
         }}
       >
@@ -84,6 +84,10 @@ class Questionnaire extends Component {
     // });
   };
 
+  setProgressBarWidth = stepNum => {
+    this.setState({ width: stepNum });
+  };
+
   render() {
     return (
       <div>
@@ -98,7 +102,8 @@ class Questionnaire extends Component {
           `}
           yAlign="center"
         >
-          <header
+          <a
+            href="http://google.com"
             className={css`
               font-weight: 700;
               font-size: 27px;
@@ -106,7 +111,7 @@ class Questionnaire extends Component {
             `}
           >
             duller
-          </header>
+          </a>
           <ProgressBar
             className={css`
               margin-left: ${spacing.space1};
@@ -121,6 +126,7 @@ class Questionnaire extends Component {
               lastName: ""
             }}
             onSubmit={this.handleSubmit}
+            setProgressBarWidth={this.setProgressBarWidth}
           >
             <Wizard.Page
               validationSchema={Yup.object().shape({
