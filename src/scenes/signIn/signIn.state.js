@@ -2,7 +2,7 @@
 import { ofType } from "redux-observable";
 // Look here to optimize bundle size on rxjs operators
 // https://github.com/ReactiveX/rxjs/blob/master/doc/lettable-operators.md
-import { switchMap, map } from "rxjs/operators";
+import { switchMap, map, catchError } from "rxjs/operators";
 import { ajax } from "rxjs/ajax";
 import { tap } from "rxjs/operators";
 import { CALL_API } from "../../redux/api";
@@ -49,8 +49,9 @@ export const getAccessToken = action$ => {
   const payload = {
     headers: { Authorization: `Basic ${base64ClientId}` },
     url: REACT_APP_OAUTH_URL,
-    responseType: "json"
-    // crossDomain: true
+    responseType: "json",
+    crossDomain: true,
+    withCredentials: true
   };
 
   return action$.pipe(
@@ -60,6 +61,7 @@ export const getAccessToken = action$ => {
     map(data => ({
       type: SET_ACCESS_TOKEN,
       accessToken: data.response.access_token
-    }))
+    })),
+    catchError(error => console.log(error))
   );
 };

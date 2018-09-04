@@ -1,4 +1,6 @@
 import { Field } from "formik";
+import { fromEvent } from "rxjs";
+import { debounceTime, map } from "rxjs/operators";
 import React, { Component } from "react";
 import { css } from "react-emotion";
 import * as Yup from "yup";
@@ -73,7 +75,18 @@ const wizardWrapperCss = css`
 `;
 
 class Questionnaire extends Component {
-  state = { width: 5 };
+  constructor() {
+    super();
+
+    this.state = { width: 5, scrolled: false };
+
+    this.scroll$ = fromEvent(window, "scroll").subscribe(
+      e =>
+        e.pageY > 0
+          ? this.setState({ scrolled: true })
+          : this.setState({ scrolled: false })
+    );
+  }
 
   handleSubmit = (values, actions) => {
     console.log("values", values);
@@ -99,6 +112,8 @@ class Questionnaire extends Component {
             height: 3em;
             background-color: #fff;
             padding: 0 ${spacing.space3};
+            ${this.state.scrolled &&
+              "box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 2px 10px rgba(0, 0, 0, 0.06);"};
           `}
           yAlign="center"
         >
