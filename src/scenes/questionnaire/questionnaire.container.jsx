@@ -11,6 +11,7 @@ import RadioButton from "../../components/RadioButton";
 import Wizard from "../../components/WizardForm";
 import spacing from "../../styles/base/spacing";
 import { fontSize } from "../../styles/base/typography";
+import ErrorMsgField from "../../components/ErrorMsgField";
 
 const listContainerCss = css`
   & > li:not(:last-child) {
@@ -24,12 +25,13 @@ const radioBtnCss = css`
 `;
 
 function QuestionWithRadioButtons({
+  field: { name, value, onChange },
   questionText,
   questions,
-  field: { name, value, onChange }
+  ...props
 }) {
   return (
-    <div style={{ paddingTop: spacing.space5 }}>
+    <div style={{ paddingTop: spacing.space5, paddingBottom: spacing.space4 }}>
       <div
         style={{
           marginBottom: spacing.space1,
@@ -49,15 +51,13 @@ function QuestionWithRadioButtons({
               name={name}
               value={q.value}
               isChecked={q.value === value}
+              {...props}
             >
               {q.text}
             </RadioButton>
           </li>
         ))}
       </List>
-      {/* <OptionallyDisplayed display={showError}>
-        <ErrorMessage>{errorFor(fieldName)}</ErrorMessage>
-      </OptionallyDisplayed> */}
     </div>
   );
 }
@@ -80,12 +80,16 @@ class Questionnaire extends Component {
 
     this.state = { width: 5, scrolled: false };
 
-    this.scroll$ = fromEvent(window, "scroll").subscribe(
-      e =>
-        e.pageY > 0
-          ? this.setState({ scrolled: true })
-          : this.setState({ scrolled: false })
-    );
+    // this.scrollSubscription = fromEvent(window, "scroll").subscribe(
+    //   e =>
+    //     e.pageY > 0
+    //       ? this.setState({ scrolled: true })
+    //       : this.setState({ scrolled: false })
+    // );
+  }
+
+  componentWillUnmount() {
+    this.scrollSubscription.unsubscribe();
   }
 
   handleSubmit = (values, actions) => {
@@ -114,6 +118,7 @@ class Questionnaire extends Component {
             padding: 0 ${spacing.space3};
             ${this.state.scrolled &&
               "box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 2px 10px rgba(0, 0, 0, 0.06);"};
+            transition: box-shadow 0.4s;
           `}
           yAlign="center"
         >
@@ -142,12 +147,23 @@ class Questionnaire extends Component {
             }}
             onSubmit={this.handleSubmit}
             setProgressBarWidth={this.setProgressBarWidth}
+            validationSchema={Yup.object().shape({
+              age: Yup.string().required()
+            })}
           >
-            <Wizard.Page
-              validationSchema={Yup.object().shape({
-                age: Yup.string().required()
-              })}
-            >
+            <Wizard.Page>
+              <fieldset style={{ marginTop: "200px" }}>
+                <legend>One of these please</legend>
+                <Field
+                  name="age"
+                  questionText="Are you a United States resident?"
+                  component={QuestionWithRadioButtons}
+                  questions={questions1}
+                />
+                <ErrorMsgField name="age" />
+              </fieldset>
+            </Wizard.Page>
+            {/* <Wizard.Page>
               <Field
                 name="age"
                 questionText="Are you a United States resident?"
@@ -156,14 +172,21 @@ class Questionnaire extends Component {
               />
             </Wizard.Page>
             <Wizard.Page>
-              <div>World</div>
+              <Field
+                name="age"
+                questionText="Are you a United States resident?"
+                component={QuestionWithRadioButtons}
+                questions={questions1}
+              />
             </Wizard.Page>
             <Wizard.Page>
-              <div>World2</div>
-            </Wizard.Page>
-            <Wizard.Page>
-              <div>World3</div>
-            </Wizard.Page>
+              <Field
+                name="age"
+                questionText="Are you a United States resident?"
+                component={QuestionWithRadioButtons}
+                questions={questions1}
+              />
+            </Wizard.Page> */}
           </Wizard>
         </div>
       </div>

@@ -28,20 +28,21 @@ class Wizard extends Component<Props> {
       page: Math.max(state.page - 1, 0)
     }));
 
-  validate = async values => {
-    const activePage = React.Children.toArray(this.props.children)[
-      this.state.page
-    ];
-
-    try {
-      if (!activePage.props.validationSchema) {
-        return {};
-      }
-      await activePage.props.validationSchema.validate(values);
-    } catch (err) {
-      console.log("err", err);
-    }
-  };
+  // validate = async values => {
+  //   console.log(values);
+  //   const activePage = React.Children.toArray(this.props.children)[
+  //     this.state.page
+  //   ];
+  //   return activePage.props.validate ? activePage.props.validate(values) : {};
+  //   try {
+  //     if (!activePage.props.validationSchema) {
+  //       return {};
+  //     }
+  //     await activePage.props.validationSchema.validate(values);
+  //   } catch (err) {
+  //     console.log("err", err);
+  //   }
+  // };
 
   handleSubmit = (values, bag) => {
     const { children, onSubmit, setProgressBarWidth } = this.props;
@@ -63,7 +64,7 @@ class Wizard extends Component<Props> {
   };
 
   render() {
-    const { children } = this.props;
+    const { children, validationSchema } = this.props;
     const { page, values } = this.state;
     const activePage = React.Children.toArray(children)[page];
     const isLastPage = page === React.Children.count(children) - 1;
@@ -72,18 +73,19 @@ class Wizard extends Component<Props> {
       <Formik
         initialValues={values}
         enableReinitialize={false}
-        validate={this.validate}
+        validationSchema={validationSchema}
         onSubmit={this.handleSubmit}
       >
-        {({ values, handleSubmit, isSubmitting, handleReset }) => (
+        {({ values, errors, handleSubmit, isSubmitting, handleReset }) => (
           <form onSubmit={handleSubmit}>
             {activePage}
             <PrevAndNextBtn
-              displayBackBtn={page > 0}
+              showBackBtn={page > 0}
               handleBackBtnClick={this.previous}
               isLastPage={isLastPage}
               isSubmitting={isSubmitting}
             />
+            {JSON.stringify(errors, null, 2)}
           </form>
         )}
       </Formik>
