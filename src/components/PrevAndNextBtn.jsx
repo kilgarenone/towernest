@@ -8,7 +8,7 @@ import OptionallyDisplayed from "./OptionallyDisplayed";
 import ButtonWithSpinner from "./ButtonWithSpinner";
 
 type Props = {
-  displayBackBtn: boolean,
+  showBackBtn: boolean,
   handleBackBtnClick: () => any,
   handleContinueBtnClick?: () => any,
   backBtnText?: string,
@@ -22,7 +22,7 @@ const cont = css`
 `;
 
 function PrevAndNextBtn({
-  displayBackBtn = true,
+  showBackBtn = true,
   handleBackBtnClick,
   backBtnText,
   continueBtnText,
@@ -32,7 +32,7 @@ function PrevAndNextBtn({
 }: Props) {
   return (
     <Container className={cont}>
-      <OptionallyDisplayed display={displayBackBtn}>
+      <OptionallyDisplayed display={showBackBtn}>
         <Button
           type="button"
           outline
