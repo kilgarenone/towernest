@@ -1,6 +1,6 @@
 // @flow
+import { Formik } from "formik";
 import React, { Component } from "react";
-import { Formik, Field } from "formik";
 import PrevAndNextBtn from "./PrevAndNextBtn";
 
 type Props = {
@@ -64,7 +64,7 @@ class Wizard extends Component<Props> {
   };
 
   render() {
-    const { children, validationSchema } = this.props;
+    const { children, validationSchema, idForFormEl } = this.props;
     const { page, values } = this.state;
     const activePage = React.Children.toArray(children)[page];
     const isLastPage = page === React.Children.count(children) - 1;
@@ -76,8 +76,8 @@ class Wizard extends Component<Props> {
         validationSchema={validationSchema}
         onSubmit={this.handleSubmit}
       >
-        {({ values, errors, handleSubmit, isSubmitting, handleReset }) => (
-          <form onSubmit={handleSubmit}>
+        {({ handleSubmit, isSubmitting }) => (
+          <form id={idForFormEl} onSubmit={handleSubmit}>
             {activePage}
             <PrevAndNextBtn
               showBackBtn={page > 0}
@@ -85,7 +85,6 @@ class Wizard extends Component<Props> {
               isLastPage={isLastPage}
               isSubmitting={isSubmitting}
             />
-            {JSON.stringify(errors, null, 2)}
           </form>
         )}
       </Formik>
