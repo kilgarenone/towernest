@@ -14,7 +14,7 @@ const Root = ({ store }) => (
       <div>
         {/* <SimpleHeader /> */}
         <Route exact path="/login" component={SignIn} />
-        <Route exact path="/" component={Questionnaire} />
+        <Route exact path="/" component={App} />
         {/* <EnsureLoggedInContainer>
           <Switch>
             <Route exact path="/" component={App} />

@@ -20,17 +20,7 @@ class App extends Component<any, any> {
   render() {
     return (
       <div>
-        <Container xAlign="center">
-          <div
-            style={{
-              maxWidth: "600px",
-              minWidth: "600px",
-              paddingTop: spacing.space5
-            }}
-          >
-            <Main />
-          </div>
-        </Container>
+        <Main />
       </div>
     );
   }
