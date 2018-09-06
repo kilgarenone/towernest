@@ -34,30 +34,16 @@ export function getAccessTokenAction() {
 }
 
 export const getAccessToken = action$ => {
-  const {
-    REACT_APP_CLIENT_ID,
-    REACT_APP_CLIENT_SECRET,
-    REACT_APP_OAUTH_URL
-  } = process.env;
-
-  const base64ClientId = btoa(
-    `${REACT_APP_CLIENT_ID}:${REACT_APP_CLIENT_SECRET}`
-  );
-
-  console.log(base64ClientId);
+  const { REACT_APP_PROXY_BASE_URL } = process.env;
 
   const payload = {
-    headers: { Authorization: `Basic ${base64ClientId}` },
-    url: REACT_APP_OAUTH_URL,
-    responseType: "json",
-    crossDomain: true,
-    withCredentials: true
+    url: `${REACT_APP_PROXY_BASE_URL}/getAccessToken`
   };
 
   return action$.pipe(
     ofType(GET_ACCESS_TOKEN),
     switchMap(() => ajax(payload)),
-    tap(data => console.log(data)), // this is how u debug rxjs
+    // tap(data => console.log(data)), // this is how u debug rxjs
     map(data => ({
       type: SET_ACCESS_TOKEN,
       accessToken: data.response.access_token
