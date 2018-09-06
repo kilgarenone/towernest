@@ -1,17 +1,16 @@
 import { Field } from "formik";
-import { fromEvent } from "rxjs";
-import { debounceTime, map } from "rxjs/operators";
 import React, { Component } from "react";
 import { css } from "react-emotion";
+import { fromEvent } from "rxjs";
 import * as Yup from "yup";
 import Container from "../../components/Container";
+import ErrorMsgField from "../../components/ErrorMsgField";
+import FieldSet from "../../components/FieldSet";
 import { List } from "../../components/List";
 import ProgressBar from "../../components/ProgressBar";
 import RadioButton from "../../components/RadioButton";
 import Wizard from "../../components/WizardForm";
 import spacing from "../../styles/base/spacing";
-import { fontSize } from "../../styles/base/typography";
-import ErrorMsgField from "../../components/ErrorMsgField";
 
 const listContainerCss = css`
   & > li:not(:last-child) {
@@ -31,16 +30,13 @@ function QuestionWithRadioButtons({
   ...props
 }) {
   return (
-    <div style={{ paddingTop: spacing.space5, paddingBottom: spacing.space4 }}>
-      <div
-        style={{
-          marginBottom: spacing.space1,
-          fontSize: fontSize.textL,
-          fontWeight: 500
-        }}
-      >
-        <span>{questionText}</span>
-      </div>
+    <div
+      style={{
+        position: "relative",
+        paddingTop: spacing.space1,
+        marginBottom: spacing.space2
+      }}
+    >
       <List className={listContainerCss}>
         {questions.map(q => (
           <li>
@@ -58,6 +54,13 @@ function QuestionWithRadioButtons({
           </li>
         ))}
       </List>
+      <ErrorMsgField
+        className={css`
+          bottom: -3em;
+        `}
+        htmlFor="questionnaire-forms"
+        name="age"
+      />
     </div>
   );
 }
@@ -69,6 +72,8 @@ const questions1 = [
 ];
 
 const wizardWrapperCss = css`
+  position: relative;
+  z-index: 1;
   max-width: 25em;
   padding: 0 ${spacing.space2};
   margin: 0 auto;
@@ -80,12 +85,12 @@ class Questionnaire extends Component {
 
     this.state = { width: 5, scrolled: false };
 
-    // this.scrollSubscription = fromEvent(window, "scroll").subscribe(
-    //   e =>
-    //     e.pageY > 0
-    //       ? this.setState({ scrolled: true })
-    //       : this.setState({ scrolled: false })
-    // );
+    this.scrollSubscription = fromEvent(window, "scroll").subscribe(
+      e =>
+        e.pageY > 0
+          ? this.setState({ scrolled: true })
+          : this.setState({ scrolled: false })
+    );
   }
 
   componentWillUnmount() {
@@ -111,6 +116,7 @@ class Questionnaire extends Component {
         <Container
           className={css`
             position: fixed;
+            z-index: 2;
             top: 0;
             width: 100%;
             height: 3em;
@@ -148,20 +154,21 @@ class Questionnaire extends Component {
             onSubmit={this.handleSubmit}
             setProgressBarWidth={this.setProgressBarWidth}
             validationSchema={Yup.object().shape({
-              age: Yup.string().required()
+              age: Yup.string().required("Please select one option")
             })}
+            idForFormEl="questionnaire-forms"
           >
             <Wizard.Page>
-              <fieldset style={{ marginTop: "200px" }}>
-                <legend>One of these please</legend>
+              <FieldSet
+                legend="Are you a United States resident?"
+                style={{ marginTop: "100px" }}
+              >
                 <Field
                   name="age"
-                  questionText="Are you a United States resident?"
                   component={QuestionWithRadioButtons}
                   questions={questions1}
                 />
-                <ErrorMsgField name="age" />
-              </fieldset>
+              </FieldSet>
             </Wizard.Page>
             {/* <Wizard.Page>
               <Field
