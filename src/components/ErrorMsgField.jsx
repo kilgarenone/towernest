@@ -3,13 +3,13 @@ import React from "react";
 import { Field } from "formik";
 import ErrorMsg from "./ErrorMsg";
 
-function ErrorMsgField({ name }) {
+function ErrorMsgField({ name, ...props }) {
   return (
     <Field
       name={name}
       render={({ form: { touched, errors } }) =>
         touched[name] && errors[name] ? (
-          <ErrorMsg>{errors[name]}</ErrorMsg>
+          <ErrorMsg {...props}>{errors[name]}</ErrorMsg>
         ) : null
       }
     />
