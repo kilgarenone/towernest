@@ -11,10 +11,11 @@ import ProgressBar from "../../components/ProgressBar";
 import RadioButton from "../../components/RadioButton";
 import Wizard from "../../components/WizardForm";
 import spacing from "../../styles/base/spacing";
+import { fontSize } from "../../styles/base/typography";
 
 const listContainerCss = css`
   & > li:not(:last-child) {
-    border-bottom: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e199;
   }
 `;
 
@@ -159,16 +160,22 @@ class Questionnaire extends Component {
             idForFormEl="questionnaire-forms"
           >
             <Wizard.Page>
-              <FieldSet
-                legend="Are you a United States resident?"
-                style={{ marginTop: "100px" }}
-              >
-                <Field
-                  name="age"
-                  component={QuestionWithRadioButtons}
-                  questions={questions1}
-                />
-              </FieldSet>
+              <div style={{ marginTop: "130px" }}>
+                <p style={{ color: "#aaa", fontSize: fontSize.text }}>
+                  You’re more likely to stick with an investment plan that fits
+                  your investment personality
+                </p>
+                <FieldSet
+                  legend="Are you a United States resident?"
+                  style={{ marginTop: "40px" }}
+                >
+                  <Field
+                    name="age"
+                    component={QuestionWithRadioButtons}
+                    questions={questions1}
+                  />
+                </FieldSet>
+              </div>
             </Wizard.Page>
             {/* <Wizard.Page>
               <Field
