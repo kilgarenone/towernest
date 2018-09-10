@@ -19,6 +19,7 @@ const spacing: Spacing = {
   space2: `${computeGoldenRatio(spacingFactor, 2)}em`, // 21
   space3: `${computeGoldenRatio(spacingFactor, 3)}em`, // 34
   space4: `${computeGoldenRatio(spacingFactor, 4)}em`, // 55
+  space4L: `${computeGoldenRatio(spacingFactor, 4.75)}em`, // 55
   space5: `${computeGoldenRatio(spacingFactor, 5)}em` // 89
 };
 
