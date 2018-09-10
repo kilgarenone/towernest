@@ -5,10 +5,9 @@ import { colors } from "../styles/base/colors";
 
 const ErrorMsg = styled("label")`
   position: absolute;
-  bottom: 0;
+  bottom: -${spacing.space0};
   left: 0;
   color: ${colors.error};
-  padding-top: ${spacing.space1};
   font-size: ${fontSize.subText};
 `;
 
