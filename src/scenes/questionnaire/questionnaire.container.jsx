@@ -12,11 +12,12 @@ import RadioButton from "../../components/RadioButton";
 import Wizard from "../../components/WizardForm";
 import spacing from "../../styles/base/spacing";
 import { fontSize } from "../../styles/base/typography";
+import riskProfileQuestions from "./riskProfileQuestions";
 
 const listContainerCss = css`
-  & > li:not(:last-child) {
+  /* & > li:not(:last-child) {
     border-bottom: 1px solid #e1e1e199;
-  }
+  } */
 `;
 
 const radioBtnCss = css`
@@ -26,7 +27,6 @@ const radioBtnCss = css`
 
 function QuestionWithRadioButtons({
   field: { name, value, onChange },
-  questionText,
   questions,
   ...props
 }) {
@@ -39,18 +39,17 @@ function QuestionWithRadioButtons({
       }}
     >
       <List className={listContainerCss}>
-        {questions.map(q => (
-          <li>
+        {questions.map(question => (
+          <li key={question.weight}>
             <RadioButton
               className={radioBtnCss}
-              key={`${name}_${q.value}`} // don't use array index as key! https://stackoverflow.com/a/43481841/73323
               handleChange={onChange}
               name={name}
-              value={q.value}
-              isChecked={q.value === value}
+              value={question.weight}
+              isChecked={question.weight === +value}
               {...props}
             >
-              {q.text}
+              {question.value}
             </RadioButton>
           </li>
         ))}
@@ -60,17 +59,11 @@ function QuestionWithRadioButtons({
           bottom: -3em;
         `}
         htmlFor="questionnaire-forms"
-        name="age"
+        name={name}
       />
     </div>
   );
 }
-
-const questions1 = [
-  { text: "haha", value: "damn", name: "haha" },
-  { text: "haha1", value: "damn2", name: "haha1" },
-  { text: "haha2", value: "damn3", name: "haha2" }
-];
 
 const wizardWrapperCss = css`
   position: relative;
@@ -159,48 +152,26 @@ class Questionnaire extends Component {
             })}
             idForFormEl="questionnaire-forms"
           >
-            <Wizard.Page>
-              <div style={{ marginTop: "130px" }}>
-                <p style={{ color: "#aaa", fontSize: fontSize.text }}>
-                  You’re more likely to stick with an investment plan that fits
-                  your investment personality
-                </p>
-                <FieldSet
-                  legend="Are you a United States resident?"
-                  style={{ marginTop: "40px" }}
-                >
-                  <Field
-                    name="age"
-                    component={QuestionWithRadioButtons}
-                    questions={questions1}
-                  />
-                </FieldSet>
-              </div>
-            </Wizard.Page>
-            {/* <Wizard.Page>
-              <Field
-                name="age"
-                questionText="Are you a United States resident?"
-                component={QuestionWithRadioButtons}
-                questions={questions1}
-              />
-            </Wizard.Page>
-            <Wizard.Page>
-              <Field
-                name="age"
-                questionText="Are you a United States resident?"
-                component={QuestionWithRadioButtons}
-                questions={questions1}
-              />
-            </Wizard.Page>
-            <Wizard.Page>
-              <Field
-                name="age"
-                questionText="Are you a United States resident?"
-                component={QuestionWithRadioButtons}
-                questions={questions1}
-              />
-            </Wizard.Page> */}
+            {riskProfileQuestions.map(question => (
+              <Wizard.Page key={question.key}>
+                <div style={{ marginTop: "130px" }}>
+                  {/* <p style={{ color: "#aaa", fontSize: fontSize.text }}>
+                    You’re more likely to stick with an investment plan that
+                    fits your investment personality
+                  </p> */}
+                  <FieldSet
+                    legend={question.description}
+                    style={{ marginTop: "40px" }}
+                  >
+                    <Field
+                      name="age"
+                      component={QuestionWithRadioButtons}
+                      questions={question.answers}
+                    />
+                  </FieldSet>
+                </div>
+              </Wizard.Page>
+            ))}
           </Wizard>
         </div>
       </div>
