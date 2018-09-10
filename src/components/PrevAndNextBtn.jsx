@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { css } from "react-emotion";
+import { css, cx } from "react-emotion";
 import Button from "./Button";
 import Container from "./Container";
 import spacing from "../styles/base/spacing";
@@ -23,6 +23,7 @@ const cont = css`
 
 function PrevAndNextBtn({
   showBackBtn = true,
+  className,
   handleBackBtnClick,
   backBtnText,
   continueBtnText,
@@ -31,7 +32,7 @@ function PrevAndNextBtn({
   isLastPage
 }: Props) {
   return (
-    <Container className={cont}>
+    <Container xAlign="center" className={cx(cont, className)}>
       <OptionallyDisplayed display={showBackBtn}>
         <Button
           type="button"
