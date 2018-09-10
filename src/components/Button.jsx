@@ -10,41 +10,48 @@ import { fontSize } from "../styles/base/typography";
 const scales = {
   small: `
     padding: 10px 15px;
-    font-size: 14px;
+    font-size: ${fontSize.subText};
   `,
   normal: `
-    padding: 0.5em 2em;
+    padding: 0.3em 1.5em;
     font-size: ${fontSize.text};
   `,
   big: `
-    padding: 15px 45px;
-    font-size: 18px;
+    padding: 0.5em 2em;
+    font-size: ${fontSize.text};
   `
 };
 
-function kind(outline) {
+function kind(outline, noBorder) {
   return (bg, color) => {
     const borderColor = outline ? bg : "transparent";
     const backgroundColor = outline ? "transparent" : bg;
 
     return `
-    background: ${backgroundColor};
-    border: 2px solid ${borderColor};
-    color: ${outline ? bg : color};
-    transition: padding .2s;
-  `;
+      background-color: ${backgroundColor};
+      border: ${noBorder ? "none" : `2px solid ${borderColor}`};
+      color: ${outline ? bg : color};
+      transition: padding .2s;
+
+      &:hover,
+      &:focus {
+        ${outline && "color: #424242"};
+        ${!outline && "background-color: #424242"};
+        border-color: #424242;
+      }
+    `;
   };
 }
 
-function kinds(outline) {
-  const get = kind(outline);
+function kinds(outline, noBorder) {
+  const setKind = kind(outline, noBorder);
 
   return {
-    primary: get("#1FB6FF", "white"),
-    secondary: get("#5352ED", "white"),
-    cancel: get("#FF4949", "white"),
-    dark: get("#273444", "white"),
-    gray: get("#8492A6", "white")
+    primary: setKind(colors.primary, "#fff"),
+    secondary: setKind(colors.secondaryOutline, "#fff"),
+    cancel: setKind("#FF4949", "#fff"),
+    dark: setKind("#273444", "#fff"),
+    gray: setKind("#8492A6", "#fff")
   };
 }
 
@@ -52,8 +59,8 @@ function getScale({ scale = "normal" }) {
   return scales[scale];
 }
 
-function getKind({ kind = "primary", outline = false }) {
-  return kinds(outline)[kind];
+function getKind({ kind = "primary", outline = false, noBorder = false }) {
+  return kinds(outline, noBorder)[kind];
 }
 
 const Button = styled("button")`
@@ -61,32 +68,16 @@ const Button = styled("button")`
   ${getScale};
   font-family: inherit;
   display: inline-block;
-  border-radius: 500px;
-  text-decoration: none;
-  font-weight: 700;
+  border-radius: 99999rem;
+  font-weight: 500;
   white-space: nowrap;
   cursor: pointer;
   text-align: center;
-  /* text-transform: uppercase; */
-  letter-spacing: 1px;
-  vertical-align: middle;
-  touch-action: manipulation;
-  background-image: none;
-  user-select: none;
-  box-shadow: 0 2px 3px 0 rgba(0,0,0,.075);
-  /* transition: background 250ms ease-in-out, transform 150ms ease,
-  padding 150ms ease; */
-  
-  /* &:hover,
-  &:focus {
-    background-color: ${props => (props.secondary ? "#fff" : "#0053ba")};
-  } */
-  
-  /* &:focus {
-    border-color: #0053ba;
-  } */
+  text-decoration: none;
+  appearance: none;
+
   &:active {
-    transform: scale(0.95);
+    transform: scale(0.98);
   }
 `;
 
