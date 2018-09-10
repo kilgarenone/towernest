@@ -73,7 +73,12 @@ class Wizard extends Component<Props> {
   };
 
   render() {
-    const { children, validationSchema, idForFormEl } = this.props;
+    const {
+      children,
+      validationSchema,
+      idForFormEl,
+      prevAndNextBtnClassName
+    } = this.props;
     const { page, values } = this.state;
     const activePage = React.Children.toArray(children)[page];
     const isLastPage = page === React.Children.count(children) - 1;
@@ -89,6 +94,7 @@ class Wizard extends Component<Props> {
           <form id={idForFormEl} onSubmit={handleSubmit}>
             {activePage}
             <PrevAndNextBtn
+              className={prevAndNextBtnClassName}
               showBackBtn={page > 0}
               handleBackBtnClick={this.previous}
               isLastPage={isLastPage}
