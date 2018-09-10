@@ -58,12 +58,9 @@ function RadioButton({
   ...props
 }: Props) {
   return (
-    <label
-      className={cx(cssRadioButton, className)}
-      htmlFor={`${name}-${value}`}
-    >
+    <label className={cx(cssRadioButton, className)} htmlFor={value}>
       <Input
-        id={`${name}-${value}`}
+        id={value}
         name={name}
         value={value}
         required={required}
