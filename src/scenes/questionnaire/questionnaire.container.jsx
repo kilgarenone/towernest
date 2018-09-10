@@ -59,7 +59,7 @@ function QuestionWithRadioButtons({
       </List>
       <ErrorMsgField
         className={css`
-          bottom: -1em;
+          left: ${spacing.space0};
         `}
         htmlFor="questionnaire-forms"
         name={name}
@@ -154,17 +154,20 @@ class Questionnaire extends Component {
               age: Yup.string().required("Please select one option")
             })}
             idForFormEl="questionnaire-forms"
+            prevAndNextBtnClassName={css`
+              top: -60px;
+            `}
           >
             {riskProfileQuestions.map(question => (
               <Wizard.Page key={question.key}>
-                <div style={{ marginTop: "130px" }}>
+                <div style={{ marginTop: spacing.space4 }}>
                   {/* <p style={{ color: "#aaa", fontSize: fontSize.text }}>
                     You’re more likely to stick with an investment plan that
                     fits your investment personality
                   </p> */}
                   <FieldSet
+                    style={{ minHeight: "20.5em" }}
                     legend={question.description}
-                    style={{ marginTop: "40px" }}
                   >
                     <Field
                       name="age"
