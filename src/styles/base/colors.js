@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 export const colors = {
-  primary: "#6085ff",
+  primary: "#212121",
+  secondaryOutline: "#757575",
   secondary: "#ef3737",
   textOnLightBg: "#5b5e6d",
   textOnDarkBg: "#fff",
