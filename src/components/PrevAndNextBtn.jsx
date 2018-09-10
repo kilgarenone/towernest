@@ -33,27 +33,39 @@ function PrevAndNextBtn({
 }: Props) {
   return (
     <Container xAlign="center" className={cx(cont, className)}>
-      <OptionallyDisplayed display={showBackBtn}>
-        <Button
-          type="button"
-          outline
-          disabled={isSubmitting}
-          secondary
-          onClick={handleBackBtnClick}
+      <Container>
+        <OptionallyDisplayed display={showBackBtn}>
+          <Button
+            className={css`
+              position: absolute;
+              left: -7em;
+              top: 0.25em;
+            `}
+            type="button"
+            outline
+            noBorder
+            disabled={isSubmitting}
+            kind="secondary"
+            onClick={handleBackBtnClick}
+          >
+            {backBtnText}
+          </Button>
+        </OptionallyDisplayed>
+        <ButtonWithSpinner
+          scale="big"
+          type="submit"
+          isSubmitting={isSubmitting}
         >
-          {backBtnText}
-        </Button>
-      </OptionallyDisplayed>
-      <ButtonWithSpinner type="submit" isSubmitting={isSubmitting}>
-        {isLastPage ? "Submit" : continueBtnText}
-      </ButtonWithSpinner>
+          {isLastPage ? "Submit" : continueBtnText}
+        </ButtonWithSpinner>
+      </Container>
     </Container>
   );
 }
 
 PrevAndNextBtn.defaultProps = {
   handleContinueBtnClick: null,
-  backBtnText: "Back",
+  backBtnText: "Go back",
   continueBtnText: "Continue"
 };
 
