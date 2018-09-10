@@ -4,8 +4,8 @@ import styled, { css } from "react-emotion";
 const List = styled("ul")`
   list-style: none;
   text-align: left;
-  border-radius: 8px;
-  border: 1px solid #e1e1e199;
+  /* border-radius: 8px; */
+  /* border: 1px solid #e1e1e199; */
   overflow: hidden;
 `;
 

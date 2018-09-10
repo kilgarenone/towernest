@@ -23,10 +23,19 @@ class Wizard extends Component<Props> {
       values
     }));
 
-  previous = () =>
+  previous = () => {
+    const { children, setProgressBarWidth } = this.props;
+    const { page } = this.state;
+    const childrenCount = React.Children.count(children);
+
+    if (setProgressBarWidth !== undefined) {
+      setProgressBarWidth(((page - 1) / (childrenCount - 1)) * 100);
+    }
+
     this.setState(state => ({
       page: Math.max(state.page - 1, 0)
     }));
+  };
 
   // validate = async values => {
   //   console.log(values);

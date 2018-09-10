@@ -15,9 +15,14 @@ import { fontSize } from "../../styles/base/typography";
 import riskProfileQuestions from "./riskProfileQuestions";
 
 const listContainerCss = css`
-  /* & > li:not(:last-child) {
-    border-bottom: 1px solid #e1e1e199;
-  } */
+  & > li {
+    border-radius: 12px;
+    color: #757575;
+    &:hover {
+      color: initial;
+      background-color: #fbfbfc;
+    }
+  }
 `;
 
 const radioBtnCss = css`
@@ -33,9 +38,7 @@ function QuestionWithRadioButtons({
   return (
     <div
       style={{
-        position: "relative",
-        paddingTop: spacing.space1,
-        marginBottom: spacing.space2
+        position: "relative"
       }}
     >
       <List className={listContainerCss}>
@@ -56,7 +59,7 @@ function QuestionWithRadioButtons({
       </List>
       <ErrorMsgField
         className={css`
-          bottom: -3em;
+          bottom: -1em;
         `}
         htmlFor="questionnaire-forms"
         name={name}

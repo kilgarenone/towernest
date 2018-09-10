@@ -17,29 +17,33 @@ type Props = {
 const cssRadioButton = css`
   font-size: ${fontSize.text};
   display: flex;
+  align-items: center;
 
-  input {
+  .input {
     display: none;
+  }
+
+  .text {
+    margin-left: ${spacing.space0};
   }
 
   &:hover {
     .radioDot {
-      opacity: 0.2;
+      opacity: 0.13;
     }
     .radioOutline {
-      opacity: 0.3;
+      opacity: 0.7;
     }
   }
-
   .radioDot {
-    opacity: 0.1;
+    opacity: 0.06;
   }
 
   .radioOutline {
-    opacity: 0.2;
+    opacity: 0.55;
   }
 
-  input:checked + svg {
+  .input:checked + svg {
     .radioDot,
     .radioOutline {
       opacity: 1;
@@ -60,6 +64,7 @@ function RadioButton({
   return (
     <label className={cx(cssRadioButton, className)} htmlFor={value}>
       <Input
+        className="input"
         id={value}
         name={name}
         value={value}
@@ -73,22 +78,22 @@ function RadioButton({
         className="svg"
         fill="currentColor"
         preserveAspectRatio="xMidYMid meet"
-        height="34"
-        width="34"
-        viewBox="0 0 34 34"
+        height="30"
+        width="30"
+        viewBox="0 0 30 30"
       >
         <circle
           className="radioOutline"
-          cx="17"
-          cy="17"
-          r="15"
+          cx="15"
+          cy="15"
+          r="13"
           fill="none"
-          stroke="black"
-          strokeWidth="3"
+          stroke="#000"
+          strokeWidth="2"
         />
-        <circle className="radioDot" cx="17" cy="17" r="8" fill="red" />
+        <circle className="radioDot" cx="15" cy="15" r="6" fill="#000" />
       </svg>
-      {children}
+      <span className="text">{children}</span>
     </label>
   );
 }
