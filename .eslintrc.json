@@ -17,7 +17,8 @@
       "error",
       { "allow": ["error", "group", "groupEnd", "warn"] }
     ],
-    "react/jsx-indent": "off"
+    "react/jsx-indent": "off",
+    "react/destructuring-assignment": "off"
   },
   "env": {
     "browser": true
