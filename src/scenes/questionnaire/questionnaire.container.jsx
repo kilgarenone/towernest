@@ -26,7 +26,7 @@ const listContainerCss = css`
 
     &.selected {
       color: initial;
-      background-color: #eeeeee;
+      background-color: #eee;
     }
   }
 `;
@@ -86,6 +86,14 @@ const wizardWrapperCss = css`
   padding: 0 ${spacing.space2};
   margin: 0 auto;
 `;
+
+const validator = fieldName => values => {
+  const errors = {};
+  if (!values[fieldName]) {
+    errors[fieldName] = "Please select one option";
+  }
+  return errors;
+};
 
 class Questionnaire extends Component {
   constructor() {
@@ -157,20 +165,22 @@ class Questionnaire extends Component {
           <Wizard
             initialValues={{
               age: "",
-              lastName: ""
+              riskCapacity: "",
+              timeHorizon: "",
+              riskWillingness: ""
             }}
             onSubmit={this.handleSubmit}
             setProgressBarWidth={this.setProgressBarWidth}
-            validationSchema={Yup.object().shape({
-              age: Yup.string().required("Please select one option")
-            })}
             idForFormEl="questionnaire-forms"
             prevAndNextBtnClassName={css`
               top: -60px;
             `}
           >
             {riskProfileQuestions.map(question => (
-              <Wizard.Page key={question.key}>
+              <Wizard.Page
+                validate={validator(question.name)}
+                key={question.name}
+              >
                 <div style={{ marginTop: spacing.space4 }}>
                   {/* <p style={{ color: "#aaa", fontSize: fontSize.text }}>
                     You’re more likely to stick with an investment plan that
@@ -181,9 +191,10 @@ class Questionnaire extends Component {
                     legend={question.description}
                   >
                     <Field
-                      name="age"
+                      name={question.name}
                       component={QuestionWithRadioButtons}
                       questions={question.answers}
+                      validate={required}
                     />
                   </FieldSet>
                 </div>
@@ -196,4 +207,5 @@ class Questionnaire extends Component {
   }
 }
 
+const required = value => (value ? undefined : "Required");
 export default Questionnaire;
