@@ -1,8 +1,23 @@
 /* eslint-disable import/prefer-default-export */
-function goFetch(endPoint, options = {}) {
-  const { REACT_APP_PROXY_BASE_URL } = process.env;
+function goFetch(
+  endPoint,
+  { disableOauth, ...options } = { disableOauth: false, options: {} }
+) {
+  const {
+    REACT_APP_PROXY_BASE_URL,
+    REACT_APP_SERVERLESS_OFFLINE_BASE_URL
+  } = process.env;
 
-  return fetch(REACT_APP_PROXY_BASE_URL + endPoint, options)
+  const opt = {
+    headers: !disableOauth
+      ? {
+          Authorization: `Bearer `
+        }
+      : {},
+    ...options
+  };
+
+  return fetch(REACT_APP_SERVERLESS_OFFLINE_BASE_URL + endPoint, opt)
     .then(checkStatus)
     .then(parseJSON)
     .catch(error => {
