@@ -75,6 +75,7 @@ const Button = styled("button")`
   text-align: center;
   text-decoration: none;
   appearance: none;
+  /* box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075); */
 
   &:active {
     transform: scale(0.98);
