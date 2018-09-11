@@ -1,6 +1,6 @@
 import { Field } from "formik";
 import React, { Component } from "react";
-import { css } from "react-emotion";
+import { css, cx } from "react-emotion";
 import { fromEvent } from "rxjs";
 import * as Yup from "yup";
 import Container from "../../components/Container";
@@ -15,12 +15,18 @@ import { fontSize } from "../../styles/base/typography";
 import riskProfileQuestions from "./riskProfileQuestions";
 
 const listContainerCss = css`
-  & > li {
+  .questionItem {
     border-radius: 12px;
     color: #757575;
+
     &:hover {
       color: initial;
       background-color: #fbfbfc;
+    }
+
+    &.selected {
+      color: initial;
+      background-color: #eeeeee;
     }
   }
 `;
@@ -43,7 +49,12 @@ function QuestionWithRadioButtons({
     >
       <List className={listContainerCss}>
         {questions.map(question => (
-          <li key={question.weight}>
+          <li
+            className={cx("questionItem", {
+              selected: question.weight === +value
+            })}
+            key={question.weight}
+          >
             <RadioButton
               className={radioBtnCss}
               handleChange={onChange}
