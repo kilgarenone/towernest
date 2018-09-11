@@ -1,7 +1,7 @@
 const riskProfileQuestions = [
   {
     description: "How old are you?",
-    key: "riskQuestion-1",
+    name: "age",
     answers: [
       {
         value: "under 20",
@@ -27,7 +27,7 @@ const riskProfileQuestions = [
   },
   {
     description: "What is your monthly income?",
-    key: "riskQuestion-2",
+    name: "riskCapacity",
     answers: [
       {
         value: "Less than 5,000",
@@ -45,7 +45,7 @@ const riskProfileQuestions = [
   },
   {
     description: "I plan to begin taking money from my investments in",
-    key: "riskQuestion-3",
+    name: "timeHorizon",
     answers: [
       {
         value: "Less than 3 years",
@@ -68,7 +68,7 @@ const riskProfileQuestions = [
   {
     description:
       "Imagine that within three months in 2008, your total stocks value fell to $7,000 from $10,000. What would you do?",
-    key: "riskQuestion-4",
+    name: "riskWillingness",
     answers: [
       {
         value: "Sell all of my shares",
