@@ -1,82 +1,15 @@
 import { Field } from "formik";
 import React, { Component } from "react";
-import { css, cx } from "react-emotion";
+import { css } from "react-emotion";
 import { fromEvent } from "rxjs";
 import Container from "../../components/Container";
-import ErrorMsgField from "../../components/ErrorMsgField";
 import FieldSet from "../../components/FieldSet";
-import { List } from "../../components/List";
 import ProgressBar from "../../components/ProgressBar";
-import RadioButton from "../../components/RadioButton";
 import Wizard from "../../components/WizardForm";
-import spacing from "../../styles/base/spacing";
-import riskProfileQuestions from "./riskProfileQuestions";
+import spacing from "../../styles/spacing";
 import goFetch from "../../utils/fetch";
-
-const listContainerCss = css`
-  .questionItem {
-    border-radius: 12px;
-    color: #757575;
-
-    &:hover {
-      color: initial;
-      background-color: #fbfbfc;
-    }
-
-    &.selected {
-      color: initial;
-      background-color: #eee;
-    }
-  }
-`;
-
-const radioBtnCss = css`
-  padding: ${spacing.space2};
-  cursor: pointer;
-`;
-
-function QuestionWithRadioButtons({
-  field: { name, value, onChange },
-  questions,
-  ...props
-}) {
-  return (
-    <div
-      style={{
-        position: "relative"
-      }}
-    >
-      <List className={listContainerCss}>
-        {questions.map(question => (
-          <li
-            className={cx("questionItem", {
-              selected: question.weight === +value
-            })}
-            key={question.weight}
-          >
-            <RadioButton
-              className={radioBtnCss}
-              handleChange={onChange}
-              name={name}
-              value={question.weight}
-              isChecked={question.weight === +value}
-              {...props}
-            >
-              {question.value}
-            </RadioButton>
-          </li>
-        ))}
-      </List>
-      <ErrorMsgField
-        className={css`
-          left: ${spacing.space0};
-        `}
-        htmlFor="questionnaire-forms"
-        name={name}
-      />
-    </div>
-  );
-}
+import riskProfileQuestions from "./riskProfileQuestions";
+import ListRadioBtns from "./shared/ListRadioBtns";
 
 const wizardWrapperCss = css`
   position: relative;
@@ -117,7 +50,7 @@ class Questionnaire extends Component {
     );
     console.log(totalRiskScore);
 
-    const data = await goFetch("/getAccesToken");
+    const data = await goFetch("/getAccessToken");
     console.log("damnson", data);
   };
 
@@ -131,7 +64,7 @@ class Questionnaire extends Component {
       "box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 2px 10px rgba(0, 0, 0, 0.06);";
 
     return (
-      <div>
+      <React.Fragment>
         <Container
           className={css`
             position: fixed;
@@ -195,7 +128,7 @@ class Questionnaire extends Component {
                   >
                     <Field
                       name={question.name}
-                      component={QuestionWithRadioButtons}
+                      component={ListRadioBtns}
                       questions={question.answers}
                     />
                   </FieldSet>
@@ -204,7 +137,7 @@ class Questionnaire extends Component {
             ))}
           </Wizard>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
