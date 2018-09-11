@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-export function goFetch(endPoint, options = {}) {
+function goFetch(endPoint, options = {}) {
   const { REACT_APP_PROXY_BASE_URL } = process.env;
 
   return fetch(REACT_APP_PROXY_BASE_URL + endPoint, options)
@@ -10,7 +10,7 @@ export function goFetch(endPoint, options = {}) {
     });
 }
 
-export function checkStatus(response) {
+function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
@@ -19,6 +19,8 @@ export function checkStatus(response) {
   throw error;
 }
 
-export function parseJSON(response) {
+function parseJSON(response) {
   return response.json();
 }
+
+export default goFetch;
