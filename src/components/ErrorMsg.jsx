@@ -1,7 +1,7 @@
 import styled from "react-emotion";
-import { fontSize } from "../styles/base/typography";
-import spacing from "../styles/base/spacing";
-import { colors } from "../styles/base/colors";
+import spacing from "../styles/spacing";
+import { colors } from "../styles/colors";
+import { fontSize } from "../styles/typography";
 
 const ErrorMsg = styled("label")`
   position: absolute;

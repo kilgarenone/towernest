@@ -1,5 +1,5 @@
 import styled from "react-emotion";
-import { fontSize } from "../styles/base/typography";
+import { fontSize } from "../styles/typography";
 
 const Input = styled("input")`
   background-color: #fff;

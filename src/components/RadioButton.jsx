@@ -1,9 +1,9 @@
 // @flow
 import * as React from "react";
 import { css, cx } from "react-emotion";
+import { fontSize } from "../styles/typography";
+import spacing from "../styles/spacing";
 import Input from "./Input";
-import spacing from "../styles/base/spacing";
-import { fontSize } from "../styles/base/typography";
 
 type Props = {
   name: string,

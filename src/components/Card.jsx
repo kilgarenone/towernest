@@ -1,6 +1,6 @@
 // @flow
 import styled from "react-emotion";
-import spacing from "../styles/base/spacing";
+import spacing from "../styles/spacing";
 
 const Card = styled("div")`
   display: flex;

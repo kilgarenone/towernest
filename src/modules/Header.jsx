@@ -1,8 +1,8 @@
 import React from "react";
 import { css } from "react-emotion";
-import NavBar from "./../../components/Navbar";
-import Container from "./../../components/Container";
-import spacing from "./../../styles/base/spacing";
+import NavBar from "../components/Navbar";
+import Container from "../components/Container";
+import spacing from "../styles/spacing";
 
 const Header = () => (
   <NavBar>

@@ -1,11 +1,11 @@
 // @flow
 import React from "react";
 import { css, cx } from "react-emotion";
+import spacing from "../styles/spacing";
 import Button from "./Button";
-import Container from "./Container";
-import spacing from "../styles/base/spacing";
-import OptionallyDisplayed from "./OptionallyDisplayed";
 import ButtonWithSpinner from "./ButtonWithSpinner";
+import Container from "./Container";
+import OptionallyDisplayed from "./OptionallyDisplayed";
 
 type Props = {
   showBackBtn: boolean,

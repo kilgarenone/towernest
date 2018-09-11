@@ -1,9 +1,6 @@
 // @flow
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import SignIn from "../scenes/SignIn/SignIn.container";
-import Container from "./Container";
-import spacing from "../styles/base/spacing";
 import Main from "../scenes/Main";
 import { getAccessTokenAction } from "../scenes/SignIn/SignIn.state";
 

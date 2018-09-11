@@ -1,8 +1,8 @@
 // @flow
 import * as React from "react";
 import styled from "react-emotion";
-import spacing from "../styles/base/spacing";
-import { colors } from "../styles/base/colors";
+import spacing from "../styles/spacing";
+import { colors } from "../styles/colors";
 
 // type Props = {
 //   children: React.Node

@@ -58,12 +58,12 @@ class Wizard extends Component<Props> {
     const childrenCount = React.Children.count(children);
     const isLastPage = page === childrenCount - 1;
 
-    if (setProgressBarWidth !== undefined) {
-      setProgressBarWidth(((page + 1) / (childrenCount - 1)) * 100);
-    }
-
     if (isLastPage) {
       return onSubmit(values);
+    }
+
+    if (setProgressBarWidth !== undefined) {
+      setProgressBarWidth(((page + 1) / (childrenCount - 1)) * 100);
     }
 
     this.next(values);

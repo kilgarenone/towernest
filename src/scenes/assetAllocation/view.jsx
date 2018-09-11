@@ -2,7 +2,7 @@
 // import styled from "react-emotion";
 // import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 // import Container from "./../../components/Container";
-// import spacing from "./../../styles/base/spacing";
+// import spacing from "./../../styles/spacing";
 
 // const allocationByRiskProfile = {
 //   2: [
