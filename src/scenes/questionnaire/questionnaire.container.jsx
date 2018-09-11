@@ -50,7 +50,10 @@ class Questionnaire extends Component {
     );
     console.log(totalRiskScore);
 
-    const data = await goFetch("/getAccessToken");
+    const data = await goFetch("/getRecommendedPortfolio", {
+      method: "POST",
+      body: JSON.stringify({ helloWorld: totalRiskScore })
+    });
     console.log("damnson", data);
   };
 
