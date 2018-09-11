@@ -37,21 +37,20 @@ class Wizard extends Component<Props> {
     }));
   };
 
-  // validate = async values => {
-  //   console.log(values);
-  //   const activePage = React.Children.toArray(this.props.children)[
-  //     this.state.page
-  //   ];
-  //   return activePage.props.validate ? activePage.props.validate(values) : {};
-  //   try {
-  //     if (!activePage.props.validationSchema) {
-  //       return {};
-  //     }
-  //     await activePage.props.validationSchema.validate(values);
-  //   } catch (err) {
-  //     console.log("err", err);
-  //   }
-  // };
+  validate = values => {
+    const activePage = React.Children.toArray(this.props.children)[
+      this.state.page
+    ];
+    return activePage.props.validate ? activePage.props.validate(values) : {};
+    // try {
+    //   if (!activePage.props.validationSchema) {
+    //     return {};
+    //   }
+    //   await activePage.props.validationSchema.validate(values);
+    // } catch (err) {
+    //   console.log("err", err);
+    // }
+  };
 
   handleSubmit = (values, bag) => {
     const { children, onSubmit, setProgressBarWidth } = this.props;
@@ -73,12 +72,7 @@ class Wizard extends Component<Props> {
   };
 
   render() {
-    const {
-      children,
-      validationSchema,
-      idForFormEl,
-      prevAndNextBtnClassName
-    } = this.props;
+    const { children, idForFormEl, prevAndNextBtnClassName } = this.props;
     const { page, values } = this.state;
     const activePage = React.Children.toArray(children)[page];
     const isLastPage = page === React.Children.count(children) - 1;
@@ -87,7 +81,7 @@ class Wizard extends Component<Props> {
       <Formik
         initialValues={values}
         enableReinitialize={false}
-        validationSchema={validationSchema}
+        validate={this.validate}
         onSubmit={this.handleSubmit}
       >
         {({ handleSubmit, isSubmitting }) => (
