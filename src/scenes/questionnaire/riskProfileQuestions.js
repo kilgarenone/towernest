@@ -44,6 +44,21 @@ const riskProfileQuestions = [
     ]
   },
   {
+    description:
+      "Do you have debts that lead you to live paycheck to paycheck?",
+    name: "netAsset",
+    answers: [
+      {
+        value: "Yes",
+        weight: 2
+      },
+      {
+        value: "No",
+        weight: 4
+      }
+    ]
+  },
+  {
     description: "I plan to begin taking money from my investments in",
     name: "timeHorizon",
     answers: [
