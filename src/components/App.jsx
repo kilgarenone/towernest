@@ -6,7 +6,7 @@ import { getAccessTokenAction } from "../scenes/SignIn/SignIn.state";
 
 class App extends Component<any, any> {
   componentDidMount() {
-    this.props.getAccessTokenAction();
+    // this.props.getAccessTokenAction();
   }
 
   handleSubmit = event => {
