@@ -37,7 +37,8 @@ export const getAccessToken = action$ => {
   const { REACT_APP_PROXY_BASE_URL } = process.env;
 
   const payload = {
-    url: `${REACT_APP_PROXY_BASE_URL}/getAccessToken`
+    url: `${REACT_APP_PROXY_BASE_URL}/getAccessToken`,
+    withCredentials: true // set this for Set-cookie to work
   };
 
   return action$.pipe(
