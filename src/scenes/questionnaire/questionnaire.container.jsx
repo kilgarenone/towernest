@@ -52,7 +52,7 @@ class Questionnaire extends Component {
 
     const data = await goFetch("/getRecommendedPortfolio", {
       method: "POST",
-      body: JSON.stringify({ helloWorld: totalRiskScore })
+      body: JSON.stringify({ totalRiskScore })
     });
     console.log("damnson", data);
   };
