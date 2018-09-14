@@ -16,25 +16,15 @@ type Props = {
 
 const cssRadioButton = css`
   font-size: ${fontSize.text};
-  display: flex;
-  align-items: center;
 
-  .input {
-    display: none;
+  .label {
+    cursor: pointer;
+    border-radius: 12px;
+    color: #757575;
+    display: flex;
+    align-items: center;
   }
 
-  .text {
-    margin-left: ${spacing.space0};
-  }
-
-  &:hover {
-    .radioDot {
-      opacity: 0.13;
-    }
-    .radioOutline {
-      opacity: 0.7;
-    }
-  }
   .radioDot {
     opacity: 0.06;
   }
@@ -43,10 +33,38 @@ const cssRadioButton = css`
     opacity: 0.55;
   }
 
-  .input:checked + svg {
-    .radioDot,
-    .radioOutline {
-      opacity: 1;
+  .text {
+    margin-left: ${spacing.space0};
+  }
+
+  .input {
+    opacity: 0;
+    position: absolute;
+
+    &:focus,
+    &:hover {
+      & + .label {
+        color: initial;
+        background-color: #fbfbfc;
+
+        .radioDot {
+          opacity: 0.13;
+        }
+
+        .radioOutline {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    &:checked + .label {
+      color: initial;
+      background-color: #eee;
+
+      .radioDot,
+      .radioOutline {
+        opacity: 1;
+      }
     }
   }
 `;
@@ -62,7 +80,7 @@ function RadioButton({
   ...props
 }: Props) {
   return (
-    <label className={cx(cssRadioButton, className)} htmlFor={value}>
+    <div className={cssRadioButton}>
       <Input
         className="input"
         id={value}
@@ -74,27 +92,29 @@ function RadioButton({
         onChange={handleChange}
         {...props}
       />
-      <svg
-        className="svg"
-        fill="currentColor"
-        preserveAspectRatio="xMidYMid meet"
-        height="30"
-        width="30"
-        viewBox="0 0 30 30"
-      >
-        <circle
-          className="radioOutline"
-          cx="15"
-          cy="15"
-          r="13"
-          fill="none"
-          stroke="#000"
-          strokeWidth="2"
-        />
-        <circle className="radioDot" cx="15" cy="15" r="6" fill="#000" />
-      </svg>
-      <span className="text">{children}</span>
-    </label>
+      <label className={cx("label", className)} htmlFor={value}>
+        <svg
+          className="svg"
+          fill="currentColor"
+          preserveAspectRatio="xMidYMid meet"
+          height="30"
+          width="30"
+          viewBox="0 0 30 30"
+        >
+          <circle
+            className="radioOutline"
+            cx="15"
+            cy="15"
+            r="13"
+            fill="none"
+            stroke="#000"
+            strokeWidth="2"
+          />
+          <circle className="radioDot" cx="15" cy="15" r="6" fill="#000" />
+        </svg>
+        <span className="text">{children}</span>
+      </label>
+    </div>
   );
 }
 

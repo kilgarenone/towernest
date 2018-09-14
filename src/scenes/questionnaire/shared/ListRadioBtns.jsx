@@ -1,30 +1,12 @@
 import React from "react";
-import { css, cx } from "react-emotion";
+import { css } from "react-emotion";
 import ErrorMsgField from "../../../components/ErrorMsgField";
 import { List } from "../../../components/List";
 import RadioButton from "../../../components/RadioButton";
 import spacing from "../../../styles/spacing";
 
-const listContainerCss = css`
-  .questionItem {
-    border-radius: 12px;
-    color: #757575;
-
-    &:hover {
-      color: initial;
-      background-color: #fbfbfc;
-    }
-
-    &.selected {
-      color: initial;
-      background-color: #eee;
-    }
-  }
-`;
-
 const radioBtnCss = css`
   padding: ${spacing.space2};
-  cursor: pointer;
 `;
 
 function ListRadioBtns({
@@ -38,14 +20,9 @@ function ListRadioBtns({
         position: "relative"
       }}
     >
-      <List className={listContainerCss}>
+      <List>
         {questions.map(question => (
-          <li
-            className={cx("questionItem", {
-              selected: question.weight === +value
-            })}
-            key={question.weight}
-          >
+          <li key={question.weight}>
             <RadioButton
               className={radioBtnCss}
               handleChange={onChange}
