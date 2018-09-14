@@ -82,7 +82,7 @@ const riskProfileQuestions = [
   },
   {
     description:
-      "Imagine that within three months in 2008, your total stocks value fell to $7,000 from $10,000. What would you do?",
+      "Imagine that within three months in 2008, your total stocks value fell from $10,000 to $7,000. What would you do?",
     name: "riskWillingness",
     answers: [
       {
