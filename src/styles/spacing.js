@@ -8,7 +8,7 @@ type Spacing = {
   space5: string
 };
 function computeGoldenRatio(spacingFactor, exp) {
-  return Math.round((spacingFactor * 1.618 ** exp) / 16);
+  return Math.floor(((spacingFactor * 1.618 ** exp) / 16) * 100) / 100;
 }
 
 const spacingFactor = 8;
