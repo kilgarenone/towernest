@@ -2,13 +2,13 @@
 
 // Ratio: 1.333
 export const fontSize = {
-  headingXL: "3.157rem",
-  headingL: "2.369rem",
-  heading: "1.777rem",
-  subHeading: "1.333rem",
-  textL: "1.175rem",
-  text: "1rem",
-  subText: "0.75rem"
+  headingXL: "3.157em",
+  headingL: "2.369em",
+  heading: "1.777em",
+  subHeading: "1.333em",
+  textL: "1.175em",
+  text: "1em",
+  subText: "0.75em"
 };
 
 export const fontWeight = {
