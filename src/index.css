@@ -8,7 +8,9 @@ body,
 html {
   font-family: 'Inter UI', 'Helvetica Neue', HelveticaNeue, Helvetica, Arial,
     sans-serif;
-  font-size: 1.1em;
+  font-size: 103%;
+  font-style: normal;
+  font-weight: 400;
   -webkit-text-size-adjust: 100%;
   /* Font varient */
   font-variant-ligatures: none;
@@ -16,12 +18,16 @@ html {
   /* Smoothing */
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: 'liga' on;
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
   /* text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px; */
   /* height: 100%; */
   margin: 0;
   padding: 0;
+  line-height: 1.4;
+  word-wrap: break-word;
+  color: rgba(0, 0, 0, 0.84);
 }
 
 @font-face {
@@ -52,11 +58,6 @@ html {
   src: local('Inter UI'),
     url('./assets/fonts/Inter-UI-Bold.woff2') format('woff2'),
     url('./assets/fonts/Inter-UI-Bold.woff') format('woff');
-}
-
-body {
-  line-height: 1.54;
-  word-wrap: break-word;
 }
 
 h1,
