@@ -5,21 +5,13 @@ import Main from "../scenes/Main";
 import { getAccessTokenAction } from "../scenes/SignIn/SignIn.state";
 
 class App extends Component<any, any> {
-  componentDidMount() {
-    this.props.getAccessTokenAction();
-  }
-
   handleSubmit = event => {
     event.preventDefault();
     this.props.getAccessTokenAction();
   };
 
   render() {
-    return (
-      <div>
-        <Main />
-      </div>
-    );
+    return <Main />;
   }
 }
 
