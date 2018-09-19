@@ -8,7 +8,7 @@ import ProgressBar from "../../components/ProgressBar";
 import Wizard from "../../components/WizardForm";
 import spacing from "../../styles/spacing";
 import goFetch from "../../utils/fetch";
-import riskProfileQuestions from "./riskProfileQuestions";
+import riskProfileQuestions from "./shared/riskProfileQuestions";
 import ListRadioBtns from "./shared/ListRadioBtns";
 
 const wizardWrapperCss = css`
@@ -48,13 +48,17 @@ class Questionnaire extends Component {
       (accumulator, currentVal) => +accumulator + +currentVal,
       0
     );
-    console.log(totalRiskScore);
 
-    const data = await goFetch("/getRecommendedPortfolio", {
-      method: "POST",
-      body: JSON.stringify({ totalRiskScore })
-    });
-    console.log("damnson", data);
+    try {
+      const data = await goFetch("/getRecommendedPortfolio", {
+        method: "POST",
+        body: JSON.stringify({ totalRiskScore, age: surveyResults.age })
+      });
+
+      this.props.history.push({ pathname: "/plan", state: data });
+    } catch (error) {
+      console.error("Error in /getRecommendedPortfolio", error);
+    }
   };
 
   setProgressBarWidth = stepNum => {
@@ -104,7 +108,6 @@ class Questionnaire extends Component {
             initialValues={{
               age: "",
               riskCapacity: "",
-              netAsset: "",
               timeHorizon: "",
               riskWillingness: ""
             }}
@@ -126,7 +129,7 @@ class Questionnaire extends Component {
                     fits your investment personality
                   </p> */}
                   <FieldSet
-                    style={{ minHeight: "20.5em" }}
+                    style={{ minHeight: "27.5em" }}
                     legend={question.description}
                   >
                     <Field
