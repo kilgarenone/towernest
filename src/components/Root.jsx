@@ -1,28 +1,38 @@
-import React from "react";
-import { Provider } from "react-redux";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SimpleHeader from "../modules/SimpleHeader";
-import AssetAllocation from "../scenes/assetAllocation/view";
-import App from "./App";
-import EnsureLoggedInContainer from "./EnsureLoggedIn.container";
-import SignIn from "../scenes/SignIn/SignIn.container";
+import React, { Component } from "react";
+import { Provider, connect } from "react-redux";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import PortfolioReview from "../scenes/PortfolioPreview/PortfolioReview.container";
 import Questionnaire from "../scenes/Questionnaire/Questionnaire.container";
+import { getAccessTokenAction } from "../scenes/SignIn/SignIn.state";
 
-const Root = ({ store }) => (
-  <Provider store={store}>
-    <Router>
-      <div>
-        {/* <SimpleHeader /> */}
-        <Route exact path="/login" component={SignIn} />
-        <Route exact path="/" component={App} />
-        {/* <EnsureLoggedInContainer>
-          <Switch>
-            <Route exact path="/" component={App} />
-          </Switch>
-        </EnsureLoggedInContainer> */}
-      </div>
-    </Router>
-  </Provider>
-);
+class Root extends Component {
+  componentDidMount() {
+    this.props.getAccessTokenAction();
+  }
 
-export default Root;
+  render() {
+    return (
+      <Provider store={this.props.store}>
+        <Router>
+          <div>
+            {/* <SimpleHeader /> */}
+            <Route exact path="/plan" component={PortfolioReview} />
+            <Route exact path="/questionnaire" component={Questionnaire} />
+            {/* <Route exact path="/login" component={SignIn} /> */}
+            {/* <Route exact path="/" component={App} /> */}
+            {/* <EnsureLoggedInContainer>
+            <Switch>
+              <Route exact path="/" component={App} />
+            </Switch>
+          </EnsureLoggedInContainer> */}
+          </div>
+        </Router>
+      </Provider>
+    );
+  }
+}
+
+export default connect(
+  null,
+  { getAccessTokenAction }
+)(Root);
