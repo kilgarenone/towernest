@@ -3,6 +3,7 @@ import styled from "react-emotion";
 import { fontSize } from "../styles/typography";
 import { colors } from "../styles/colors";
 
+// TODO: Improve button onFocus style
 // type Props = {
 //   secondary?: boolean,
 //   large?: boolean
