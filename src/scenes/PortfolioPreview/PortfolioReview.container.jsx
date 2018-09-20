@@ -12,15 +12,16 @@ function buildBarCss(holding, index) {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 0;
+    overflow-y: hidden;
     opacity: 0;
+    height: 0;
     /* transform-origin: center top; */
-    transition: height 0.3s ease-out ${index - (index - 0.5)}s,
-      opacity 0.3s ease;
+    transition: height 0.3s ease-out ${Math.max(0, index - (index - 0.6))}s,
+      opacity 1s ease-in;
     background-color: ${BAR_COLORS[index]};
 
     &.animate {
-      height: ${holding.weight * 2.5}%;
+      height: ${holding.weight * 2.25}%;
       opacity: 1;
     }
   `;
@@ -31,7 +32,9 @@ class PortfolioReview extends Component {
   state = { animateBar: false };
 
   componentDidMount() {
-    setTimeout(() => this.setState({ animateBar: true }), 0);
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => this.setState({ animateBar: true }))
+    );
   }
 
   render() {
@@ -39,13 +42,15 @@ class PortfolioReview extends Component {
     const data = this.props.location.state;
 
     return (
-      <div style={{ paddingTop: "50px" }}>
+      <div>
         {/* <Heading tag="h3">Your Portfolio</Heading> */}
         <Container
           isColumn
           xAlign="center"
           className={css`
-            margin-bottom: ${spacing.space4};
+            background-color: #f5f5f5;
+            padding: ${spacing.space3} 0;
+            margin-bottom: ${spacing.space3};
           `}
         >
           <div style={{ maxWidth: "23em", paddingBottom: spacing.space1 }}>
@@ -60,13 +65,13 @@ class PortfolioReview extends Component {
             `}
           >
             <div>{data.portfolio.name}</div>
-            <AssistText
+            {/* <AssistText
               className={css`
                 align-self: flex-end;
               `}
             >
               Learn more
-            </AssistText>
+            </AssistText> */}
           </Container>
           <Button
             className={css`
@@ -84,15 +89,19 @@ class PortfolioReview extends Component {
           `}
         >
           {data.holdings.map((holding, i) => (
-            <Container
-              isColumn
-              xAlign="center"
+            <div
               className={css`
                 flex-basis: 20%;
               `}
             >
-              <div style={{ fontWeight: 500 }}>{holding.assetClass}</div>
-              <div>{`${holding.weight}%`}</div>
+              <div
+                className={css`
+                  text-align: center;
+                `}
+              >
+                <div style={{ fontWeight: 500 }}>{holding.assetClass}</div>
+                <div>{`${holding.weight}%`}</div>
+              </div>
               <div
                 style={{ position: "relative", height: "100%", width: "100%" }}
               >
@@ -105,9 +114,12 @@ class PortfolioReview extends Component {
                   )}
                 />
               </div>
-            </Container>
+            </div>
           ))}
         </Container>
+        <Button style={{ float: "right" }} outline>
+          About this Portfolio
+        </Button>
       </div>
     );
   }
