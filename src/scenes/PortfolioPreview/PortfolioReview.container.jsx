@@ -5,6 +5,7 @@ import Container from "../../components/Container";
 import Button from "../../components/Button";
 import { fontSize } from "../../styles/typography";
 import spacing from "../../styles/spacing";
+import AssistText from "../../components/AssistText";
 
 class PortfolioReview extends Component {
   state = {};
@@ -16,19 +17,27 @@ class PortfolioReview extends Component {
     return (
       <div style={{ paddingTop: "50px" }}>
         {/* <Heading tag="h3">Your Portfolio</Heading> */}
-        <Container isColumn xAlign="center">
+        <Container
+          isColumn
+          xAlign="center"
+          className={css`
+            margin-bottom: ${spacing.space4};
+          `}
+        >
           <div style={{ maxWidth: "23em", paddingBottom: spacing.space1 }}>
             Based on your answers, we recommend the
           </div>
-          <div
-            style={{
-              fontWeight: 700,
-              fontSize: fontSize.subHeading,
-              paddingBottom: spacing.space3
-            }}
+          <Container
+            isColumn
+            className={css`
+              font-weight: 700;
+              font-size: ${fontSize.subHeading};
+              padding-bottom: ${spacing.space3};
+            `}
           >
-            {data.portfolio.name}
-          </div>
+            <div>{data.portfolio.name}</div>
+            <AssistText>Learn more</AssistText>
+          </Container>
           <Button>Open My Account</Button>
         </Container>
         <Container
@@ -38,10 +47,18 @@ class PortfolioReview extends Component {
           `}
         >
           {data.holdings.map(holding => (
-            <div style={{ flexBasis: "20%" }}>
-              <div>{holding.assetClass}</div>
+            <Container
+              isColumn
+              xAlign="center"
+              className={css`
+                flex-basis: 20%;
+              `}
+            >
+              <div style={{ fontWeight: 500 }}>{holding.assetClass}</div>
               <div>{`${holding.weight}%`}</div>
-              <div style={{ position: "relative", height: "100%" }}>
+              <div
+                style={{ position: "relative", height: "100%", width: "100%" }}
+              >
                 <div
                   style={{
                     position: "absolute",
@@ -52,9 +69,19 @@ class PortfolioReview extends Component {
                   }}
                 />
               </div>
-            </div>
+            </Container>
           ))}
         </Container>
+        <AssistText
+          className={css`
+            float: right;
+            margin-right: 20px;
+            color: initial;
+          `}
+          hasUnderline
+        >
+          Question? Chat with us
+        </AssistText>
       </div>
     );
   }
