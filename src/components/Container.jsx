@@ -7,7 +7,7 @@ const Container = ({
   className = null,
   ...props
 }) => (
-  <Tag className={cx("container", css(buildWrapperStyles(props)), className)}>
+  <Tag className={cx(css(buildWrapperStyles(props)), className)}>
     {children}
   </Tag>
 );
@@ -30,9 +30,9 @@ function buildWrapperStyles(props) {
     display: "flex",
     "flex-direction": flexDirection, // default is 'row'
     "align-items": alignItems, // default is 'stretch'
-    "justify-content": justifyContent, // default is 'flex-start'
-    padding: props.padding,
-    margin: props.margin
+    "justify-content": justifyContent // default is 'flex-start'
+    // padding: props.padding,
+    // margin: props.margin
   };
 }
 

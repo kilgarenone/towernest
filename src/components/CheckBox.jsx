@@ -36,9 +36,10 @@ const cssCheckBox = css`
   }
 
   &:hover {
-    .container {
+    /* .container {
+      // TODO: Fix the removed 'container' hook classname
       border-color: #777;
-    }
+    } */
     .icon {
       opacity: 0.14;
     }
