@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { css } from "react-emotion";
+import { css, cx } from "react-emotion";
 import Heading from "../../components/Heading";
 import Container from "../../components/Container";
 import Button from "../../components/Button";
@@ -7,9 +7,32 @@ import { fontSize } from "../../styles/typography";
 import spacing from "../../styles/spacing";
 import AssistText from "../../components/AssistText";
 
+function buildBarCss(holding, index) {
+  return css`
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 0;
+    opacity: 0;
+    /* transform-origin: center top; */
+    transition: height 0.3s ease-out ${index - (index - 0.5)}s,
+      opacity 0.3s ease;
+    background-color: ${BAR_COLORS[index]};
+
+    &.animate {
+      height: ${holding.weight * 2.5}%;
+      opacity: 1;
+    }
+  `;
+}
+
 const BAR_COLORS = ["#711d45", "#78e0f0", "#f1cf89", "#ee995d"];
 class PortfolioReview extends Component {
-  state = {};
+  state = { animateBar: false };
+
+  componentDidMount() {
+    setTimeout(() => this.setState({ animateBar: true }), 0);
+  }
 
   render() {
     console.log("helo", this.props.location.state);
@@ -74,13 +97,12 @@ class PortfolioReview extends Component {
                 style={{ position: "relative", height: "100%", width: "100%" }}
               >
                 <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    width: "100%",
-                    height: `${holding.weight * 2.5}%`,
-                    backgroundColor: BAR_COLORS[i]
-                  }}
+                  className={cx(
+                    css`
+                      ${buildBarCss(holding, i)};
+                    `,
+                    { animate: this.state.animateBar }
+                  )}
                 />
               </div>
             </Container>
