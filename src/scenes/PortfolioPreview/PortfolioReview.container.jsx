@@ -7,6 +7,7 @@ import { fontSize } from "../../styles/typography";
 import spacing from "../../styles/spacing";
 import AssistText from "../../components/AssistText";
 
+const BAR_COLORS = ["#711d45", "#78e0f0", "#f1cf89", "#ee995d"];
 class PortfolioReview extends Component {
   state = {};
 
@@ -36,9 +37,22 @@ class PortfolioReview extends Component {
             `}
           >
             <div>{data.portfolio.name}</div>
-            <AssistText>Learn more</AssistText>
+            <AssistText
+              className={css`
+                align-self: flex-end;
+              `}
+            >
+              Learn more
+            </AssistText>
           </Container>
-          <Button>Open My Account</Button>
+          <Button
+            className={css`
+              margin-bottom: ${spacing.space1};
+            `}
+          >
+            Open My Account
+          </Button>
+          <AssistText>Question? Chat with us</AssistText>
         </Container>
         <Container
           xAlign="space-around"
@@ -46,7 +60,7 @@ class PortfolioReview extends Component {
             min-height: 400px;
           `}
         >
-          {data.holdings.map(holding => (
+          {data.holdings.map((holding, i) => (
             <Container
               isColumn
               xAlign="center"
@@ -65,23 +79,13 @@ class PortfolioReview extends Component {
                     top: 0,
                     width: "100%",
                     height: `${holding.weight * 2.5}%`,
-                    backgroundColor: "red"
+                    backgroundColor: BAR_COLORS[i]
                   }}
                 />
               </div>
             </Container>
           ))}
         </Container>
-        <AssistText
-          className={css`
-            float: right;
-            margin-right: 20px;
-            color: initial;
-          `}
-          hasUnderline
-        >
-          Question? Chat with us
-        </AssistText>
       </div>
     );
   }
