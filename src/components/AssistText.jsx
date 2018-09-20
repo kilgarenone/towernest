@@ -5,7 +5,6 @@ import { fontSize } from "../styles/typography";
 const defaultCss = css`
   font-size: ${fontSize.subText};
   font-weight: 500;
-  align-self: flex-end;
   color: rgba(0, 0, 0, 0.44);
   cursor: pointer;
 
