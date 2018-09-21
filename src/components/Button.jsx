@@ -34,11 +34,19 @@ function kind(outline, noBorder) {
       color: ${outline ? bg : color};
       transition: padding .2s;
 
-      &:hover,
-      &:focus {
-        ${outline && "color: #424242"};
+      &:hover {
+        ${outline && `color: #fff; background-color: ${bg};`};
         ${!outline && "background-color: #424242"};
         border-color: #424242;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 3pt #6e94ff;
+      }
+
+      &:active {
+        transform: scale(0.98);
+        box-shadow: none;
       }
     `;
   };
@@ -77,10 +85,6 @@ const Button = styled("button")`
   text-decoration: none;
   appearance: none;
   /* box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075); */
-
-  &:active {
-    transform: scale(0.98);
-  }
 `;
 
 export default Button;
