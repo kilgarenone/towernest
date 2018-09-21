@@ -1,14 +1,17 @@
 import React from "react";
-import { css } from "react-emotion";
+import { css, cx } from "react-emotion";
 import Icon from "./Icon";
 import Button from "./Button";
 
-function ButtonWithIcon({ children, icon, ...props }) {
+function ButtonWithIcon({ children, className, icon, ...props }) {
   return (
     <Button
-      className={css`
-        padding-left: 0.7em;
-      `}
+      className={cx(
+        css`
+          padding-left: 0.7em;
+        `,
+        className
+      )}
       {...props}
     >
       <Icon
