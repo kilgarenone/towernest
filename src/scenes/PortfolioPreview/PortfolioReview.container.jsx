@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { css, cx } from "react-emotion";
+import { relative } from "path";
 import Heading from "../../components/Heading";
 import Container from "../../components/Container";
 import Button from "../../components/Button";
@@ -43,36 +44,27 @@ class PortfolioReview extends Component {
 
     return (
       <div>
-        {/* <Heading tag="h3">Your Portfolio</Heading> */}
         <Container
           isColumn
           xAlign="center"
           className={css`
             background-color: #f5f5f5;
             padding: ${spacing.space3} 0;
-            margin-bottom: ${spacing.space3};
+            margin-bottom: ${spacing.space2};
           `}
         >
           <div style={{ maxWidth: "23em", paddingBottom: spacing.space1 }}>
             Based on your answers, we recommend the
           </div>
-          <Container
-            isColumn
+          <div
             className={css`
               font-weight: 700;
               font-size: ${fontSize.subHeading};
               padding-bottom: ${spacing.space3};
             `}
           >
-            <div>{data.portfolio.name}</div>
-            {/* <AssistText
-              className={css`
-                align-self: flex-end;
-              `}
-            >
-              Learn more
-            </AssistText> */}
-          </Container>
+            {data.portfolio.name}
+          </div>
           <Button
             className={css`
               margin-bottom: ${spacing.space1};
@@ -82,6 +74,26 @@ class PortfolioReview extends Component {
           </Button>
           <AssistText>Question? Chat with us</AssistText>
         </Container>
+        <div
+          className={css`
+            position: relative;
+            left: 50px;
+            margin-bottom: ${spacing.space3};
+
+            &::before {
+              content: "";
+              border-left: 1px solid rgba(0, 0, 0, 0.68);
+              position: absolute;
+              top: -133px;
+              bottom: -6px;
+              left: -10px;
+            }
+          `}
+        >
+          <Heading tag="h4">Allocation</Heading>
+
+          {/* <Heading style={{ fontWeight: 500 }}>Allocation</div> */}
+        </div>
         <Container
           xAlign="space-around"
           className={css`
@@ -99,7 +111,7 @@ class PortfolioReview extends Component {
                   text-align: center;
                 `}
               >
-                <div style={{ fontWeight: 500 }}>{holding.assetClass}</div>
+                <div style={{ fontWeight: 400 }}>{holding.assetClass}</div>
                 <div>{`${holding.weight}%`}</div>
               </div>
               <div
