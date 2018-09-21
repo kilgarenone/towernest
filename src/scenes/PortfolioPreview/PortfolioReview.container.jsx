@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { css, cx } from "react-emotion";
-import { relative } from "path";
 import Heading from "../../components/Heading";
 import Container from "../../components/Container";
 import Button from "../../components/Button";
 import { fontSize } from "../../styles/typography";
 import spacing from "../../styles/spacing";
 import AssistText from "../../components/AssistText";
+import ButtonWithIcon from "../../components/ButtonWithIcon";
+import ICONS from "../../styles/icons";
+import Logo from "../../components/Logo";
 
 function buildBarCss(holding, index) {
   return css`
@@ -16,7 +18,6 @@ function buildBarCss(holding, index) {
     overflow-y: hidden;
     opacity: 0;
     height: 0;
-    /* transform-origin: center top; */
     transition: height 0.3s ease-out ${Math.max(0, index - (index - 0.6))}s,
       opacity 1s ease-in;
     background-color: ${BAR_COLORS[index]};
@@ -43,7 +44,10 @@ class PortfolioReview extends Component {
     const data = this.props.location.state;
 
     return (
-      <div>
+      <div style={{ padding: spacing.space2 }}>
+        <div style={{ backgroundColor: "#fff" }}>
+          <Logo />
+        </div>
         <Container
           isColumn
           xAlign="center"
@@ -77,12 +81,12 @@ class PortfolioReview extends Component {
         <div
           className={css`
             position: relative;
-            left: 50px;
+            margin-left: ${spacing.space4};
             margin-bottom: ${spacing.space3};
 
             &::before {
               content: "";
-              border-left: 1px solid rgba(0, 0, 0, 0.68);
+              border-left: 1px solid rgba(0, 0, 0, 0.4);
               position: absolute;
               top: -133px;
               bottom: -6px;
@@ -129,9 +133,9 @@ class PortfolioReview extends Component {
             </div>
           ))}
         </Container>
-        <Button style={{ float: "right" }} outline>
-          About this Portfolio
-        </Button>
+        <ButtonWithIcon icon={ICONS.HELP} outline>
+          Learn more
+        </ButtonWithIcon>
       </div>
     );
   }
