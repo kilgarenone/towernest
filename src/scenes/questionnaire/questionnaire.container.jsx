@@ -10,6 +10,7 @@ import spacing from "../../styles/spacing";
 import goFetch from "../../utils/fetch";
 import riskProfileQuestions from "./shared/riskProfileQuestions";
 import ListRadioBtns from "./shared/ListRadioBtns";
+import Logo from "../../components/Logo";
 
 const wizardWrapperCss = css`
   position: relative;
@@ -86,16 +87,7 @@ class Questionnaire extends Component {
           `}
           yAlign="center"
         >
-          <a
-            href="http://google.com"
-            className={css`
-              font-weight: 700;
-              font-size: 27px;
-              color: black;
-            `}
-          >
-            duller
-          </a>
+          <Logo />
           <ProgressBar
             className={css`
               margin-left: ${spacing.space1};
