@@ -86,17 +86,15 @@ class PortfolioReview extends Component {
 
             &::before {
               content: "";
-              border-left: 1px solid rgba(0, 0, 0, 0.4);
+              border-left: 1px solid rgba(0, 0, 0, 0.5);
               position: absolute;
               top: -133px;
               bottom: -6px;
-              left: -10px;
+              left: -15px;
             }
           `}
         >
           <Heading tag="h4">Allocation</Heading>
-
-          {/* <Heading style={{ fontWeight: 500 }}>Allocation</div> */}
         </div>
         <Container
           xAlign="space-around"
@@ -133,7 +131,15 @@ class PortfolioReview extends Component {
             </div>
           ))}
         </Container>
-        <ButtonWithIcon icon={ICONS.HELP} outline>
+        <ButtonWithIcon
+          className={css`
+            position: relative;
+            top: -2.5em;
+            float: right;
+          `}
+          icon={ICONS.HELP}
+          outline
+        >
           Learn more
         </ButtonWithIcon>
       </div>
