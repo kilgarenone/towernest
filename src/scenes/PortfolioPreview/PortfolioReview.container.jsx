@@ -45,7 +45,7 @@ class PortfolioReview extends Component {
 
     return (
       <div style={{ padding: spacing.space2 }}>
-        <div style={{ backgroundColor: "#fff" }}>
+        <div>
           <Logo />
         </div>
         <Container
@@ -99,8 +99,8 @@ class PortfolioReview extends Component {
         <Container
           xAlign="space-around"
           className={css`
-            min-height: 400px;
-            max-height: 400px;
+            min-height: 17em;
+            max-height: 17em;
           `}
         >
           {data.holdings.map((holding, i) => (
@@ -122,12 +122,10 @@ class PortfolioReview extends Component {
                 style={{ position: "relative", height: "100%", width: "100%" }}
               >
                 <div
-                  className={cx(
-                    css`
-                      ${buildBarCss(holding, i)};
-                    `,
-                    { animate: this.state.animateBar }
-                  )}
+                  className={css`
+                    ${buildBarCss(holding, i)};
+                    ${this.state.animateBar && "animate"};
+                  `}
                 />
               </div>
             </div>
