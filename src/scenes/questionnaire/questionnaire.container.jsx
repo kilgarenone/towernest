@@ -51,12 +51,12 @@ class Questionnaire extends Component {
     );
 
     try {
-      const data = await goFetch("/getRecommendedPortfolio", {
+      const response = await goFetch("/getRecommendedPortfolio", {
         method: "POST",
         body: JSON.stringify({ totalRiskScore, age: surveyResults.age })
       });
 
-      this.props.history.push({ pathname: "/plan", state: data });
+      this.props.navigate("/plan", { state: response });
     } catch (error) {
       console.error("Error in /getRecommendedPortfolio", error);
     }
