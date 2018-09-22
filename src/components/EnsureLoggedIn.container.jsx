@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect, withRouter } from "react-router-dom";
+import { Redirect } from "@reach/router";
 import { connect } from "react-redux";
 
 class EnsureLoggedInContainer extends Component {
