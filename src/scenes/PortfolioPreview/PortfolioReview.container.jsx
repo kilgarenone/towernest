@@ -40,7 +40,7 @@ class PortfolioReview extends Component {
   }
 
   render() {
-    console.log("helo", this.props.location.state);
+    console.log(this.props.location.state);
     const data = this.props.location.state;
 
     return (
@@ -88,7 +88,7 @@ class PortfolioReview extends Component {
               content: "";
               border-left: 1px solid rgba(0, 0, 0, 0.5);
               position: absolute;
-              top: -133px;
+              top: -190px;
               bottom: 0;
               left: -15px;
             }
@@ -108,6 +108,7 @@ class PortfolioReview extends Component {
               className={css`
                 flex-basis: 20%;
               `}
+              key={holding.ticker}
             >
               <div
                 className={css`
