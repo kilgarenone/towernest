@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reach/router": "^1.2.0",
     "date-fns": "^1.29.0",
     "emotion": "^9.1.3",
     "flow-bin": "^0.79.1",
@@ -10,9 +11,7 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-emotion": "^9.1.3",
-    "react-minimal-pie-chart": "^3.0.2",
     "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.5",
     "redux": "^4.0.0",
     "redux-observable": "^1.0.0",
@@ -29,7 +28,8 @@
     "flow": "flow",
     "dummy-start": "concurrently -k -n \"app, jsonServer\" \"npm start\" \"npm run json-server\"",
     "json-server": "node scripts/jsonServer.js",
-    "precommit": "pretty-quick --staged"
+    "precommit": "pretty-quick --staged",
+    "package-refresh": "rm -rf node_modules && rm -rf package-lock.json && npm i"
   },
   "proxy": "http://localhost:3001",
   "devDependencies": {
