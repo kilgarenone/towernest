@@ -23,7 +23,7 @@ function buildBarCss(holding, index) {
     background-color: ${BAR_COLORS[index]};
 
     &.animate {
-      height: ${holding.weight * 2.25}%;
+      height: ${holding.weight * 1.5}%;
       opacity: 1;
     }
   `;
@@ -89,7 +89,7 @@ class PortfolioReview extends Component {
               border-left: 1px solid rgba(0, 0, 0, 0.5);
               position: absolute;
               top: -133px;
-              bottom: -6px;
+              bottom: 0;
               left: -15px;
             }
           `}
@@ -100,6 +100,7 @@ class PortfolioReview extends Component {
           xAlign="space-around"
           className={css`
             min-height: 400px;
+            max-height: 400px;
           `}
         >
           {data.holdings.map((holding, i) => (
