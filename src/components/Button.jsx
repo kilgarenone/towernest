@@ -40,7 +40,7 @@ function kind(outline, noBorder) {
       }
 
       &:focus {
-        box-shadow: 0 0 0 3pt #6e94ff;
+        box-shadow: 0 0 3pt 2pt #6e94ff;
       }
 
       &:active {
