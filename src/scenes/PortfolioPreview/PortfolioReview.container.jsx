@@ -10,8 +10,8 @@ import ICONS from "../../styles/icons";
 import spacing from "../../styles/spacing";
 import { fontSize } from "../../styles/typography";
 import {
-  padding1,
-  fontWeight400,
+  padding0,
+  fontWeight500,
   marginBottom2,
   marginBottom3,
   paddingBottom3,
@@ -60,12 +60,14 @@ class PortfolioReview extends Component {
         <div
           className={css`
             background-color: #f5f5f5;
-            ${padding1};
+            ${padding0};
           `}
         >
           <Logo />
         </div>
-        <div
+        <Container
+          isColumn
+          xAlign="center"
           className={css`
             background-color: #f5f5f5;
             ${textAlignCenter};
@@ -94,7 +96,7 @@ class PortfolioReview extends Component {
             Open My Account
           </Button>
           <AssistText>Question? Chat with us</AssistText>
-        </div>
+        </Container>
         <div
           className={css`
             position: relative;
@@ -128,8 +130,8 @@ class PortfolioReview extends Component {
               key={holding.ticker}
             >
               <div className={textAlignCenter}>
-                <div className={fontWeight400}>{holding.assetClass}</div>
-                <div>{`${holding.weight}%`}</div>
+                <div>{holding.assetClass}</div>
+                <div className={fontWeight500}>{`${holding.weight}%`}</div>
               </div>
               <div className={relativeHeightWidth100}>
                 <div
