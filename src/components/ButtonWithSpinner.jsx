@@ -16,7 +16,7 @@ const showSpinner = css`
 `;
 
 const btnCls = css`
-  padding-right: 75px;
+  padding-right: 2.5em;
 `;
 
 const btnRelative = css`
