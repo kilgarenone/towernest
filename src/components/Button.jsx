@@ -34,7 +34,8 @@ function kind(outline, noBorder) {
       transition: padding .2s;
 
       &:hover {
-        ${outline && `color: #fff; background-color: ${bg};`};
+        ${outline && !noBorder && `color: #fff; background-color: ${bg};`};
+        ${noBorder && `color: #424242;`};
         ${!outline && "background-color: #424242"};
         border-color: #424242;
       }
