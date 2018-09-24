@@ -41,6 +41,9 @@ export const paddingBottom5 = css`
   padding-bottom: ${spacing.space5};
 `;
 
+export const padding0 = css`
+  padding: ${spacing.space0};
+`;
 export const padding1 = css`
   padding: ${spacing.space1};
 `;
@@ -56,8 +59,8 @@ export const textAlignCenter = css`
   text-align: center;
 `;
 
-export const fontWeight400 = css`
-  font-weight: 400;
+export const fontWeight500 = css`
+  font-weight: 500;
 `;
 
 export const relativeHeightWidth100 = css`
