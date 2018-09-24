@@ -41,6 +41,9 @@ export const paddingBottom5 = css`
   padding-bottom: ${spacing.space5};
 `;
 
+export const padding1 = css`
+  padding: ${spacing.space1};
+`;
 export const padding2 = css`
   padding: ${spacing.space2};
 `;

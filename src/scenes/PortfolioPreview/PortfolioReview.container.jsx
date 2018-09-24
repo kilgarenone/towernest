@@ -10,11 +10,12 @@ import ICONS from "../../styles/icons";
 import spacing from "../../styles/spacing";
 import { fontSize } from "../../styles/typography";
 import {
+  padding1,
   fontWeight400,
   marginBottom2,
   marginBottom3,
-  padding2,
   paddingBottom3,
+  paddingBottom1,
   paddingY3,
   relativeHeightWidth100,
   textAlignCenter
@@ -27,13 +28,14 @@ function buildBarCss(holding, index) {
     width: 100%;
     overflow-y: hidden;
     opacity: 0;
-    height: 0;
-    transition: height 0.3s ease-out ${Math.max(0, index - (index - 0.6))}s,
-      opacity 1s ease-in;
+    height: ${holding.weight * 1.5}%;
+    transform: translateY(-50%);
+    transition: transform 0.4s ease-out ${0.1 * index}s,
+    opacity 0.6s ease-out;
     background-color: ${BAR_COLORS[index]};
-
+    
     &.animate {
-      height: ${holding.weight * 1.5}%;
+      transform: translateY(0);
       opacity: 1;
     }
   `;
@@ -54,8 +56,13 @@ class PortfolioReview extends Component {
     const data = this.props.location.state;
 
     return (
-      <div className={padding2}>
-        <div>
+      <div>
+        <div
+          className={css`
+            background-color: #f5f5f5;
+            ${padding1};
+          `}
+        >
           <Logo />
         </div>
         <div
@@ -64,9 +71,12 @@ class PortfolioReview extends Component {
             ${textAlignCenter};
             ${paddingY3};
             ${marginBottom2};
+            padding-top: 0;
           `}
         >
-          <div>Based on your answers, we recommend the</div>
+          <div className={paddingBottom1}>
+            Based on your answers, we recommend the
+          </div>
           <div
             className={css`
               font-weight: 700;
@@ -137,8 +147,9 @@ class PortfolioReview extends Component {
         <ButtonWithIcon
           className={css`
             position: relative;
-            top: -2.5em;
             float: right;
+            top: -${spacing.space3};
+            margin-right: ${spacing.space2};
           `}
           icon={ICONS.HELP}
           outline
