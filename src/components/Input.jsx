@@ -3,7 +3,7 @@ import { fontSize } from "../styles/typography";
 
 const Input = styled("input")`
   font-family: "Inter UI", "Helvetica Neue", HelveticaNeue, Helvetica, Arial;
-  height: 3em;
+  height: 2.7em;
   width: 100%;
   color: rgba(0, 0, 0, 0.76);
   font-weight: 400;
