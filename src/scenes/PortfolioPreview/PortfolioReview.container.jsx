@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import AriaModal from "react-aria-modal";
 import { css, cx } from "react-emotion";
 import AssistText from "../../components/AssistText";
 import Button from "../../components/Button";
@@ -9,6 +10,7 @@ import Logo from "../../components/Logo";
 import ICONS from "../../styles/icons";
 import spacing from "../../styles/spacing";
 import { fontSize } from "../../styles/typography";
+import Input from "../../components/Input";
 import {
   padding0,
   fontWeight500,
@@ -20,6 +22,7 @@ import {
   relativeHeightWidth100,
   textAlignCenter
 } from "../../styles/utilities";
+import SignUp from "../SignUp/SignUp.container";
 
 function buildBarCss(holding, index) {
   return `
@@ -43,7 +46,7 @@ function buildBarCss(holding, index) {
 
 const BAR_COLORS = ["#711d45", "#78e0f0", "#f1cf89", "#ee995d"];
 class PortfolioReview extends Component {
-  state = { animateBar: false };
+  state = { animateBar: false, modalActive: false };
 
   componentDidMount() {
     requestAnimationFrame(() =>
@@ -51,12 +54,29 @@ class PortfolioReview extends Component {
     );
   }
 
+  activateModal = () => {
+    this.setState({ modalActive: true });
+  };
+
+  deactivateModal = () => {
+    this.setState({ modalActive: false });
+  };
+
   render() {
     console.log(this.props.location.state);
     const data = this.props.location.state;
 
     return (
-      <div>
+      <React.Fragment>
+        {this.state.modalActive && (
+          <AriaModal
+            titleText="Create an account"
+            onExit={this.deactivateModal}
+            underlayStyle={{ paddingTop: "2em" }}
+          >
+            <SignUp />
+          </AriaModal>
+        )}
         <div
           className={css`
             background-color: #f5f5f5;
@@ -92,6 +112,7 @@ class PortfolioReview extends Component {
             className={css`
               margin-bottom: ${spacing.space1};
             `}
+            onClick={this.activateModal}
           >
             Open My Account
           </Button>
@@ -158,7 +179,7 @@ class PortfolioReview extends Component {
         >
           Learn more
         </ButtonWithIcon>
-      </div>
+      </React.Fragment>
     );
   }
 }
