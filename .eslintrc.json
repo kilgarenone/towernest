@@ -18,7 +18,8 @@
       { "allow": ["error", "group", "groupEnd", "warn"] }
     ],
     "react/jsx-indent": "off",
-    "react/destructuring-assignment": "off"
+    "react/destructuring-assignment": "off",
+    "jsx-a11y/label-has-for": "off"
   },
   "env": {
     "browser": true
