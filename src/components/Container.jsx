@@ -5,24 +5,30 @@ const Container = ({
   tag: Tag = "div",
   children,
   className = null,
+  yAlign,
+  xAlign,
+  isColumn,
   ...props
 }) => (
-  <Tag className={cx(css(buildWrapperStyles(props)), className)}>
+  <Tag
+    className={cx(css(buildWrapperStyles(xAlign, yAlign, isColumn)), className)}
+    {...props}
+  >
     {children}
   </Tag>
 );
 
-function buildWrapperStyles(props) {
+function buildWrapperStyles(xAlign, yAlign, isColumn) {
   // Unified x and y axes intuitive alignment for flex's
   // row & column
-  let alignItems = props.yAlign;
-  let justifyContent = props.xAlign;
+  let alignItems = yAlign;
+  let justifyContent = xAlign;
   let flexDirection = null;
 
-  if (props.isColumn) {
+  if (isColumn) {
     flexDirection = "column";
-    alignItems = props.xAlign;
-    justifyContent = props.yAlign;
+    alignItems = xAlign;
+    justifyContent = yAlign;
   }
 
   return {
@@ -31,8 +37,6 @@ function buildWrapperStyles(props) {
     "flex-direction": flexDirection, // default is 'row'
     "align-items": alignItems, // default is 'stretch'
     "justify-content": justifyContent // default is 'flex-start'
-    // padding: props.padding,
-    // margin: props.margin
   };
 }
 
