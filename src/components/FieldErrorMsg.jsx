@@ -3,7 +3,7 @@ import React from "react";
 import { Field } from "formik";
 import ErrorMsg from "./ErrorMsg";
 
-function ErrorMsgField({ name, ...props }) {
+function FieldErrorMsg({ name, ...props }) {
   return (
     <Field
       name={name}
@@ -16,4 +16,4 @@ function ErrorMsgField({ name, ...props }) {
   );
 }
 
-export default ErrorMsgField;
+export default FieldErrorMsg;
