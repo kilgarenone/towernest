@@ -2,19 +2,21 @@ import styled from "react-emotion";
 import { fontSize } from "../styles/typography";
 
 const Input = styled("input")`
-  background-color: #fff;
-  flex: 1 1 100%;
+  font-family: "Inter UI", "Helvetica Neue", HelveticaNeue, Helvetica, Arial;
+  height: 3em;
+  width: 100%;
   color: rgba(0, 0, 0, 0.76);
-  text-decoration: none;
   font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: normal;
+  font-style: normal;
   font-size: ${fontSize.text};
-  border: 1px solid #ebebeb;
-  border-radius: 4px;
-  box-shadow: none;
-  padding: 1.15em 1em;
-  display: inline-block;
+  border: 2px solid #e0e0e0;
+  border-radius: 0.2em;
+  outline: 0;
+  padding: 0.4em 0.7em;
+
+  &:focus {
+    border-color: #2962ff;
+  }
 `;
 // @media screen and (min-width: 48rem) {
 //   max-width: 340px;
