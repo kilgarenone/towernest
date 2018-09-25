@@ -1,16 +1,11 @@
-import { Field, Formik } from "formik";
+import { Formik } from "formik";
 import React, { Component } from "react";
 import { css } from "react-emotion";
 import Button from "../../components/Button";
-import Heading from "../../components/Heading";
-import Input from "../../components/Input";
-import FieldInput from "../../components/FieldInput";
 import Container from "../../components/Container";
-import {
-  marginRight1,
-  padding3,
-  textAlignCenter
-} from "../../styles/utilities";
+import FieldInput from "../../components/FieldInput";
+import Heading from "../../components/Heading";
+import { marginRight1, padding3 } from "../../styles/utilities";
 
 class Register extends Component {
   state = {};
