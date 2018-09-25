@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "react-emotion";
-import ErrorMsgField from "../../../components/ErrorMsgField";
+import FieldErrorMsg from "../../../components/FieldErrorMsg";
 import { List } from "../../../components/List";
 import RadioButton from "../../../components/RadioButton";
 import spacing from "../../../styles/spacing";
@@ -36,7 +36,7 @@ function ListRadioBtns({
           </li>
         ))}
       </List>
-      <ErrorMsgField
+      <FieldErrorMsg
         className={css`
           left: ${spacing.space0};
         `}
