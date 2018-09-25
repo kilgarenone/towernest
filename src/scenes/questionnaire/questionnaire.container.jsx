@@ -11,14 +11,8 @@ import goFetch from "../../utils/fetch";
 import riskProfileQuestions from "./shared/riskProfileQuestions";
 import ListRadioBtns from "./shared/ListRadioBtns";
 import Logo from "../../components/Logo";
-
-const wizardWrapperCss = css`
-  position: relative;
-  z-index: 1;
-  max-width: 25em;
-  padding: 0 ${spacing.space2};
-  margin: 0 auto;
-`;
+import { padding0 } from "../../styles/utilities";
+import CenteredContainer from "../../components/CenteredContainer";
 
 const validator = fieldName => values => {
   const errors = {};
@@ -81,7 +75,7 @@ class Questionnaire extends Component {
             width: 100%;
             height: 3em;
             background-color: #fff;
-            padding: 0 ${spacing.space3};
+            ${padding0};
             ${isScrolledCss};
             transition: box-shadow 0.4s;
           `}
@@ -95,7 +89,13 @@ class Questionnaire extends Component {
             width={this.state.width}
           />
         </Container>
-        <div className={wizardWrapperCss}>
+        <CenteredContainer
+          className={css`
+            position: relative;
+            z-index: 1;
+          `}
+          maxWidth="25em"
+        >
           <Wizard
             initialValues={{
               age: "",
@@ -134,7 +134,7 @@ class Questionnaire extends Component {
               </Wizard.Page>
             ))}
           </Wizard>
-        </div>
+        </CenteredContainer>
       </React.Fragment>
     );
   }
