@@ -6,6 +6,11 @@ import Heading from "../../components/Heading";
 import Input from "../../components/Input";
 import FieldInput from "../../components/FieldInput";
 import Container from "../../components/Container";
+import {
+  marginRight1,
+  padding3,
+  textAlignCenter
+} from "../../styles/utilities";
 
 class SignUp extends Component {
   state = {};
@@ -20,32 +25,46 @@ class SignUp extends Component {
         <div
           className={css`
             background-color: #fff;
-            width: 37em;
+            ${padding3};
           `}
         >
-          <Heading tag="h3">Create an account</Heading>
-          <Formik
-            initialValues={{ first_name: "", last_name: "", username: "" }}
-            enableReinitialize={false}
-            validate={this.validate}
-            onSubmit={this.handleSubmit}
-          >
-            {({ handleSubmit, isSubmitting }) => (
-              <form onSubmit={handleSubmit}>
-                <Container yAlign="flex-end">
-                  <FieldInput
-                    name="first_name"
-                    type="text"
-                    label="Name"
-                    bottomLabel="First"
-                  />
-                  <FieldInput name="last_name" type="text" bottomLabel="Last" />
+          <Container isColumn xAlign="center">
+            <Heading tag="h3">Create an account</Heading>
+            <Formik
+              initialValues={{ first_name: "", last_name: "", username: "" }}
+              enableReinitialize={false}
+              validate={this.validate}
+              onSubmit={this.handleSubmit}
+            >
+              {({ handleSubmit, isSubmitting }) => (
+                <Container tag="form" isColumn onSubmit={handleSubmit}>
+                  <Container yAlign="flex-end">
+                    <FieldInput
+                      name="first_name"
+                      type="text"
+                      label="Name"
+                      bottomLabel="First"
+                      className={marginRight1}
+                    />
+                    <FieldInput
+                      name="last_name"
+                      type="text"
+                      bottomLabel="Last"
+                    />
+                  </Container>
+                  <FieldInput name="username" type="email" label="Email" />
+                  <Button
+                    className={css`
+                      align-self: center;
+                    `}
+                    type="submit"
+                  >
+                    Create an account
+                  </Button>
                 </Container>
-                <FieldInput name="username" type="email" label="Email" />
-                <Button type="submit">Create an account</Button>
-              </form>
-            )}
-          </Formik>
+              )}
+            </Formik>
+          </Container>
         </div>
       </React.Fragment>
     );
