@@ -1,8 +1,12 @@
 /* eslint-disable react/jsx-no-bind */
 import React from "react";
 import { Field } from "formik";
+import { cx } from "react-emotion";
 import ErrorMsg from "./ErrorMsg";
 import Input from "./Input";
+import { marginBottom2 } from "../styles/utilities";
+import FormLabel from "./FormLabel";
+import FormLabelBottom from "./FormLabelBottom";
 
 function FieldInput({
   name: fieldName,
@@ -19,8 +23,8 @@ function FieldInput({
         field: { name, value, onChange, onBlur },
         form: { errors, touched }
       }) => (
-        <div>
-          <label htmlFor={id || fieldName}>{label}</label>
+        <div className={cx(marginBottom2, className)}>
+          <FormLabel htmlFor={id || fieldName}>{label}</FormLabel>
           <div>
             <Input
               name={name}
@@ -28,10 +32,9 @@ function FieldInput({
               value={value}
               onChange={onChange}
               onBlur={onBlur}
-              className={className}
               {...props}
             />
-            <label htmlFor={id}>{bottomLabel}</label>
+            <FormLabelBottom htmlFor={id}>{bottomLabel}</FormLabelBottom>
           </div>
           {touched[name] && errors[name] && <ErrorMsg>{errors[name]}</ErrorMsg>}
         </div>
