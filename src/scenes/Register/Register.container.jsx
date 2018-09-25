@@ -12,7 +12,7 @@ import {
   textAlignCenter
 } from "../../styles/utilities";
 
-class SignUp extends Component {
+class Register extends Component {
   state = {};
 
   handleSubmit = (values, bag) => {
@@ -71,4 +71,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default Register;

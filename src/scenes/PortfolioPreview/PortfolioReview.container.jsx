@@ -10,19 +10,18 @@ import Logo from "../../components/Logo";
 import ICONS from "../../styles/icons";
 import spacing from "../../styles/spacing";
 import { fontSize } from "../../styles/typography";
-import Input from "../../components/Input";
 import {
-  padding0,
   fontWeight500,
   marginBottom2,
   marginBottom3,
-  paddingBottom3,
+  padding0,
   paddingBottom1,
+  paddingBottom3,
   paddingY3,
   relativeHeightWidth100,
   textAlignCenter
 } from "../../styles/utilities";
-import SignUp from "../SignUp/SignUp.container";
+import Register from "../Register/Register.container";
 
 function buildBarCss(holding, index) {
   return `
@@ -74,7 +73,7 @@ class PortfolioReview extends Component {
             onExit={this.deactivateModal}
             underlayStyle={{ paddingTop: "2em" }}
           >
-            <SignUp />
+            <Register />
           </AriaModal>
         )}
         <div
