@@ -3,6 +3,9 @@
 import { css } from "react-emotion";
 import spacing from "./spacing";
 
+export const marginRight1 = css`
+  margin-right: ${spacing.space1};
+`;
 export const marginBottom0 = css`
   margin-bottom: ${spacing.space0};
 `;
@@ -49,6 +52,12 @@ export const padding1 = css`
 `;
 export const padding2 = css`
   padding: ${spacing.space2};
+`;
+export const padding3 = css`
+  padding: ${spacing.space3};
+`;
+export const padding4 = css`
+  padding: ${spacing.space4};
 `;
 
 export const paddingY3 = css`
