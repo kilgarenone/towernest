@@ -73,9 +73,10 @@ class PortfolioReview extends Component {
             onExit={this.deactivateModal}
             underlayStyle={{ paddingTop: "2em" }}
             escapeExits={false}
+            underlayClickExits={false}
             underlayColor="rgba(255,255,255,.7)"
           >
-            <Register />
+            <Register handleCloseModal={this.deactivateModal} />
           </AriaModal>
         )}
         <div
