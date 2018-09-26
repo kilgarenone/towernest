@@ -2,9 +2,9 @@
 
 // Ratio: 1.333
 export const fontSize = {
-  headingXL: "3.157rem",
-  headingL: "2.369rem",
-  heading: "1.777rem",
+  headingXL: "3.057rem",
+  headingL: "2.269rem",
+  heading: "1.677rem",
   subHeading: "1.333rem",
   textL: "1.175rem",
   text: "1rem",
