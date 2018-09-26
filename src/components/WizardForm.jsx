@@ -80,7 +80,6 @@ class Wizard extends Component<Props> {
     return (
       <Formik
         initialValues={values}
-        enableReinitialize={false}
         validate={this.validate}
         onSubmit={this.handleSubmit}
       >
