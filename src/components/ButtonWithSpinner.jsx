@@ -2,6 +2,7 @@ import React from "react";
 import { css, cx } from "react-emotion";
 import Spinner from "./Spinner";
 import Button from "./Button";
+import { positionRelative } from "../styles/utilities";
 
 const spinnerCls = css`
   position: absolute;
@@ -19,17 +20,16 @@ const btnCls = css`
   padding-right: 2.5em;
 `;
 
-const btnRelative = css`
-  position: relative;
-`;
-
 const ButtonWithSpinner = ({
   children,
   isSubmitting,
   progressText = children,
   ...props
 }) => (
-  <Button {...props} className={cx({ [btnCls]: isSubmitting }, btnRelative)}>
+  <Button
+    className={cx({ [btnCls]: isSubmitting }, positionRelative)}
+    {...props}
+  >
     {isSubmitting ? progressText : children}
     <Spinner className={cx(spinnerCls, { [showSpinner]: isSubmitting })} />
   </Button>
