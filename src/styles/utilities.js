@@ -3,6 +3,9 @@
 import { css } from "react-emotion";
 import spacing from "./spacing";
 
+export const positionRelative = css`
+  position: relative;
+`;
 export const marginRight1 = css`
   margin-right: ${spacing.space1};
 `;
