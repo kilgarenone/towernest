@@ -1,9 +1,10 @@
 import React from "react";
 import { css } from "react-emotion";
-import FieldErrorMsg from "../../../components/FieldErrorMsg";
+import { ErrorMessage } from "formik";
 import { List } from "../../../components/List";
 import RadioButton from "../../../components/RadioButton";
 import spacing from "../../../styles/spacing";
+import ErrorMsg from "../../../components/ErrorMsg";
 
 const radioBtnCss = css`
   padding: ${spacing.space2};
@@ -36,12 +37,13 @@ function ListRadioBtns({
           </li>
         ))}
       </List>
-      <FieldErrorMsg
+      <ErrorMessage
+        name={name}
+        component={ErrorMsg}
         className={css`
           left: ${spacing.space0};
         `}
         htmlFor="questionnaire-forms"
-        name={name}
       />
     </div>
   );

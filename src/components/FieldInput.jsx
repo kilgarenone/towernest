@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import React from "react";
-import { Field } from "formik";
+import { Field, ErrorMessage } from "formik";
 import { cx, css } from "react-emotion";
 import ErrorMsg from "./ErrorMsg";
 import Input from "./Input";
@@ -23,10 +23,7 @@ function FieldInput({
   return (
     <Field
       name={fieldName}
-      render={({
-        field: { name, value, onChange, onBlur },
-        form: { errors, touched }
-      }) => (
+      render={({ field: { name, value, onChange, onBlur } }) => (
         <div
           style={{ position: "relative" }}
           className={cx(marginBottom0, paddingBottom2, className)}
@@ -43,19 +40,16 @@ function FieldInput({
           {bottomLabel && (
             <FormLabelBottom htmlFor={id}>{bottomLabel}</FormLabelBottom>
           )}
-          {touched[name] &&
-            errors[name] && (
-              <ErrorMsg
-                className={
-                  bottomLabel &&
-                  css`
-                    bottom: 0.5em;
-                  `
-                }
-              >
-                {errors[name]}
-              </ErrorMsg>
-            )}
+          <ErrorMessage
+            className={
+              bottomLabel &&
+              css`
+                bottom: 0.8em;
+              `
+            }
+            name={name}
+            component={ErrorMsg}
+          />
         </div>
       )}
     />
