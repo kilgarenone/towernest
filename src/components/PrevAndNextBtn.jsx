@@ -55,6 +55,7 @@ function PrevAndNextBtn({
           scale="big"
           type="submit"
           isSubmitting={isSubmitting}
+          disabled={isSubmitting}
           progressText={isSubmitting && "Submitting..."}
         >
           {isLastPage ? "Submit" : continueBtnText}
