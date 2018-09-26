@@ -13,12 +13,12 @@ import IconBtn from "../../components/IconBtn";
 import spacing from "../../styles/spacing";
 
 const parentCss = css`
-  background-color: #fff;
+  background-color: #e0f2f1;
   ${padding4};
   width: 100%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(0, 0, 0, 0.08);
-  border-top: 7px solid;
+  border-top: 7px solid #009688;
   border-radius: 5px;
   animation: fade-in 0.3s forwards cubic-bezier(0.8, 0.02, 0.45, 0.91);
   transform-origin: bottom center;
