@@ -18,7 +18,6 @@ function ButtonWithIcon({ children, className, icon, ...props }) {
         className={css`
           margin-right: 0.45em;
         `}
-        size="23"
         icon={icon}
       />
       {children}
