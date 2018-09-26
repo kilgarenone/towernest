@@ -1,12 +1,16 @@
 /* eslint-disable react/jsx-no-bind */
 import React from "react";
 import { Field } from "formik";
-import { cx } from "react-emotion";
+import { cx, css } from "react-emotion";
 import ErrorMsg from "./ErrorMsg";
 import Input from "./Input";
-import { marginBottom2 } from "../styles/utilities";
 import FormLabel from "./FormLabel";
 import FormLabelBottom from "./FormLabelBottom";
+import {
+  marginBottom0,
+  paddingBottom2,
+  marginBottom3
+} from "../styles/utilities";
 
 function FieldInput({
   name: fieldName,
@@ -23,20 +27,35 @@ function FieldInput({
         field: { name, value, onChange, onBlur },
         form: { errors, touched }
       }) => (
-        <div className={cx(marginBottom2, className)}>
-          <FormLabel htmlFor={id || fieldName}>{label}</FormLabel>
-          <div>
-            <Input
-              name={name}
-              id={id}
-              value={value}
-              onChange={onChange}
-              onBlur={onBlur}
-              {...props}
-            />
+        <div
+          style={{ position: "relative" }}
+          className={cx(marginBottom0, paddingBottom2, className)}
+        >
+          {label && <FormLabel htmlFor={id || fieldName}>{label}</FormLabel>}
+          <Input
+            name={name}
+            id={id}
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
+            {...props}
+          />
+          {bottomLabel && (
             <FormLabelBottom htmlFor={id}>{bottomLabel}</FormLabelBottom>
-          </div>
-          {touched[name] && errors[name] && <ErrorMsg>{errors[name]}</ErrorMsg>}
+          )}
+          {touched[name] &&
+            errors[name] && (
+              <ErrorMsg
+                className={
+                  bottomLabel &&
+                  css`
+                    bottom: 0.5em;
+                  `
+                }
+              >
+                {errors[name]}
+              </ErrorMsg>
+            )}
         </div>
       )}
     />
