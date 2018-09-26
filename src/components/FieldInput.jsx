@@ -17,9 +17,11 @@ function FieldInput({
   label,
   bottomLabel,
   className,
-  id,
+  id: fieldId,
   ...props
 }) {
+  const id = fieldId || fieldName;
+
   return (
     <Field
       name={fieldName}
@@ -28,7 +30,7 @@ function FieldInput({
           style={{ position: "relative" }}
           className={cx(marginBottom0, paddingBottom2, className)}
         >
-          {label && <FormLabel htmlFor={id || fieldName}>{label}</FormLabel>}
+          {label && <FormLabel htmlFor={id}>{label}</FormLabel>}
           <Input
             name={name}
             id={id}
