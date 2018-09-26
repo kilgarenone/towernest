@@ -72,6 +72,7 @@ class PortfolioReview extends Component {
             titleText="Create an account"
             onExit={this.deactivateModal}
             underlayStyle={{ paddingTop: "2em" }}
+            escapeExits={false}
           >
             <Register />
           </AriaModal>
