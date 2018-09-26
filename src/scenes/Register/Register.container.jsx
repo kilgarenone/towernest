@@ -8,6 +8,9 @@ import FieldInput from "../../components/FieldInput";
 import Heading from "../../components/Heading";
 import { paddingBottom1, marginRight1, padding4 } from "../../styles/utilities";
 import media from "../../styles/mediaQueries";
+import ICONS from "../../styles/icons";
+import IconBtn from "../../components/IconBtn";
+import spacing from "../../styles/spacing";
 
 const parentCss = css`
   background-color: #fff;
@@ -22,7 +25,7 @@ const parentCss = css`
 
   ${media.medium(
     css`
-      width: 37em;
+      width: 35em;
     `
   )};
 
@@ -38,7 +41,7 @@ const parentCss = css`
 
     70%,
     100% {
-      transform: scale(0.8);
+      transform: scale(1);
     }
   }
 `;
@@ -64,9 +67,21 @@ class Register extends Component {
   };
 
   render() {
+    const { handleCloseModal } = this.props;
+
     return (
       <React.Fragment>
         <div className={parentCss}>
+          <IconBtn
+            className={css`
+              position: absolute;
+              top: 0;
+              right: 0;
+              padding: ${spacing.space1};
+            `}
+            onClick={handleCloseModal}
+            icon={ICONS.CLOSE}
+          />
           <Container isColumn xAlign="center">
             <Heading tag="h3" className={paddingBottom1}>
               Create an account
