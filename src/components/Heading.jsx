@@ -1,6 +1,6 @@
 // @flow
 import * as React from "react";
-import { css } from "react-emotion";
+import { css, cx } from "react-emotion";
 import {
   tagMapping,
   fontSize,
@@ -14,9 +14,12 @@ type Props = {
   tag: string
 };
 
-function Heading(props: Props) {
-  const { children, tag: Tag } = props;
-  return <Tag className={styles[tagMapping[Tag]]}>{children}</Tag>;
+function Heading({ children, tag: Tag, className, ...props }) {
+  return (
+    <Tag className={cx(styles[tagMapping[Tag]], className)} {...props}>
+      {children}
+    </Tag>
+  );
 }
 
 export default Heading;
