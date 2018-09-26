@@ -6,6 +6,12 @@ const buttonCss = css`
   border-width: 0;
   background-color: transparent;
   cursor: pointer;
+  color: rgba(0, 0, 0, 0.54);
+
+  &:hover,
+  &:focus {
+    color: rgba(0, 0, 0, 0.68);
+  }
 `;
 
 function IconBtn({ className, icon, ...props }) {
