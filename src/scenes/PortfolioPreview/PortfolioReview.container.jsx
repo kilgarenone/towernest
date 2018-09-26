@@ -75,6 +75,7 @@ class PortfolioReview extends Component {
             escapeExits={false}
             underlayClickExits={false}
             underlayColor="rgba(255,255,255,.7)"
+            initialFocus="#first_name"
           >
             <Register handleCloseModal={this.deactivateModal} />
           </AriaModal>
