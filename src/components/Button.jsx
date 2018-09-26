@@ -48,6 +48,13 @@ function kind(outline, noBorder) {
         transform: scale(0.98);
         box-shadow: none;
       }
+      
+      &:disabled {
+        transform: scale(1);
+        cursor: default;
+        ${!noBorder && `background-color: #616161; border-color: #616161;`};
+        ${noBorder && `color: #9E9E9E;`};
+      }
     `;
   };
 }
