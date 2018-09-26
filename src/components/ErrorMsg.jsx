@@ -5,7 +5,7 @@ import { fontSize } from "../styles/typography";
 
 const ErrorMsg = styled("label")`
   position: absolute;
-  bottom: -${spacing.space0};
+  bottom: 0;
   left: 0;
   color: ${colors.error};
   font-size: ${fontSize.subText};
