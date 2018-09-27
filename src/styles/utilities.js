@@ -9,6 +9,9 @@ export const positionRelative = css`
 export const marginRight1 = css`
   margin-right: ${spacing.space1};
 `;
+export const marginRight2 = css`
+  margin-right: ${spacing.space2};
+`;
 export const marginBottom0 = css`
   margin-bottom: ${spacing.space0};
 `;
