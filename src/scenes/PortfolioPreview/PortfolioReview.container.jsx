@@ -29,29 +29,30 @@ function buildBarCss(holding, index) {
     top: 0;
     width: 100%;
     overflow-y: hidden;
-    opacity: 0;
     height: ${holding.weight * 1.5}%;
-    transform: translateY(-50%);
-    transition: transform 0.4s ease-out ${0.1 * index}s,
-    opacity 0.6s ease-out;
     background-color: ${BAR_COLORS[index]};
-    
-    &.animate {
-      transform: translateY(0);
-      opacity: 1;
+    animation: slide-in 0.8s forwards cubic-bezier(0.8, 0.02, 0.45, 0.91);
+
+    @keyframes slide-in {
+      0% {
+        opacity: 0;
+        transform: translateY(-50%);
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      70%, 100% {
+        transform: translateY(0);
+      }
     }
-  `;
+    `;
 }
 
 const BAR_COLORS = ["#711d45", "#78e0f0", "#f1cf89", "#ee995d"];
 class PortfolioReview extends Component {
-  state = { animateBar: false, modalActive: false };
-
-  componentDidMount() {
-    requestAnimationFrame(() =>
-      requestAnimationFrame(() => this.setState({ animateBar: true }))
-    );
-  }
+  state = { modalActive: false };
 
   activateModal = () => {
     this.setState({ modalActive: true });
@@ -159,12 +160,9 @@ class PortfolioReview extends Component {
               </div>
               <div className={relativeHeightWidth100}>
                 <div
-                  className={cx(
-                    css`
-                      ${buildBarCss(holding, i)};
-                    `,
-                    this.state.animateBar && "animate"
-                  )}
+                  className={css`
+                    ${buildBarCss(holding, i)};
+                  `}
                 />
               </div>
             </div>
