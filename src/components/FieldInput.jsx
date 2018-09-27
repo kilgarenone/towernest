@@ -6,11 +6,7 @@ import ErrorMsg from "./ErrorMsg";
 import Input from "./Input";
 import FormLabel from "./FormLabel";
 import FormLabelBottom from "./FormLabelBottom";
-import {
-  marginBottom0,
-  paddingBottom2,
-  marginBottom3
-} from "../styles/utilities";
+import { marginBottom0, paddingBottom2 } from "../styles/utilities";
 
 function FieldInput({
   name: fieldName,
