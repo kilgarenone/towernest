@@ -1,5 +1,6 @@
 import { Field } from "formik";
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { css } from "react-emotion";
 import { fromEvent } from "rxjs";
 import Container from "../../components/Container";
@@ -13,6 +14,7 @@ import ListRadioBtns from "./shared/ListRadioBtns";
 import Logo from "../../components/Logo";
 import { padding0 } from "../../styles/utilities";
 import CenteredContainer from "../../components/CenteredContainer";
+import { getRecommendedPortfolio } from "./Questionnaire.state";
 
 const validator = fieldName => values => {
   const errors = {};
@@ -23,8 +25,9 @@ const validator = fieldName => values => {
 };
 
 class Questionnaire extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    // don't forget the 'props'!!! for connect()!!!
+    super(props);
     this.state = { width: 5, scrolled: false };
     this.scrollSubscription = fromEvent(window, "scroll").subscribe(
       e =>
@@ -38,19 +41,11 @@ class Questionnaire extends Component {
     this.scrollSubscription.unsubscribe();
   }
 
-  handleSubmit = async surveyResults => {
-    const totalRiskScore = Object.values(surveyResults).reduce(
-      (accumulator, currentVal) => +accumulator + +currentVal,
-      0
-    );
-
+  handleSubmit = surveyResults => {
     try {
-      const response = await goFetch("/getRecommendedPortfolio", {
-        method: "POST",
-        body: JSON.stringify({ totalRiskScore, age: surveyResults.age })
-      });
+      this.props.getRecommendedPortfolio(JSON.stringify(surveyResults));
 
-      this.props.navigate("/plan", { state: response });
+      // this.props.navigate("/plan", { state: response });
     } catch (error) {
       console.error("Error in /getRecommendedPortfolio", error);
     }
@@ -140,4 +135,7 @@ class Questionnaire extends Component {
   }
 }
 
-export default Questionnaire;
+export default connect(
+  null,
+  { getRecommendedPortfolio }
+)(Questionnaire);
