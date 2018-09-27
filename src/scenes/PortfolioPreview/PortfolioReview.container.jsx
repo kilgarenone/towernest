@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AriaModal from "react-aria-modal";
-import { css, cx } from "react-emotion";
+import { css } from "react-emotion";
 import AssistText from "../../components/AssistText";
 import Button from "../../components/Button";
 import ButtonWithIcon from "../../components/ButtonWithIcon";
@@ -19,7 +19,8 @@ import {
   paddingBottom3,
   paddingY3,
   relativeHeightWidth100,
-  textAlignCenter
+  textAlignCenter,
+  marginRight2
 } from "../../styles/utilities";
 import Register from "../Register/Register.container";
 
@@ -173,7 +174,7 @@ class PortfolioReview extends Component {
             position: relative;
             float: right;
             top: -${spacing.space3};
-            margin-right: ${spacing.space2};
+            ${marginRight2};
           `}
           icon={ICONS.HELP}
           outline
