@@ -26,12 +26,12 @@ import { rootEpic, rootReducer } from "./root";
 //   };
 // };
 
+const epicMiddleware = createEpicMiddleware();
+
 const configureStore = () => {
   const composeEnhancers =
     // eslint-disable-next-line
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-  const epicMiddleware = createEpicMiddleware();
 
   const store = createStore(
     rootReducer,
