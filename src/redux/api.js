@@ -8,26 +8,15 @@ export const CALL_API = "CALL_API";
 export const GET = "GET";
 export const POST = "POST";
 
-function callApi(endPoint, httpMethod, store, hasAuthentication) {
-  const token = store.accessToken.data;
-  let config = {};
+function callApi(requestConfig) {
+  const { REACT_APP_PROXY_BASE_URL } = process.env;
+  requestConfig.url = REACT_APP_PROXY_BASE_URL + requestConfig.url;
 
-  if (hasAuthentication) {
-    if (token) {
-      config = {
-        headers: { Authorization: `Bearer ${token}` },
-        url: endPoint,
-        method: httpMethod
-      };
-    } else {
-      return _throw(new Error("No token saved!"));
-    }
-  } else {
-    config = {
-      url: endPoint,
-      method: httpMethod
-    };
-  }
+  const config = {
+    ...requestConfig,
+    withCredentials: true,
+    responseType: "json"
+  };
   return ajax(config);
 }
 
@@ -38,40 +27,33 @@ function apiError(type, error) {
   };
 }
 
-export default (action$, state$) =>
+export default action$ =>
   action$.pipe(
     ofType(CALL_API),
-    switchMap(
-      ({
-        endPoint,
-        httpMethod = GET,
-        successType,
-        failureType,
-        hasAuthentication = true
-      }) =>
-        callApi(endPoint, httpMethod, state$.value, hasAuthentication).pipe(
-          tap(response =>
-            console.log(
-              "%c API RESPONSE ",
-              "background: lightgreen; color: black",
-              response
-            )
-          ),
-          map(res => ({
-            type: successType,
-            data: res.response
-          })),
-          catchError(
-            error => {
-              console.log(
-                "%c API ERROR ",
-                "background: mediumvioletred; color: white",
-                error
-              );
-              return of(apiError(failureType, error));
-            }
-            // startWith(isSaving()) // {type: 'IS_SAVING'}
+    switchMap(({ requestConfig, successPayload, successType, failureType }) =>
+      callApi(requestConfig).pipe(
+        tap(response =>
+          console.log(
+            "%c API RESPONSE ",
+            "background: lightgreen; color: black",
+            response
           )
+        ),
+        map(res => ({
+          type: successType,
+          data: successPayload || res.response
+        })),
+        catchError(
+          error => {
+            console.log(
+              "%c API ERROR ",
+              "background: mediumvioletred; color: white",
+              error
+            );
+            return of(apiError(failureType, error));
+          }
+          // startWith(isSaving()) // {type: 'IS_SAVING'}
         )
+      )
     )
   );
