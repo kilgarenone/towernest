@@ -14,7 +14,10 @@ import ListRadioBtns from "./shared/ListRadioBtns";
 import Logo from "../../components/Logo";
 import { padding0 } from "../../styles/utilities";
 import CenteredContainer from "../../components/CenteredContainer";
-import { getRecommendedPortfolio } from "./Questionnaire.state";
+import {
+  getRecommendedPortfolio,
+  storeQuestionnaireAnswers
+} from "./Questionnaire.state";
 
 const validator = fieldName => values => {
   const errors = {};
@@ -42,13 +45,10 @@ class Questionnaire extends Component {
   }
 
   handleSubmit = surveyResults => {
-    try {
-      this.props.getRecommendedPortfolio(JSON.stringify(surveyResults));
-
-      // this.props.navigate("/plan", { state: response });
-    } catch (error) {
-      console.error("Error in /getRecommendedPortfolio", error);
-    }
+    this.props.storeQuestionnaireAnswers(surveyResults);
+    this.props.getRecommendedPortfolio(JSON.stringify(surveyResults), () =>
+      this.props.navigate("/plan")
+    );
   };
 
   setProgressBarWidth = stepNum => {
@@ -137,5 +137,5 @@ class Questionnaire extends Component {
 
 export default connect(
   null,
-  { getRecommendedPortfolio }
+  { getRecommendedPortfolio, storeQuestionnaireAnswers }
 )(Questionnaire);

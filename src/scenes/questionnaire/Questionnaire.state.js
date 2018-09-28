@@ -1,4 +1,5 @@
 import { CALL_API, POST } from "../../redux/api";
+import { STORE_RECOMMENDED_PORTFOLIO } from "../PortfolioReview/PortfolioReview.state";
 
 const STORE_QUESTIONNAIRE_ANSWERS =
   "matisa/scenes/questionnaire/storeQuestionnaireAnswers";
@@ -23,25 +24,24 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
-export function storeQuestionnaireResults(payload) {
+export function storeQuestionnaireAnswers(payload) {
   return {
     type: STORE_QUESTIONNAIRE_ANSWERS,
     data: payload
   };
 }
 
-export function getRecommendedPortfolio(payload) {
+export function getRecommendedPortfolio(payload, callback) {
   console.log(payload);
   return {
     type: CALL_API,
     requestConfig: {
       method: POST,
       url: "/getRecommendedPortfolio",
-      body: payload,
-      withCredentials: true
+      body: payload
     },
-    successPayload: payload,
-    successType: STORE_QUESTIONNAIRE_ANSWERS,
+    successCallBack: callback,
+    successType: STORE_RECOMMENDED_PORTFOLIO,
     failureType: FAILURE_STORE_QUESTIONNAIRE_ANSWERS
   };
 }
