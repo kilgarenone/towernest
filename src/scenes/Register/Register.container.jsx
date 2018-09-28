@@ -1,5 +1,6 @@
 import { Formik } from "formik";
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { css, cx } from "react-emotion";
 import * as Yup from "yup";
 import Button from "../../components/Button";
@@ -15,6 +16,7 @@ import {
 import media from "../../styles/mediaQueries";
 import ICONS from "../../styles/icons";
 import IconBtn from "../../components/IconBtn";
+import { registerClient } from "./Register.state";
 
 const parentCss = css`
   background-color: #fff;
@@ -62,6 +64,7 @@ class Register extends Component {
 
   handleSubmit = (values, bag) => {
     console.log("user info", values);
+    this.props.registerClient(values);
   };
 
   render() {
@@ -147,4 +150,7 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default connect(
+  null,
+  { registerClient }
+)(Register);
