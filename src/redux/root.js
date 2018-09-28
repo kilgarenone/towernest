@@ -11,5 +11,4 @@ export const rootEpic = combineEpics(api, getAccessToken);
 export const rootReducer = combineReducers({
   questionnaire,
   portfolioReview
-  // userAuth
 });
