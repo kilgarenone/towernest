@@ -1,31 +1,10 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import { createEpicMiddleware } from "redux-observable";
+import throttle from "lodash.throttle";
 import { rootEpic, rootReducer } from "./root";
+import { loadState, saveState } from "./persistState";
 
-// const addLoggingToDispatch = store => {
-//   const rawDispatch = store.dispatch;
-//   if (!console.group) {
-//     return rawDispatch;
-//   }
-//   return action => {
-//     console.group(action.type);
-//     console.log(
-//       "%c prev state ",
-//       "background: gray; color: white",
-//       store.getState()
-//     );
-//     console.log("%c action ", "background: blue; color: white", action);
-//     const returnValue = rawDispatch(action);
-//     console.log(
-//       "%c next state ",
-//       "background: green; color: white",
-//       store.getState()
-//     );
-//     console.groupEnd(action.type);
-//     return returnValue;
-//   };
-// };
-
+const persistedStore = loadState();
 const epicMiddleware = createEpicMiddleware();
 
 const configureStore = () => {
@@ -35,14 +14,17 @@ const configureStore = () => {
 
   const store = createStore(
     rootReducer,
+    persistedStore,
     composeEnhancers(applyMiddleware(epicMiddleware))
   );
 
-  epicMiddleware.run(rootEpic);
+  store.subscribe(
+    throttle(() => {
+      saveState(store.getState());
+    }, 1000)
+  );
 
-  // if (process.env.NODE_ENV !== "production") {
-  //   store.dispatch = addLoggingToDispatch(store);
-  // }
+  epicMiddleware.run(rootEpic);
 
   return store;
 };
