@@ -30,7 +30,7 @@ function apiError(type, error) {
 export default action$ =>
   action$.pipe(
     ofType(CALL_API),
-    switchMap(({ requestConfig, successPayload, successType, failureType }) =>
+    switchMap(({ requestConfig, successType, failureType, successCallBack }) =>
       callApi(requestConfig).pipe(
         tap(response =>
           console.log(
@@ -39,10 +39,16 @@ export default action$ =>
             response
           )
         ),
-        map(res => ({
-          type: successType,
-          data: successPayload || res.response
-        })),
+        map(res => {
+          if (successCallBack) {
+            successCallBack();
+          }
+
+          return {
+            type: successType,
+            data: res.response
+          };
+        }),
         catchError(
           error => {
             console.log(
