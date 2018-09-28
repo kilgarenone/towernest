@@ -6,7 +6,7 @@ const buttonCss = css`
   border-width: 0;
   background-color: transparent;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(0, 0, 0, 0.44);
 
   &:hover,
   &:focus {

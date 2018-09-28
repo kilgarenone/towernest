@@ -11,7 +11,8 @@ import {
   padding1,
   paddingBottom1,
   marginRight1,
-  padding4
+  padding4,
+  marginBottom2
 } from "../../styles/utilities";
 import media from "../../styles/mediaQueries";
 import ICONS from "../../styles/icons";
@@ -19,12 +20,12 @@ import IconBtn from "../../components/IconBtn";
 import { registerClient } from "./Register.state";
 
 const parentCss = css`
-  background-color: #fff;
+  background-color: #b3e5fc;
   ${padding4};
   width: 100%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-top: 7px solid;
+  border: 1px solid rgba(0, 0, 0, 0.045);
+  /* border-top: 7px solid; */
   border-radius: 5px;
   animation: fade-in 0.3s forwards cubic-bezier(0.8, 0.02, 0.45, 0.91);
   transform-origin: bottom center;
@@ -131,7 +132,12 @@ class Register extends Component {
                       )}
                     />
                   </Container>
-                  <FieldInput name="username" type="email" label="Email" />
+                  <FieldInput
+                    className={marginBottom2}
+                    name="username"
+                    type="email"
+                    label="Email"
+                  />
                   <Button
                     className={css`
                       align-self: center;

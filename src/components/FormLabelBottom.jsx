@@ -4,7 +4,7 @@ import { fontSize } from "../styles/typography";
 const FormLabel = styled("label")`
   font-weight: 400;
   font-size: ${fontSize.subText};
-  color: #757575;
+  color: rgba(39, 42, 45, 0.55);
 `;
 
 export default FormLabel;
