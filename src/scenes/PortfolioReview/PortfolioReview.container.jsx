@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AriaModal from "react-aria-modal";
 import { css } from "react-emotion";
+import { connect } from "react-redux";
 import AssistText from "../../components/AssistText";
 import Button from "../../components/Button";
 import ButtonWithIcon from "../../components/ButtonWithIcon";
@@ -64,8 +65,7 @@ class PortfolioReview extends Component {
   };
 
   render() {
-    console.log(this.props.location.state);
-    const data = this.props.location.state;
+    const data = this.props.portfolio;
 
     return (
       <React.Fragment>
@@ -186,4 +186,11 @@ class PortfolioReview extends Component {
   }
 }
 
-export default PortfolioReview;
+const mapStateToProps = state => ({
+  portfolio: state.portfolioReview
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(PortfolioReview);
