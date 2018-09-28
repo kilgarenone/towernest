@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Provider, connect } from "react-redux";
 import { Router } from "@reach/router";
-import PortfolioReview from "../scenes/PortfolioPreview/PortfolioReview.container";
+import PortfolioReview from "../scenes/PortfolioReview/PortfolioReview.container";
 import Questionnaire from "../scenes/Questionnaire/Questionnaire.container";
 import { getAccessTokenAction } from "../scenes/SignIn/SignIn.state";
 
