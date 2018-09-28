@@ -8,7 +8,6 @@ import FieldSet from "../../components/FieldSet";
 import ProgressBar from "../../components/ProgressBar";
 import Wizard from "../../components/WizardForm";
 import spacing from "../../styles/spacing";
-import goFetch from "../../utils/fetch";
 import riskProfileQuestions from "./shared/riskProfileQuestions";
 import ListRadioBtns from "./shared/ListRadioBtns";
 import Logo from "../../components/Logo";

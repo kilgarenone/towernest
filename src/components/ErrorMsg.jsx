@@ -1,5 +1,4 @@
 import styled from "react-emotion";
-import spacing from "../styles/spacing";
 import { colors } from "../styles/colors";
 import { fontSize } from "../styles/typography";
 

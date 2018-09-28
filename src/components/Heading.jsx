@@ -9,10 +9,10 @@ import {
 } from "../styles/typography";
 import { colors } from "../styles/colors";
 
-type Props = {
-  children: React.Node,
-  tag: string
-};
+// type Props = {
+//   children: React.Node,
+//   tag: string
+// };
 
 function Heading({ children, tag: Tag, className, ...props }) {
   return (

@@ -1,16 +1,12 @@
 // @flow
 import { ofType } from "redux-observable";
+import { ajax } from "rxjs/ajax";
 // Look here to optimize bundle size on rxjs operators
 // https://github.com/ReactiveX/rxjs/blob/master/doc/lettable-operators.md
-import { switchMap, map, catchError } from "rxjs/operators";
-import { ajax } from "rxjs/ajax";
-import { tap } from "rxjs/operators";
-import { CALL_API } from "../../redux/api";
+import { catchError, map, switchMap } from "rxjs/operators";
 
 const GET_ACCESS_TOKEN = "matisa/scenes/signIn/getAccessToken";
 const SET_ACCESS_TOKEN = "matisa/scenes/signIn/setAccessToken";
-const SUCCESS_HELLO_WORLD = "matisa/scenes/signIn/successHelloWorld";
-const ERROR_HELLO_WORLD = "matisa/scenes/signIn/errorHelloWorld";
 
 const initialState = { accessToken: "null", error: null };
 

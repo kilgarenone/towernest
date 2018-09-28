@@ -2,7 +2,6 @@ import { ajax } from "rxjs/ajax";
 import { switchMap, map, catchError, tap } from "rxjs/operators";
 import { of } from "rxjs/observable/of";
 import { ofType } from "redux-observable";
-import { _throw } from "rxjs/observable/throw";
 
 export const CALL_API = "CALL_API";
 export const GET = "GET";
