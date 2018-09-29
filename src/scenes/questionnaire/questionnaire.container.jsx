@@ -45,7 +45,7 @@ class Questionnaire extends Component {
 
   handleSubmit = surveyResults => {
     this.props.storeQuestionnaireAnswers(surveyResults);
-    this.props.getRecommendedPortfolio(JSON.stringify(surveyResults), () =>
+    this.props.getRecommendedPortfolio(surveyResults, () =>
       this.props.navigate("/plan")
     );
   };
@@ -101,7 +101,7 @@ class Questionnaire extends Component {
             setProgressBarWidth={this.setProgressBarWidth}
             idForFormEl="questionnaire-forms"
             prevAndNextBtnClassName={css`
-              top: -60px;
+              top: -3.5em;
             `}
           >
             {riskProfileQuestions.map(question => (

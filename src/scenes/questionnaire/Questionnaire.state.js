@@ -32,7 +32,6 @@ export function storeQuestionnaireAnswers(payload) {
 }
 
 export function getRecommendedPortfolio(payload, callback) {
-  console.log(payload);
   return {
     type: CALL_API,
     requestConfig: {

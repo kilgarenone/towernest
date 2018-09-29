@@ -9,7 +9,11 @@ export const POST = "POST";
 
 function callApi(requestConfig, pluckState, state) {
   const { REACT_APP_PROXY_BASE_URL } = process.env;
-  const additionalBodyData = pluckState(state);
+  let additionalBodyData = {};
+
+  if (pluckState) {
+    additionalBodyData = pluckState(state);
+  }
 
   requestConfig.url = REACT_APP_PROXY_BASE_URL + requestConfig.url;
 
@@ -20,7 +24,6 @@ function callApi(requestConfig, pluckState, state) {
     withCredentials: true,
     responseType: "json"
   };
-  // console.log(config);
 
   return ajax(config);
 }

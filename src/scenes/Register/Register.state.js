@@ -8,11 +8,13 @@ export function registerClient(payload) {
   return {
     type: CALL_API,
     requestConfig: {
-      url: "/client",
+      url: "/registerClient",
       method: POST,
       body: payload
     },
-    pluckStateForBody: state => ({ metadata: state.questionnaire.answers }),
+    pluckStateForBody: state => ({
+      metadata: JSON.stringify(state.questionnaire.answers)
+    }),
     successType: STORE_CLIENT,
     failureType: FAIL_REGISTER_CLIENT
   };
