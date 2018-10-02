@@ -15,7 +15,7 @@ import { padding0 } from "../../styles/utilities";
 import CenteredContainer from "../../components/CenteredContainer";
 import {
   getRecommendedPortfolio,
-  storeQuestionnaireAnswers
+  storeQuestionnaireAnswers,
 } from "./Questionnaire.state";
 
 const validator = fieldName => values => {
@@ -95,7 +95,7 @@ class Questionnaire extends Component {
               age: "",
               riskCapacity: "",
               timeHorizon: "",
-              riskWillingness: ""
+              riskWillingness: "",
             }}
             onSubmit={this.handleSubmit}
             setProgressBarWidth={this.setProgressBarWidth}

@@ -56,7 +56,7 @@ const parentCss = css`
 const RegisterSchema = Yup.object().shape({
   first_name: Yup.string().required("First name is required"),
   last_name: Yup.string().required("Last name is required"),
-  username: Yup.string()
+  email: Yup.string()
     .email("Please enter a valid email address")
     .required("Email address is required")
 });
@@ -64,8 +64,9 @@ class Register extends Component {
   state = {};
 
   handleSubmit = (values, bag) => {
-    console.log("user info", values);
-    this.props.registerClient(values);
+    const body = { ...values, allocationId: this.props.allocationId };
+    console.log("user info", body);
+    this.props.registerClient(body);
   };
 
   render() {
@@ -89,7 +90,7 @@ class Register extends Component {
               Create an account
             </Heading>
             <Formik
-              initialValues={{ first_name: "", last_name: "", username: "" }}
+              initialValues={{ first_name: "", last_name: "", email: "" }}
               validationSchema={RegisterSchema}
               onSubmit={this.handleSubmit}
               validateOnBlur
@@ -134,7 +135,7 @@ class Register extends Component {
                   </Container>
                   <FieldInput
                     className={marginBottom2}
-                    name="username"
+                    name="email"
                     type="email"
                     label="Email"
                   />
@@ -156,7 +157,11 @@ class Register extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  allocationId: state.portfolioReview.portfolio.id
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { registerClient }
 )(Register);
