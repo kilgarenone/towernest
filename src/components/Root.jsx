@@ -4,6 +4,7 @@ import { Router } from "@reach/router";
 import PortfolioReview from "../scenes/PortfolioReview/PortfolioReview.container";
 import Questionnaire from "../scenes/Questionnaire/Questionnaire.container";
 import { getAccessTokenAction } from "../scenes/SignIn/SignIn.state";
+import App from "./App";
 
 class Root extends Component {
   componentDidMount() {
@@ -14,11 +15,10 @@ class Root extends Component {
     return (
       <Provider store={this.props.store}>
         <Router>
-          {/* <SimpleHeader /> */}
           <PortfolioReview path="/plan" />
           <Questionnaire path="/questionnaire" />
           {/* <Route exact path="/login" component={SignIn} /> */}
-          {/* <Route exact path="/" component={App} /> */}
+          <App path="/" />
           {/* <EnsureLoggedInContainer>
             <Switch>
               <Route exact path="/" component={App} />
