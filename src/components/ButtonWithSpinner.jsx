@@ -16,18 +16,23 @@ const showSpinner = css`
   opacity: 1;
 `;
 
-const btnCls = css`
-  padding-right: 2.5em;
+const isSubmittingClass = css`
+  padding-right: 2.7em;
 `;
 
 const ButtonWithSpinner = ({
   children,
   isSubmitting,
   progressText = children,
+  className,
   ...props
 }) => (
   <Button
-    className={cx({ [btnCls]: isSubmitting }, positionRelative)}
+    className={cx(
+      { [isSubmittingClass]: isSubmitting },
+      positionRelative,
+      className
+    )}
     {...props}
   >
     {isSubmitting ? progressText : children}
