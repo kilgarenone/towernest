@@ -12,20 +12,24 @@ import {
   paddingBottom1,
   marginRight1,
   padding4,
-  marginBottom2
+  marginBottom2,
+  textAlignCenter,
 } from "../../styles/utilities";
 import media from "../../styles/mediaQueries";
 import ICONS from "../../styles/icons";
 import IconBtn from "../../components/IconBtn";
 import { registerClient } from "./Register.state";
+import SubText from "../../components/SubText";
+import { marginBottom1 } from "../../styles/utilities";
+import Anchor from "../../components/Anchor";
 
 const parentCss = css`
-  background-color: #b3e5fc;
+  background-color: #f1f1f1;
   ${padding4};
   width: 100%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(0, 0, 0, 0.045);
-  /* border-top: 7px solid; */
+  border-top: 7px solid;
   border-radius: 5px;
   animation: fade-in 0.3s forwards cubic-bezier(0.8, 0.02, 0.45, 0.91);
   transform-origin: bottom center;
@@ -58,7 +62,7 @@ const RegisterSchema = Yup.object().shape({
   last_name: Yup.string().required("Last name is required"),
   email: Yup.string()
     .email("Please enter a valid email address")
-    .required("Email address is required")
+    .required("Email address is required"),
 });
 class Register extends Component {
   state = {};
@@ -142,11 +146,18 @@ class Register extends Component {
                   <Button
                     className={css`
                       align-self: center;
+                      ${marginBottom1};
                     `}
                     type="submit"
                   >
                     Create an account
                   </Button>
+                  <SubText className={textAlignCenter}>
+                    By signing up I agree to the{" "}
+                    <Anchor href="#">Terms of Use</Anchor>{" "}
+                    and processing of my personal data as stated in the{" "}
+                    <Anchor href="#">Privacy Policy</Anchor>
+                  </SubText>
                 </Container>
               )}
             </Formik>
@@ -158,7 +169,7 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-  allocationId: state.portfolioReview.portfolio.id
+  allocationId: state.portfolioReview.portfolio.id,
 });
 
 export default connect(
