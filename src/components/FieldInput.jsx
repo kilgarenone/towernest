@@ -47,6 +47,7 @@ function FieldInput({
             }
             name={name}
             component={ErrorMsg}
+            htmlFor={id}
           />
         </div>
       )}
