@@ -76,7 +76,7 @@ class PortfolioReview extends Component {
             underlayStyle={{ paddingTop: "2em" }}
             escapeExits={false}
             underlayClickExits={false}
-            underlayColor="rgba(255,255,255,.7)"
+            underlayColor="rgba(237, 237, 237, 0.73)"
             initialFocus="#first_name"
           >
             <Register handleCloseModal={this.deactivateModal} />
