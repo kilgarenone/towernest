@@ -1,21 +1,13 @@
 // @flow
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import Main from "../scenes/Main";
-import { getAccessTokenAction } from "../scenes/SignIn/SignIn.state";
+import Header from "../modules/Header";
 
 class App extends Component<any, any> {
-  handleSubmit = event => {
-    event.preventDefault();
-    this.props.getAccessTokenAction();
-  };
+  state = {};
 
   render() {
-    return <Main />;
+    return <Header />;
   }
 }
 
-export default connect(
-  null,
-  { getAccessTokenAction }
-)(App);
+export default App;
