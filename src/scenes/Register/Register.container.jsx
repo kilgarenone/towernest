@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { css, cx } from "react-emotion";
 import * as Yup from "yup";
-import Button from "../../components/Button";
 import Container from "../../components/Container";
 import FieldInput from "../../components/FieldInput";
 import Heading from "../../components/Heading";
@@ -14,17 +13,18 @@ import {
   padding4,
   marginBottom2,
   textAlignCenter,
+  marginBottom1
 } from "../../styles/utilities";
 import media from "../../styles/mediaQueries";
 import ICONS from "../../styles/icons";
 import IconBtn from "../../components/IconBtn";
 import { registerClient } from "./Register.state";
 import SubText from "../../components/SubText";
-import { marginBottom1 } from "../../styles/utilities";
 import Anchor from "../../components/Anchor";
+import ButtonWithSpinner from './../../components/ButtonWithSpinner';
 
 const parentCss = css`
-  background-color: #f1f1f1;
+  background-color: #fff;
   ${padding4};
   width: 100%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
@@ -143,15 +143,19 @@ class Register extends Component {
                     type="email"
                     label="Email"
                   />
-                  <Button
+                  <ButtonWithSpinner
                     className={css`
                       align-self: center;
                       ${marginBottom1};
                     `}
+                    scale="big"
+                    isSubmitting={true}
+                    disabled={true}
+                    progressText={true && "Creating..."}
                     type="submit"
                   >
                     Create an account
-                  </Button>
+                  </ButtonWithSpinner>
                   <SubText className={textAlignCenter}>
                     By signing up I agree to the{" "}
                     <Anchor href="#">Terms of Use</Anchor>{" "}
