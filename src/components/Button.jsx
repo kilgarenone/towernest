@@ -19,7 +19,7 @@ const scales = {
   big: `
     padding: 0.5em 2em;
     font-size: ${fontSize.text};
-  `
+  `,
 };
 
 function kind(outline, noBorder) {
@@ -51,8 +51,9 @@ function kind(outline, noBorder) {
       
       &:disabled {
         transform: scale(1);
-        cursor: default;
-        ${!noBorder && `background-color: #616161; border-color: #616161;`};
+        pointer-events: none;
+        ${!noBorder &&
+          `background-color: #e8e8e8 ; border-color: #e8e8e8 ; color: ${bg}`};
         ${noBorder && `color: #9E9E9E;`};
       }
     `;
@@ -67,7 +68,7 @@ function kinds(outline, noBorder) {
     secondary: setKind(colors.secondaryOutline, "#fff"),
     cancel: setKind("#FF4949", "#fff"),
     dark: setKind("#273444", "#fff"),
-    gray: setKind("#8492A6", "#fff")
+    gray: setKind("#8492A6", "#fff"),
   };
 }
 
