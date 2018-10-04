@@ -149,9 +149,9 @@ class Register extends Component {
                       ${marginBottom1};
                     `}
                     scale="big"
-                    isSubmitting={true}
-                    disabled={true}
-                    progressText={true && "Creating..."}
+                    isSubmitting={isSubmitting}
+                    disabled={isSubmitting}
+                    progressText={isSubmitting && "Creating..."}
                     type="submit"
                   >
                     Create an account
