@@ -4,9 +4,10 @@ import spacing from "../styles/spacing";
 
 const Card = styled("div")`
   position: relative;
-  padding: ${spacing.space4};
+  padding: ${spacing.space3};
   background-color: ${props => props.bgColor || "rgba(255, 255, 255, 1)"};
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  ${props =>
+    !props.disableBoxShadow && "box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075)"};
   border-radius: 2px;
 `;
 

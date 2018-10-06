@@ -7,6 +7,7 @@ import Card from "../../components/Card";
 import Button from "../../components/Button";
 import { marginBottom2 } from "../../styles/utilities";
 import Container from "../../components/Container";
+import spacing from "../../styles/spacing";
 
 class GreetFunding extends Component {
   state = {};
@@ -15,12 +16,19 @@ class GreetFunding extends Component {
     return (
       <Card
         className={css`
-          max-width: 900px;
+          max-width: 700px;
+          height: 289px;
           margin: 0 auto;
+          margin-top: ${spacing.space4};
         `}
-        bgColor="#F0F0EE"
+        bgColor="#FCE7DD"
+        disableBoxShadow
       >
-        <Container>
+        <Container
+          className={css`
+            flex-wrap: wrap;
+          `}
+        >
           <div>
             <Heading
               className={css`
@@ -34,7 +42,11 @@ class GreetFunding extends Component {
             </Heading>
             <Button>Get started</Button>
           </div>
-          <div>
+          <div
+            className={css`
+              flex-basis: 24%;
+            `}
+          >
             <picture>
               <source
                 srcSet={flowerLarge}
@@ -46,7 +58,16 @@ class GreetFunding extends Component {
                 type="image/jpeg"
                 media="(min-width: 50px)"
               />
-              <img style={{}} src={flowerLarge} alt="art-deco" />
+              <img
+                className={css`
+                  position: relative;
+                  top: -96px;
+                  left: 45px;
+                  min-width: 147px;
+                `}
+                src={flowerLarge}
+                alt="art-deco"
+              />
             </picture>
           </div>
         </Container>
