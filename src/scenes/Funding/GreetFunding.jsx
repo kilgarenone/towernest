@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { css } from "react-emotion";
-import flowerLarge from "../../assets/flowerLarge.png";
-import flowerSmall from "../../assets/flowerSmall.png";
+import buildingLarge from "../../assets/buildingLarge.png";
+import buildingSmall from "../../assets/buildingSmall.png";
 import Heading from "../../components/Heading";
 import Card from "../../components/Card";
 import Button from "../../components/Button";
@@ -24,53 +24,42 @@ class GreetFunding extends Component {
         bgColor="#FCE7DD"
         disableBoxShadow
       >
-        <Container
+        <div>
+          <Heading
+            className={css`
+              max-width: 350px;
+              line-height: 1.3;
+              ${marginBottom2};
+            `}
+            tag="h3"
+          >
+            Fund your account to start investing
+          </Heading>
+          <Button>Get started</Button>
+        </div>
+        <div
           className={css`
-            flex-wrap: wrap;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            max-width: 235px;
+            right: 39px;
           `}
         >
-          <div>
-            <Heading
-              className={css`
-                max-width: 350px;
-                line-height: 1.3;
-                ${marginBottom2};
-              `}
-              tag="h3"
-            >
-              Fund your account to start investing
-            </Heading>
-            <Button>Get started</Button>
-          </div>
-          <div
-            className={css`
-              flex-basis: 24%;
-            `}
-          >
-            <picture>
-              <source
-                srcSet={flowerLarge}
-                type="image/jpeg"
-                media="(min-width: 992px)"
-              />
-              <source
-                srcSet={flowerSmall}
-                type="image/jpeg"
-                media="(min-width: 50px)"
-              />
-              <img
-                className={css`
-                  position: relative;
-                  top: -96px;
-                  left: 45px;
-                  min-width: 147px;
-                `}
-                src={flowerLarge}
-                alt="art-deco"
-              />
-            </picture>
-          </div>
-        </Container>
+          <picture>
+            <source
+              srcSet={buildingLarge}
+              type="image/jpeg"
+              media="(min-width: 992px)"
+            />
+            <source
+              srcSet={buildingSmall}
+              type="image/jpeg"
+              media="(min-width: 50px)"
+            />
+            <img src={buildingLarge} alt="art-deco" />
+          </picture>
+        </div>
       </Card>
     );
   }
