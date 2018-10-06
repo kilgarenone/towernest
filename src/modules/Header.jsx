@@ -7,7 +7,7 @@ import Logo from "../components/Logo";
 import ExactNavLink from "../components/ExactNavLink";
 
 const linkCss = css`
-  padding: 0 20px;
+  padding: 0 15px;
 `;
 class Header extends Component {
   state = {};
