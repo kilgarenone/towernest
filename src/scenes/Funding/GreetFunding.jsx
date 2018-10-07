@@ -6,7 +6,8 @@ import Button from "../../components/Button";
 import Card from "../../components/Card";
 import Heading from "../../components/Heading";
 import spacing from "../../styles/spacing";
-import { marginBottom2 } from "../../styles/utilities";
+import { marginBottom2, marginBottom0 } from "../../styles/utilities";
+import { fontSize } from "../../styles/typography";
 
 class GreetFunding extends Component {
   state = {};
@@ -18,7 +19,7 @@ class GreetFunding extends Component {
           max-width: 40em;
           height: 19.2em;
           margin: 0 auto;
-          margin-top: ${spacing.space4};
+          margin-top: ${spacing.space3};
         `}
         bgColor="#FCE7DD"
         disableBoxShadow
@@ -28,6 +29,16 @@ class GreetFunding extends Component {
             margin-top: ${spacing.space2};
           `}
         >
+          <div
+            className={css`
+              font-size: ${fontSize.subText};
+              font-weight: 500;
+              color: rgba(0, 0, 0, 0.45);
+              ${marginBottom0};
+            `}
+          >
+            You are in good hand
+          </div>
           <Heading
             className={css`
               max-width: 10em;
@@ -46,7 +57,7 @@ class GreetFunding extends Component {
             right: 0;
             bottom: 0;
             max-width: 15.2em;
-            right: 2.4em;
+            right: ${spacing.space4};
           `}
         >
           <picture>
