@@ -32,6 +32,7 @@ class GreetFunding extends Component {
           <div
             className={css`
               font-size: ${fontSize.subText};
+              text-transform: uppercase;
               font-weight: 500;
               color: rgba(0, 0, 0, 0.45);
               ${marginBottom0};
