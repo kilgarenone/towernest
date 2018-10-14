@@ -5,6 +5,7 @@ import PortfolioReview from "../scenes/PortfolioReview/PortfolioReview.container
 import Questionnaire from "../scenes/Questionnaire/Questionnaire.container";
 import { getAccessTokenAction } from "../scenes/SignIn/SignIn.state";
 import App from "./App";
+import SignUp from "../scenes/SignUp/SignUp.container";
 
 class Root extends Component {
   componentDidMount() {
@@ -17,8 +18,9 @@ class Root extends Component {
         <Router>
           <PortfolioReview path="/plan" />
           <Questionnaire path="/questionnaire" />
+          <SignUp path="/" />
           {/* <Route exact path="/login" component={SignIn} /> */}
-          <App path="/" />
+          {/* <App path="/" /> */}
           {/* <EnsureLoggedInContainer>
             <Switch>
               <Route exact path="/" component={App} />
