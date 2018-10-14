@@ -18,7 +18,7 @@ class Root extends Component {
         <Router>
           {/* <PortfolioReview path="/plan" /> */}
           {/* <Questionnaire path="/questionnaire" /> */}
-          <SignUp path="signup" />
+          <SignUp path="signup/*" />
           {/* <Route exact path="/login" component={SignIn} /> */}
           {/* <App path="/" /> */}
           {/* <EnsureLoggedInContainer>
