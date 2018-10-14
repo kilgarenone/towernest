@@ -23,40 +23,6 @@ import SubText from "../../components/SubText";
 import Anchor from "../../components/Anchor";
 import ButtonWithSpinner from './../../components/ButtonWithSpinner';
 
-const parentCss = css`
-  background-color: #fff;
-  ${padding4};
-  width: 100%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(0, 0, 0, 0.045);
-  border-top: 7px solid;
-  border-radius: 5px;
-  animation: fade-in 0.3s forwards cubic-bezier(0.8, 0.02, 0.45, 0.91);
-  transform-origin: bottom center;
-
-  ${media.medium(
-    css`
-      width: 35em;
-    `
-  )};
-
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-
-    50% {
-      opacity: 1;
-    }
-
-    70%,
-    100% {
-      transform: scale(1);
-    }
-  }
-`;
-
 const RegisterSchema = Yup.object().shape({
   first_name: Yup.string().required("First name is required"),
   last_name: Yup.string().required("Last name is required"),
@@ -69,8 +35,9 @@ class Register extends Component {
 
   handleSubmit = (values, bag) => {
     const body = { ...values, allocationId: this.props.allocationId };
-    console.log("user info", body);
-    this.props.registerClient(body);
+    const callBack = this.props.handleRegistrationSuccess || null;
+    
+    this.props.registerClient(body, callBack );
   };
 
   render() {
@@ -78,7 +45,7 @@ class Register extends Component {
 
     return (
       <React.Fragment>
-        <div className={parentCss}>
+        <div>
           <IconBtn
             className={css`
               position: absolute;
@@ -115,6 +82,7 @@ class Register extends Component {
                     `}
                   >
                     <FieldInput
+                      autoFocus
                       name="first_name"
                       type="text"
                       label="Name"
@@ -154,10 +122,10 @@ class Register extends Component {
                     progressText={isSubmitting && "Creating..."}
                     type="submit"
                   >
-                    Create an account
+                    Continue
                   </ButtonWithSpinner>
                   <SubText className={textAlignCenter}>
-                    By signing up I agree to the{" "}
+                    By continuing I agree to the{" "}
                     <Anchor href="#">Terms of Use</Anchor>{" "}
                     and processing of my personal data as stated in the{" "}
                     <Anchor href="#">Privacy Policy</Anchor>
@@ -172,11 +140,8 @@ class Register extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  allocationId: state.portfolioReview.portfolio.id,
-});
 
 export default connect(
-  mapStateToProps,
+  null,
   { registerClient }
 )(Register);

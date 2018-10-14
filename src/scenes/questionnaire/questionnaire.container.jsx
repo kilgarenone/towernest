@@ -27,21 +27,7 @@ const validator = fieldName => values => {
 };
 
 class Questionnaire extends Component {
-  constructor(props) {
-    // don't forget the 'props'!!! for connect()!!!
-    super(props);
-    this.state = { width: 5, scrolled: false };
-    this.scrollSubscription = fromEvent(window, "scroll").subscribe(
-      e =>
-        e.pageY > 0
-          ? this.setState({ scrolled: true })
-          : this.setState({ scrolled: false })
-    );
-  }
-
-  componentWillUnmount() {
-    this.scrollSubscription.unsubscribe();
-  }
+  state = {};
 
   handleSubmit = surveyResults => {
     this.props.storeQuestionnaireAnswers(surveyResults);
@@ -50,39 +36,9 @@ class Questionnaire extends Component {
     );
   };
 
-  setProgressBarWidth = stepNum => {
-    this.setState({ width: stepNum });
-  };
-
   render() {
-    const isScrolledCss =
-      this.state.scrolled &&
-      "box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 2px 10px rgba(0, 0, 0, 0.06);";
-
     return (
       <React.Fragment>
-        <Container
-          className={css`
-            position: fixed;
-            z-index: 2;
-            top: 0;
-            width: 100%;
-            height: 3em;
-            background-color: #fff;
-            ${padding0};
-            ${isScrolledCss};
-            transition: box-shadow 0.4s;
-          `}
-          yAlign="center"
-        >
-          <Logo />
-          <ProgressBar
-            className={css`
-              margin-left: ${spacing.space1};
-            `}
-            width={this.state.width}
-          />
-        </Container>
         <CenteredContainer
           className={css`
             position: relative;

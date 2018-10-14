@@ -39,12 +39,12 @@ function FieldInput({
             <FormLabelBottom htmlFor={id}>{bottomLabel}</FormLabelBottom>
           )}
           <ErrorMessage
-            className={
-              bottomLabel &&
-              css`
-                bottom: 0.8em;
-              `
-            }
+            // className={
+            //   bottomLabel &&
+            //   css`
+            //     bottom: 0.8em;
+            //   `
+            // }
             name={name}
             component={ErrorMsg}
             htmlFor={id}

@@ -4,15 +4,9 @@ import ProgressBar from "../../../components/ProgressBar";
 import spacing from "../../../styles/spacing";
 import Container from "../../../components/Container";
 
-const STEPS = [
-  "Account",
-  "Risk Profile",
-  "Preview Portfolio",
-  "Funding",
-  "Submit",
-];
+const STEPS = ["Account", "Questionnaire", "Portfolio", "Funding", "Submit"];
 
-function ProgressStatus({ width = 75 }) {
+function ProgressStatus({ progress }) {
   return (
     <div
       className={css`
@@ -33,7 +27,8 @@ function ProgressStatus({ width = 75 }) {
             <div
               key={step}
               className={
-                width >= normalizedWidth && width < normalizedWidth + interval
+                progress >= normalizedWidth &&
+                progress < normalizedWidth + interval
                   ? css`
                       font-weight: 900;
                     `
@@ -45,7 +40,7 @@ function ProgressStatus({ width = 75 }) {
           );
         })}
       </Container>
-      <ProgressBar width={width} />
+      <ProgressBar width={progress} />
     </div>
   );
 }

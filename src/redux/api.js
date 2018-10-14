@@ -22,7 +22,7 @@ function callApi(requestConfig, pluckState, state) {
   const config = {
     ...requestConfig,
     withCredentials: true,
-    responseType: "json"
+    responseType: "json",
   };
 
   return ajax(config);
@@ -31,7 +31,7 @@ function callApi(requestConfig, pluckState, state) {
 function apiError(type, error) {
   return {
     type,
-    error
+    error,
   };
 }
 
@@ -44,7 +44,7 @@ export default (action$, state$) =>
         pluckStateForBody,
         successType,
         failureType,
-        successCallBack
+        successCallBack,
       }) =>
         callApi(requestConfig, pluckStateForBody, state$.value).pipe(
           tap(response =>
@@ -61,7 +61,7 @@ export default (action$, state$) =>
 
             return {
               type: successType,
-              data: res.response
+              data: res.response,
             };
           }),
           catchError(

@@ -16,9 +16,9 @@ class Root extends Component {
     return (
       <Provider store={this.props.store}>
         <Router>
-          <PortfolioReview path="/plan" />
-          <Questionnaire path="/questionnaire" />
-          <SignUp path="/" />
+          {/* <PortfolioReview path="/plan" /> */}
+          {/* <Questionnaire path="/questionnaire" /> */}
+          <SignUp path="signup" />
           {/* <Route exact path="/login" component={SignIn} /> */}
           {/* <App path="/" /> */}
           {/* <EnsureLoggedInContainer>

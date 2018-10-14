@@ -14,7 +14,7 @@ export default (state = { clientData: null, error: null }, action) => {
       return state;
   }
 };
-export function registerClient(payload) {
+export function registerClient(payload, callBack) {
   return {
     type: CALL_API,
     requestConfig: {
@@ -22,9 +22,10 @@ export function registerClient(payload) {
       method: POST,
       body: payload,
     },
-    pluckStateForBody: state => ({
-      metadata: JSON.stringify(state.questionnaire.answers),
-    }),
+    successCallBack: callBack,
+    // pluckStateForBody: state => ({
+    //   metadata: JSON.stringify(state.questionnaire.answers),
+    // }),
     successType: STORE_CLIENT,
     failureType: FAIL_REGISTER_CLIENT,
   };
