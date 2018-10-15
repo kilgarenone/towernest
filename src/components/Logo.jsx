@@ -11,7 +11,7 @@ function Logo() {
         color: black;
       `}
     >
-      duller
+      towernest
     </a>
   );
 }
