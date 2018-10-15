@@ -1,10 +1,7 @@
-import React, { Component } from "react";
-import { Provider, connect } from "react-redux";
 import { Router } from "@reach/router";
-import PortfolioReview from "../scenes/PortfolioReview/PortfolioReview.container";
-import Questionnaire from "../scenes/Questionnaire/Questionnaire.container";
+import React, { Component } from "react";
+import { connect, Provider } from "react-redux";
 import { getAccessTokenAction } from "../scenes/SignIn/SignIn.state";
-import App from "./App";
 import SignUp from "../scenes/SignUp/SignUp.container";
 
 class Root extends Component {
