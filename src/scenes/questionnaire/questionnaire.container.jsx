@@ -15,8 +15,9 @@ import { padding0 } from "../../styles/utilities";
 import CenteredContainer from "../../components/CenteredContainer";
 import {
   getRecommendedPortfolio,
-  storeQuestionnaireAnswers,
+  storeQuestionnaireAnswers
 } from "./Questionnaire.state";
+import { setProgressStatus } from "../SignUp/SignUp.state";
 
 const validator = fieldName => values => {
   const errors = {};
@@ -36,61 +37,59 @@ class Questionnaire extends Component {
     );
   };
 
+  setProgressBarWidth = childrenCount => {
+    this.props.setProgressStatus(
+      this.props.progressStatus + 25 / childrenCount
+    );
+  };
+
   render() {
     return (
-      <React.Fragment>
-        <CenteredContainer
-          className={css`
-            position: relative;
-            z-index: 1;
+      <CenteredContainer
+        className={css`
+          position: relative;
+          z-index: 1;
+        `}
+        maxWidth="25em"
+      >
+        <Wizard
+          initialValues={{
+            age: "",
+            riskCapacity: "",
+            timeHorizon: "",
+            riskWillingness: ""
+          }}
+          onSubmit={this.handleSubmit}
+          setProgressBarWidth={this.setProgressBarWidth}
+          idForFormEl="questionnaire-forms"
+          prevAndNextBtnClassName={css`
+            top: -3.5em;
           `}
-          maxWidth="25em"
         >
-          <Wizard
-            initialValues={{
-              age: "",
-              riskCapacity: "",
-              timeHorizon: "",
-              riskWillingness: "",
-            }}
-            onSubmit={this.handleSubmit}
-            setProgressBarWidth={this.setProgressBarWidth}
-            idForFormEl="questionnaire-forms"
-            prevAndNextBtnClassName={css`
-              top: -3.5em;
-            `}
-          >
-            {riskProfileQuestions.map(question => (
-              <Wizard.Page
-                validate={validator(question.name)}
-                key={question.name}
+          {riskProfileQuestions.map(question => (
+            <Wizard.Page
+              validate={validator(question.name)}
+              key={question.name}
+            >
+              <FieldSet
+                style={{ minHeight: "28em" }}
+                legend={question.description}
               >
-                <div style={{ marginTop: spacing.space4 }}>
-                  {/* <p style={{ color: "#aaa", fontSize: fontSize.text }}>
-                    You’re more likely to stick with an investment plan that
-                    fits your investment personality
-                  </p> */}
-                  <FieldSet
-                    style={{ minHeight: "27.5em" }}
-                    legend={question.description}
-                  >
-                    <Field
-                      name={question.name}
-                      component={ListRadioBtns}
-                      questions={question.answers}
-                    />
-                  </FieldSet>
-                </div>
-              </Wizard.Page>
-            ))}
-          </Wizard>
-        </CenteredContainer>
-      </React.Fragment>
+                <Field
+                  name={question.name}
+                  component={ListRadioBtns}
+                  questions={question.answers}
+                />
+              </FieldSet>
+            </Wizard.Page>
+          ))}
+        </Wizard>
+      </CenteredContainer>
     );
   }
 }
 
 export default connect(
-  null,
-  { getRecommendedPortfolio, storeQuestionnaireAnswers }
+  state => ({ progressStatus: state.signUp.progressStatus }),
+  { getRecommendedPortfolio, storeQuestionnaireAnswers, setProgressStatus }
 )(Questionnaire);
