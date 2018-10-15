@@ -1,15 +1,13 @@
-import React, { Component } from "react";
-import { fromEvent } from "rxjs";
-import { css } from "react-emotion";
 import { Router } from "@reach/router";
+import React, { Component } from "react";
+import { css } from "react-emotion";
+import { fromEvent } from "rxjs";
 import Container from "../../components/Container";
 import Logo from "../../components/Logo";
-import ProgressBar from "../../components/ProgressBar";
-import spacing from "../../styles/spacing";
 import { padding0 } from "../../styles/utilities";
-import ProgressStatus from "./shared/ProgressStatus";
-import Register from "../Register/Register.container";
 import Questionnaire from "../Questionnaire/Questionnaire.container";
+import Register from "../Register/Register.container";
+import ProgressStatus from "./shared/ProgressStatus";
 
 class SignUp extends Component {
   constructor(props) {
@@ -62,13 +60,6 @@ class SignUp extends Component {
             padding: 80px 40px;
           `}
         >
-          <div
-            className={css`
-              flex-basis: 30%;
-            `}
-          >
-            Additional info
-          </div>
           <Router
             className={css`
               flex-basis: 70%;
@@ -80,6 +71,13 @@ class SignUp extends Component {
             />
             <Questionnaire path="questionnaire" />
           </Router>
+          <div
+            className={css`
+              flex-basis: 30%;
+            `}
+          >
+            Additional info
+          </div>
         </Container>
       </>
     );

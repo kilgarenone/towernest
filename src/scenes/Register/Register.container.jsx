@@ -1,27 +1,25 @@
 import { Formik } from "formik";
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { css, cx } from "react-emotion";
+import { connect } from "react-redux";
 import * as Yup from "yup";
+import Anchor from "../../components/Anchor";
 import Container from "../../components/Container";
 import FieldInput from "../../components/FieldInput";
 import Heading from "../../components/Heading";
+import IconBtn from "../../components/IconBtn";
+import SubText from "../../components/SubText";
+import ICONS from "../../styles/icons";
 import {
+  marginBottom1,
+  marginBottom2,
+  marginRight1,
   padding1,
   paddingBottom1,
-  marginRight1,
-  padding4,
-  marginBottom2,
   textAlignCenter,
-  marginBottom1
 } from "../../styles/utilities";
-import media from "../../styles/mediaQueries";
-import ICONS from "../../styles/icons";
-import IconBtn from "../../components/IconBtn";
+import ButtonWithSpinner from "../../components/ButtonWithSpinner";
 import { registerClient } from "./Register.state";
-import SubText from "../../components/SubText";
-import Anchor from "../../components/Anchor";
-import ButtonWithSpinner from './../../components/ButtonWithSpinner';
 
 const RegisterSchema = Yup.object().shape({
   first_name: Yup.string().required("First name is required"),
@@ -36,8 +34,8 @@ class Register extends Component {
   handleSubmit = (values, bag) => {
     const body = { ...values, allocationId: this.props.allocationId };
     const callBack = this.props.handleRegistrationSuccess || null;
-    
-    this.props.registerClient(body, callBack );
+
+    this.props.registerClient(body, callBack);
   };
 
   render() {
@@ -125,9 +123,12 @@ class Register extends Component {
                     Continue
                   </ButtonWithSpinner>
                   <SubText className={textAlignCenter}>
-                    By continuing I agree to the{" "}
-                    <Anchor href="#">Terms of Use</Anchor>{" "}
-                    and processing of my personal data as stated in the{" "}
+                    By continuing I agree to the
+{" "}
+                    <Anchor href="#">Terms of Use</Anchor>
+{" "}
+                    and processing of my personal data as stated in the
+{" "}
                     <Anchor href="#">Privacy Policy</Anchor>
                   </SubText>
                 </Container>
@@ -139,7 +140,6 @@ class Register extends Component {
     );
   }
 }
-
 
 export default connect(
   null,

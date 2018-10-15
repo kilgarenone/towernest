@@ -1,7 +1,8 @@
-import styled from "react-emotion";
+import React, { Component } from "react";
+import { css } from "react-emotion";
 import { fontSize } from "../styles/typography";
 
-const Input = styled("input")`
+const defaultCss = css`
   font-family: "Inter UI", "Helvetica Neue", HelveticaNeue, Helvetica, Arial,
     sans-serif;
   height: 2.7em;
@@ -19,8 +20,21 @@ const Input = styled("input")`
     border-color: #2962ff;
   }
 `;
-// @media screen and (min-width: 48rem) {
-//   max-width: 340px;
-// }
+class Input extends Component {
+  constructor(props) {
+    super(props);
+    this.input = React.createRef();
+  }
+
+  componentDidMount() {
+    if (this.props.autoFocus) {
+      this.input.current.focus();
+    }
+  }
+
+  render() {
+    return <input ref={this.input} className={defaultCss} {...this.props} />;
+  }
+}
 
 export default Input;
