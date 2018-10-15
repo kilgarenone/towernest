@@ -19,17 +19,16 @@ class Wizard extends Component<Props> {
 
   next = values =>
     this.setState(state => ({
-      page: Math.min(state.page + 1, this.props.children.length - 1),
+      page: Math.min(state.page + 1, this.props.children.length),
       values
     }));
 
   previous = () => {
     const { children, setProgressBarWidth } = this.props;
-    const { page } = this.state;
     const childrenCount = React.Children.count(children);
 
     if (setProgressBarWidth !== undefined) {
-      setProgressBarWidth(((page - 1) / (childrenCount - 1)) * 100);
+      setProgressBarWidth(-childrenCount);
     }
 
     this.setState(state => ({
@@ -63,7 +62,7 @@ class Wizard extends Component<Props> {
     }
 
     if (setProgressBarWidth !== undefined) {
-      setProgressBarWidth(((page + 1) / (childrenCount - 1)) * 100);
+      setProgressBarWidth(childrenCount);
     }
 
     this.next(values);
