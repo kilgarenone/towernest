@@ -2,18 +2,22 @@ import { Router } from "@reach/router";
 import React, { Component } from "react";
 import { css } from "react-emotion";
 import { fromEvent } from "rxjs";
+import { connect } from "react-redux";
 import Container from "../../components/Container";
 import Logo from "../../components/Logo";
 import { padding0 } from "../../styles/utilities";
 import Questionnaire from "../Questionnaire/Questionnaire.container";
-import Register from "../Register/Register.container";
+import Register from "./Register/Register.container";
 import ProgressStatus from "./shared/ProgressStatus";
+import { setProgressStatus } from "./SignUp.state";
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
     console.log(props);
-    this.state = { width: 1, scrolled: false };
+
+    this.state = { scrolled: false };
+
     this.scrollSubscription = fromEvent(window, "scroll").subscribe(
       e =>
         e.pageY > 0
@@ -22,13 +26,17 @@ class SignUp extends Component {
     );
   }
 
+  componentDidMount() {
+    this.props.setProgressStatus(1);
+  }
+
   componentWillUnmount() {
     this.scrollSubscription.unsubscribe();
   }
 
   handleRegistrationSuccess = () => {
-    this.setState({ width: 25 });
-    this.props.navigate(`${this.props.path}/questionnaire`);
+    this.props.setProgressStatus(26);
+    this.props.navigate(`${this.props.uri}/questionnaire`);
   };
 
   render() {
@@ -53,7 +61,7 @@ class SignUp extends Component {
           yAlign="center"
         >
           <Logo />
-          <ProgressStatus progress={this.state.width} />
+          <ProgressStatus progress={this.props.progressStatus} />
         </Container>
         <Container
           className={css`
@@ -84,4 +92,15 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+const mapStateToProps = state => ({
+  progressStatus: state.signUp.progressStatus,
+});
+
+const mapDispatchToProps = {
+  setProgressStatus,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUp);
