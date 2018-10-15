@@ -21,9 +21,9 @@ import {
   paddingY3,
   relativeHeightWidth100,
   textAlignCenter,
-  marginRight2
+  marginRight2,
 } from "../../styles/utilities";
-import Register from "../Register/Register.container";
+// import Register from "../Register/Register.container";
 
 function buildBarCss(holding, index) {
   return `
@@ -54,22 +54,22 @@ function buildBarCss(holding, index) {
 
 const BAR_COLORS = ["#711d45", "#78e0f0", "#f1cf89", "#ee995d"];
 class PortfolioReview extends Component {
-  state = { modalActive: false };
+  state = {};
 
-  activateModal = () => {
-    this.setState({ modalActive: true });
-  };
+  // activateModal = () => {
+  //   this.setState({ modalActive: true });
+  // };
 
-  deactivateModal = () => {
-    this.setState({ modalActive: false });
-  };
+  // deactivateModal = () => {
+  //   this.setState({ modalActive: false });
+  // };
 
   render() {
     const data = this.props.portfolio;
 
     return (
       <React.Fragment>
-        {this.state.modalActive && (
+        {/* {this.state.modalActive && (
           <AriaModal
             titleText="Create an account"
             onExit={this.deactivateModal}
@@ -81,7 +81,7 @@ class PortfolioReview extends Component {
           >
             <Register handleCloseModal={this.deactivateModal} />
           </AriaModal>
-        )}
+        )} */}
         <div
           className={css`
             background-color: #f5f5f5;
@@ -187,7 +187,7 @@ class PortfolioReview extends Component {
 }
 
 const mapStateToProps = state => ({
-  portfolio: state.portfolioReview
+  portfolio: state.portfolioReview,
 });
 
 export default connect(
