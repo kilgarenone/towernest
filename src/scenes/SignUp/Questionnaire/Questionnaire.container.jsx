@@ -50,7 +50,7 @@ class Questionnaire extends Component {
         >
           <SignUpHeader
             title="Let's get to know you"
-            desc="Welcome to towernest! We will ask you a set of questions to get you started."
+            desc="Welcome to towernest! We will ask you a set of questions to get you started on an optimal portfolio."
           />
           {/* <Container
             className={css`
