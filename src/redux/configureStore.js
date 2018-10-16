@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import { createEpicMiddleware } from "redux-observable";
 import throttle from "lodash.throttle";
-import { rootEpic, rootReducer } from "./root";
+import { rootEpic, rootReducer } from "./reduxRoot";
 import { loadState, saveState } from "./persistState";
 
 const persistedStore = loadState();

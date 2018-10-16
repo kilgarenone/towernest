@@ -6,10 +6,11 @@ import { connect } from "react-redux";
 import Container from "../../components/Container";
 import Logo from "../../components/Logo";
 import { padding0 } from "../../styles/utilities";
-import Questionnaire from "../Questionnaire/Questionnaire.container";
+import Questionnaire from "./Questionnaire/Questionnaire.container";
 import Register from "./Register/Register.container";
 import ProgressStatus from "./shared/ProgressStatus";
 import { setProgressStatus } from "./SignUp.state";
+import PortfolioReview from "./PortfolioReview/PortfolioReview.container";
 
 class SignUp extends Component {
   constructor(props) {
@@ -78,6 +79,7 @@ class SignUp extends Component {
               handleRegistrationSuccess={this.handleRegistrationSuccess}
             />
             <Questionnaire path="questionnaire" />
+            <PortfolioReview path="plan" />
           </Router>
           <div
             className={css`
@@ -93,11 +95,11 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = state => ({
-  progressStatus: state.signUp.progressStatus,
+  progressStatus: state.signUp.progressStatus
 });
 
 const mapDispatchToProps = {
-  setProgressStatus,
+  setProgressStatus
 };
 
 export default connect(

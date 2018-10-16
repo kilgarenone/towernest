@@ -1,23 +1,14 @@
 import { Field } from "formik";
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { css } from "react-emotion";
-import { fromEvent } from "rxjs";
-import Container from "../../components/Container";
-import FieldSet from "../../components/FieldSet";
-import ProgressBar from "../../components/ProgressBar";
-import Wizard from "../../components/WizardForm";
-import spacing from "../../styles/spacing";
-import riskProfileQuestions from "./shared/riskProfileQuestions";
+import { connect } from "react-redux";
+import CenteredContainer from "../../../components/CenteredContainer";
+import FieldSet from "../../../components/FieldSet";
+import Wizard from "../../../components/WizardForm";
+import { setProgressStatus } from "../SignUp.state";
+import { getRecommendedPortfolio } from "./Questionnaire.state";
 import ListRadioBtns from "./shared/ListRadioBtns";
-import Logo from "../../components/Logo";
-import { padding0 } from "../../styles/utilities";
-import CenteredContainer from "../../components/CenteredContainer";
-import {
-  getRecommendedPortfolio,
-  storeQuestionnaireAnswers
-} from "./Questionnaire.state";
-import { setProgressStatus } from "../SignUp/SignUp.state";
+import riskProfileQuestions from "./shared/riskProfileQuestions";
 
 const validator = fieldName => values => {
   const errors = {};
@@ -31,9 +22,10 @@ class Questionnaire extends Component {
   state = {};
 
   handleSubmit = surveyResults => {
-    this.props.storeQuestionnaireAnswers(surveyResults);
+    console.log(this.props);
+    // this.props.storeQuestionnaireAnswers(surveyResults);
     this.props.getRecommendedPortfolio(surveyResults, () =>
-      this.props.navigate("/plan")
+      this.props.navigate("/signup/plan")
     );
   };
 
@@ -91,5 +83,5 @@ class Questionnaire extends Component {
 
 export default connect(
   state => ({ progressStatus: state.signUp.progressStatus }),
-  { getRecommendedPortfolio, storeQuestionnaireAnswers, setProgressStatus }
+  { getRecommendedPortfolio, setProgressStatus }
 )(Questionnaire);

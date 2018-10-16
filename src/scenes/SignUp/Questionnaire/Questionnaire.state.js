@@ -1,4 +1,4 @@
-import { CALL_API, POST } from "../../redux/api";
+import { CALL_API, POST } from "../../../redux/api";
 import { STORE_RECOMMENDED_PORTFOLIO } from "../PortfolioReview/PortfolioReview.state";
 
 const STORE_QUESTIONNAIRE_ANSWERS =

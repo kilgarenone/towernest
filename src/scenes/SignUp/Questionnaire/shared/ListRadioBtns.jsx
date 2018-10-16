@@ -1,10 +1,10 @@
 import React from "react";
 import { css } from "react-emotion";
 import { ErrorMessage } from "formik";
-import { List } from "../../../components/List";
-import RadioButton from "../../../components/RadioButton";
-import spacing from "../../../styles/spacing";
-import ErrorMsg from "../../../components/ErrorMsg";
+import { List } from "../../../../components/List";
+import RadioButton from "../../../../components/RadioButton";
+import spacing from "../../../../styles/spacing";
+import ErrorMsg from "../../../../components/ErrorMsg";
 
 const radioBtnCss = css`
   padding: ${spacing.space2};

@@ -19,7 +19,7 @@ import {
   textAlignCenter,
 } from "../../../styles/utilities";
 import ButtonWithSpinner from "../../../components/ButtonWithSpinner";
-import { registerClient } from "../SignUp.state";
+import { registerClient } from "./Register.state";
 
 const RegisterSchema = Yup.object().shape({
   first_name: Yup.string().required("First name is required"),

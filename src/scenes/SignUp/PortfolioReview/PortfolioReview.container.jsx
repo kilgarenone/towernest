@@ -2,15 +2,15 @@ import React, { Component } from "react";
 import AriaModal from "react-aria-modal";
 import { css } from "react-emotion";
 import { connect } from "react-redux";
-import AssistText from "../../components/AssistText";
-import Button from "../../components/Button";
-import ButtonWithIcon from "../../components/ButtonWithIcon";
-import Container from "../../components/Container";
-import Heading from "../../components/Heading";
-import Logo from "../../components/Logo";
-import ICONS from "../../styles/icons";
-import spacing from "../../styles/spacing";
-import { fontSize } from "../../styles/typography";
+import AssistText from "../../../components/AssistText";
+import Button from "../../../components/Button";
+import ButtonWithIcon from "../../../components/ButtonWithIcon";
+import Container from "../../../components/Container";
+import Heading from "../../../components/Heading";
+import Logo from "../../../components/Logo";
+import ICONS from "../../../styles/icons";
+import spacing from "../../../styles/spacing";
+import { fontSize } from "../../../styles/typography";
 import {
   fontWeight500,
   marginBottom2,
@@ -21,8 +21,8 @@ import {
   paddingY3,
   relativeHeightWidth100,
   textAlignCenter,
-  marginRight2,
-} from "../../styles/utilities";
+  marginRight2
+} from "../../../styles/utilities";
 // import Register from "../Register/Register.container";
 
 function buildBarCss(holding, index) {
@@ -82,14 +82,6 @@ class PortfolioReview extends Component {
             <Register handleCloseModal={this.deactivateModal} />
           </AriaModal>
         )} */}
-        <div
-          className={css`
-            background-color: #f5f5f5;
-            ${padding0};
-          `}
-        >
-          <Logo />
-        </div>
         <Container
           isColumn
           xAlign="center"
@@ -119,7 +111,7 @@ class PortfolioReview extends Component {
             `}
             onClick={this.activateModal}
           >
-            Open My Account
+            Fund My Account
           </Button>
           <AssistText>Question? Chat with us</AssistText>
         </Container>
@@ -187,7 +179,7 @@ class PortfolioReview extends Component {
 }
 
 const mapStateToProps = state => ({
-  portfolio: state.portfolioReview,
+  portfolio: state.portfolioReview
 });
 
 export default connect(
