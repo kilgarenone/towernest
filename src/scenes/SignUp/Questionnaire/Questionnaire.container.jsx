@@ -9,6 +9,9 @@ import { setProgressStatus, hideAdditionalInfoBox } from "../SignUp.state";
 import { getRecommendedPortfolio } from "./Questionnaire.state";
 import ListRadioBtns from "./shared/ListRadioBtns";
 import riskProfileQuestions from "./shared/riskProfileQuestions";
+import InfoCard from "../shared/InfoCard";
+import Container from "../../../components/Container";
+import SignUpHeader from "../shared/SignUpHeader";
 
 const validator = fieldName => values => {
   const errors = {};
@@ -39,46 +42,59 @@ class Questionnaire extends Component {
 
   render() {
     return (
-      <CenteredContainer
-        className={css`
-          position: relative;
-          z-index: 1;
-        `}
-        maxWidth="25em"
-      >
-        <Wizard
-          initialValues={{
-            age: "",
-            riskCapacity: "",
-            timeHorizon: "",
-            riskWillingness: ""
-          }}
-          onSubmit={this.handleSubmit}
-          setProgressBarWidth={this.setProgressBarWidth}
-          idForFormEl="questionnaire-forms"
-          prevAndNextBtnClassName={css`
-            top: -3.5em;
+      <Container xAlign="space-between">
+        <div
+          className={css`
+            flex-basis: 60%;
           `}
         >
-          {riskProfileQuestions.map(question => (
-            <Wizard.Page
-              validate={validator(question.name)}
-              key={question.name}
-            >
-              <FieldSet
-                style={{ minHeight: "28em" }}
-                legend={question.description}
+          <SignUpHeader
+            title="Let's get to know you"
+            desc="Welcome to towernest! We will ask you a set of questions to get you started."
+          />
+          {/* <Container
+            className={css`
+              position: relative;
+              z-index: 1;
+              max-width: 26em;
+            `}
+          > */}
+          <Wizard
+            initialValues={{
+              age: "",
+              riskCapacity: "",
+              timeHorizon: "",
+              riskWillingness: ""
+            }}
+            onSubmit={this.handleSubmit}
+            setProgressBarWidth={this.setProgressBarWidth}
+            idForFormEl="questionnaire-forms"
+            prevAndNextBtnClassName={css`
+              top: -3.5em;
+            `}
+          >
+            {riskProfileQuestions.map(question => (
+              <Wizard.Page
+                validate={validator(question.name)}
+                key={question.name}
               >
-                <Field
-                  name={question.name}
-                  component={ListRadioBtns}
-                  questions={question.answers}
-                />
-              </FieldSet>
-            </Wizard.Page>
-          ))}
-        </Wizard>
-      </CenteredContainer>
+                <FieldSet
+                  style={{ minHeight: "28em" }}
+                  legend={question.description}
+                >
+                  <Field
+                    name={question.name}
+                    component={ListRadioBtns}
+                    questions={question.answers}
+                  />
+                </FieldSet>
+              </Wizard.Page>
+            ))}
+          </Wizard>
+          {/* </Container> */}
+        </div>
+        <InfoCard />
+      </Container>
     );
   }
 }
