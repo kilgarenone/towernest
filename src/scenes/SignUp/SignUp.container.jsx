@@ -11,6 +11,10 @@ import Register from "./Register/Register.container";
 import ProgressStatus from "./shared/ProgressStatus";
 import { setProgressStatus } from "./SignUp.state";
 import PortfolioReview from "./PortfolioReview/PortfolioReview.container";
+import ProgressBar from "../../components/ProgressBar";
+import spacing from "../../styles/spacing";
+import CenteredContainer from "../../components/CenteredContainer";
+import { padding3 } from "../../styles/utilities";
 
 class SignUp extends Component {
   constructor(props) {
@@ -25,10 +29,6 @@ class SignUp extends Component {
           ? this.setState({ scrolled: true })
           : this.setState({ scrolled: false })
     );
-  }
-
-  componentDidMount() {
-    this.props.setProgressStatus(1);
   }
 
   componentWillUnmount() {
@@ -62,18 +62,22 @@ class SignUp extends Component {
           yAlign="center"
         >
           <Logo />
-          <ProgressStatus progress={this.props.progressStatus} />
-        </Container>
-        <Container
-          className={css`
-            padding: 80px 40px;
-          `}
-        >
-          <Router
+          <ProgressBar
             className={css`
-              flex-basis: 70%;
+              margin-left: ${spacing.space1};
             `}
-          >
+            width={this.props.progressStatus}
+          />
+          {/* <ProgressStatus progress={this.props.progressStatus} /> */}
+        </Container>
+        <CenteredContainer
+          className={css`
+            ${padding3};
+            padding-top: ${spacing.space5};
+          `}
+          maxWidth="62em"
+        >
+          <Router>
             <Register
               path="/"
               handleRegistrationSuccess={this.handleRegistrationSuccess}
@@ -81,21 +85,15 @@ class SignUp extends Component {
             <Questionnaire path="questionnaire" />
             <PortfolioReview path="plan" />
           </Router>
-          <div
-            className={css`
-              flex-basis: 30%;
-            `}
-          >
-            Additional info
-          </div>
-        </Container>
+        </CenteredContainer>
       </>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  progressStatus: state.signUp.progressStatus
+  progressStatus: state.signUp.progressStatus,
+  displayInfoBox: state.signUp.displayInfoBox
 });
 
 const mapDispatchToProps = {

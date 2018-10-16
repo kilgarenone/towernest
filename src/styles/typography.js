@@ -3,7 +3,7 @@
 // Ratio: 1.333
 export const fontSize = {
   headingXL: "3.057rem",
-  headingL: "2.269rem",
+  headingL: "2.419rem",
   heading: "1.677rem",
   subHeading: "1.333rem",
   textL: "1.175rem",
@@ -25,8 +25,8 @@ export const tagMapping = {
 };
 
 export const lineHeight = {
-  headingXL: "3.5",
-  headingL: "2.6",
-  heading: "2",
+  headingXL: "2.2",
+  headingL: "1.9",
+  heading: "1.7",
   subheading: "1.54"
 };

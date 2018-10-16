@@ -4,12 +4,25 @@ import { fontSize } from "../styles/typography";
 
 const defaultCss = css`
   font-size: ${fontSize.subText};
-  color: rgba(0, 0, 0, 0.64);
+  color: rgba(0, 0, 0, 0.5);
 `;
 
-function SubText({ tag: Tag = "div", className, children, ...props }) {
+const normalText = css`
+  font-size: ${fontSize.text};
+`;
+
+function SubText({
+  tag: Tag = "div",
+  className,
+  isNormalText,
+  children,
+  ...props
+}) {
   return (
-    <Tag className={cx(defaultCss, className)} {...props}>
+    <Tag
+      className={cx(defaultCss, className, { [normalText]: isNormalText })}
+      {...props}
+    >
       {children}
     </Tag>
   );

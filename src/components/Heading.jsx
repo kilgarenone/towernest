@@ -14,9 +14,20 @@ import { colors } from "../styles/colors";
 //   tag: string
 // };
 
-function Heading({ children, tag: Tag, className, ...props }) {
+function Heading({
+  children,
+  tag: Tag,
+  className,
+  isSerifFont = false,
+  ...props
+}) {
   return (
-    <Tag className={cx(styles[tagMapping[Tag]], className)} {...props}>
+    <Tag
+      className={cx(styles[tagMapping[Tag]], className, {
+        [serifFont]: isSerifFont
+      })}
+      {...props}
+    >
       {children}
     </Tag>
   );
@@ -24,25 +35,29 @@ function Heading({ children, tag: Tag, className, ...props }) {
 
 export default Heading;
 
+const serifFont = css`
+  font-family: "Times New Roman", Times, serif;
+`;
+
 const styles = {
-  displayLarge: css`
-    font-size: ${fontSize.displayLarge};
+  headingXL: css`
+    font-size: ${fontSize.headingXL};
     font-weight: ${fontWeight.bold};
-    line-height: ${lineHeight.displayLarge};
+    line-height: ${lineHeight.headingXL};
     color: ${colors.headerColor};
   `,
-  displayMedium: css`
-    font-size: ${fontSize.displayMedium};
-    font-weight: ${fontWeight.normal};
-    line-height: ${lineHeight.displayLarge};
-    color: ${colors.headerColor};
-  `,
-  displaySmall: css`
-    font-size: ${fontSize.displaySmall};
+  headingL: css`
+    font-size: ${fontSize.headingL};
     font-weight: ${fontWeight.bold};
-    line-height: ${lineHeight.displaySmall};
+    line-height: ${lineHeight.headingL};
     color: ${colors.headerColor};
   `,
+  // displaySmall: css`
+  //   font-size: ${fontSize.displaySmall};
+  //   font-weight: ${fontWeight.bold};
+  //   line-height: ${lineHeight.displaySmall};
+  //   color: ${colors.headerColor};
+  // `,
   heading: css`
     font-size: ${fontSize.heading};
     font-weight: ${fontWeight.bold};

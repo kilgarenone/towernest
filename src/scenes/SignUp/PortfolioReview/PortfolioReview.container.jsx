@@ -76,7 +76,7 @@ class PortfolioReview extends Component {
             underlayStyle={{ paddingTop: "2em" }}
             escapeExits={false}
             underlayClickExits={false}
-            underlayColor="rgba(237, 237, 237, 0.73)"
+            underlayColor="radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0, rgba(0, 0, 0, 0.7) 100%);"
             initialFocus="#first_name"
           >
             <Register handleCloseModal={this.deactivateModal} />
@@ -90,7 +90,7 @@ class PortfolioReview extends Component {
             ${textAlignCenter};
             ${paddingY3};
             ${marginBottom2};
-            padding-top: 0;
+            /* padding-top: 0; */
           `}
         >
           <div className={paddingBottom1}>
@@ -165,7 +165,7 @@ class PortfolioReview extends Component {
           className={css`
             position: relative;
             float: right;
-            top: -${spacing.space3};
+            top: -${spacing.space4};
             ${marginRight2};
           `}
           icon={ICONS.HELP}
