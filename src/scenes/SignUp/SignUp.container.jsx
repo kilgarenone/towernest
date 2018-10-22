@@ -36,7 +36,7 @@ class SignUp extends Component {
   }
 
   handleRegistrationSuccess = () => {
-    this.props.setProgressStatus(26);
+    this.props.setProgressStatus(12);
     this.props.navigate(`${this.props.uri}/questionnaire`);
   };
 

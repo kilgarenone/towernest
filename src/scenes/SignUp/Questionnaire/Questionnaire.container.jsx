@@ -29,14 +29,14 @@ class Questionnaire extends Component {
     // this.props.storeQuestionnaireAnswers(surveyResults);
     this.props.getRecommendedPortfolio(surveyResults, () => {
       this.props.hideAdditionalInfoBox();
-      this.props.setProgressStatus(52);
+      this.props.setProgressStatus(72);
       this.props.navigate("/signup/plan");
     });
   };
 
   setProgressBarWidth = childrenCount => {
     this.props.setProgressStatus(
-      this.props.progressStatus + 27 / childrenCount
+      this.props.progressStatus + (childrenCount < 0 ? -12 : 12)
     );
   };
 
