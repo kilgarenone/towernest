@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { css } from "react-emotion";
+import { cx, css } from "react-emotion";
 import { fontSize } from "../styles/typography";
 
 const defaultCss = css`
@@ -7,6 +7,7 @@ const defaultCss = css`
     sans-serif;
   height: 2.7em;
   width: 100%;
+  padding: 0.4em 0.7em;
   color: rgba(0, 0, 0, 0.76);
   font-weight: 400;
   font-style: normal;
@@ -14,10 +15,14 @@ const defaultCss = css`
   border: 2px solid #e0e0e0;
   border-radius: 0.2em;
   outline: 0;
-  padding: 0.4em 0.7em;
+  box-shadow: none;
 
   &:focus {
     border-color: #2962ff;
+  }
+
+  &.invalid {
+    border-color: red;
   }
 `;
 class Input extends Component {
@@ -33,7 +38,15 @@ class Input extends Component {
   }
 
   render() {
-    return <input ref={this.input} className={defaultCss} {...this.props} />;
+    const { className, ...props } = this.props;
+
+    return (
+      <input
+        ref={this.input}
+        className={cx(defaultCss, className)}
+        {...props}
+      />
+    );
   }
 }
 

@@ -2,7 +2,11 @@
 import { ErrorMessage, Field } from "formik";
 import React from "react";
 import { cx } from "react-emotion";
-import { marginBottom0, paddingBottom2 } from "../styles/utilities";
+import {
+  positionRelative,
+  marginBottom0,
+  paddingBottom2
+} from "../styles/utilities";
 import ErrorMsg from "./ErrorMsg";
 import FormLabel from "./FormLabel";
 import FormLabelBottom from "./FormLabelBottom";
@@ -21,13 +25,26 @@ function FieldInput({
   return (
     <Field
       name={fieldName}
-      render={({ field: { name, ...formikFieldProps } }) => (
+      render={({
+        field: { name, ...formikFieldProps },
+        form: { errors, touched }
+      }) => (
         <div
-          style={{ position: "relative" }}
-          className={cx(marginBottom0, paddingBottom2, className)}
+          className={cx(
+            positionRelative,
+            marginBottom0,
+            paddingBottom2,
+            className
+          )}
         >
           {label && <FormLabel htmlFor={id}>{label}</FormLabel>}
-          <Input name={name} id={id} {...props} {...formikFieldProps} />
+          <Input
+            className={touched[name] && errors[name] && "invalid"}
+            name={name}
+            id={id}
+            {...props}
+            {...formikFieldProps}
+          />
           {bottomLabel && (
             <FormLabelBottom htmlFor={id}>{bottomLabel}</FormLabelBottom>
           )}
