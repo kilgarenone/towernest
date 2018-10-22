@@ -22,7 +22,7 @@ const defaultCss = css`
   }
 
   &.invalid {
-    border-color: red;
+    border-color: #ff1744;
   }
 `;
 class Input extends Component {
