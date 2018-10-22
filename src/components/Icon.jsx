@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { cx } from "react-emotion";
+import { css, cx } from "react-emotion";
 
 type Props = {
   icon: string,
@@ -8,30 +8,23 @@ type Props = {
   color: string
 };
 
-function Icon({ icon, color, size, className }: Props) {
-  const styles = {
-    svg: {
-      display: "inline-block",
-      verticalAlign: "middle"
-    },
-    path: {
-      fill: color
-    }
-  };
+const defaultSvgCss = css`
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+`;
 
-  const svgSize = size || 30;
-
+function Icon({ icon, color, size = 30, className }: Props) {
   return (
     <svg
-      className={cx("icon", className)}
-      style={styles.svg}
-      width={svgSize}
-      height={svgSize}
-      viewBox="0 0 24 24"
+      className={cx("icon", defaultSvgCss, className)}
+      width={size}
+      height={size}
+      viewBox={`0 0 ${size} ${size}`}
       fill="currentColor"
       preserveAspectRatio="xMidYMid meet"
     >
-      <path className="icon-path" style={styles.path} d={icon} />
+      <path className="icon-path" fill={color} d={icon} />
     </svg>
   );
 }
