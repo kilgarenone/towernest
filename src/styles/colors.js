@@ -6,5 +6,5 @@ export const colors = {
   textOnLightBg: "#5b5e6d",
   textOnDarkBg: "#fff",
   error: "#dd4b37",
-  headerColor: "rgba(0, 0, 0, 0.84)"
+  headerColor: "rgba(0, 0, 0, 0.84)" //#342656
 };
