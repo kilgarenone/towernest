@@ -2,22 +2,25 @@ import React from "react";
 import { css, cx } from "react-emotion";
 import Spinner from "./Spinner";
 import Button from "./Button";
-import { positionRelative } from "../styles/utilities";
-
-const spinnerCls = css`
-  position: absolute;
-  top: 50%;
-  right: 10%;
-  opacity: 0;
-  transition: opacity 0.4s;
-`;
-
-const showSpinner = css`
-  opacity: 1;
-`;
+import ICONS from "../styles/icons";
+import Icon from "./Icon";
 
 const isSubmittingClass = css`
   padding-right: 2.7em;
+`;
+
+const defaultBtnCss = css`
+  position: relative;
+
+  .icon {
+    transition: transform 0.2s, opacity 0.2s;
+    opacity: 0.6;
+  }
+
+  &:hover .icon {
+    opacity: 1;
+    transform: translateX(2px);
+  }
 `;
 
 const ButtonWithSpinner = ({
@@ -28,15 +31,29 @@ const ButtonWithSpinner = ({
   ...props
 }) => (
   <Button
-    className={cx(
-      { [isSubmittingClass]: isSubmitting },
-      positionRelative,
-      className
-    )}
+    className={cx(defaultBtnCss, className, {
+      [isSubmittingClass]: isSubmitting
+    })}
     {...props}
   >
     {isSubmitting ? progressText : children}
-    <Spinner className={cx(spinnerCls, { [showSpinner]: isSubmitting })} />
+    {isSubmitting ? (
+      <Spinner
+        className={css`
+          position: absolute;
+          top: 50%;
+          right: 10%;
+        `}
+      />
+    ) : (
+      <Icon
+        size="16"
+        className={css`
+          right: -8px;
+        `}
+        icon={ICONS.ARROW_RIGHT}
+      />
+    )}
   </Button>
 );
 
