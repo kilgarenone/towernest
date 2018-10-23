@@ -17,11 +17,10 @@ function ErrorMsg({ className, children, htmlFor, ...props }) {
   return (
     <label htmlFor={htmlFor} className={cx(defaultCss, className)} {...props}>
       <Icon
-        size="20"
         className={css`
           background-color: #fbe9e7;
           border-radius: 9999rem;
-          padding: 0.15em;
+          padding: 0.25em;
           margin-right: 0.4em;
         `}
         icon={ICONS.CLOSE}
