@@ -20,7 +20,7 @@ function Icon({ icon, color, size = 24, className }: Props) {
       className={cx("icon", defaultSvgCss, className)}
       width={size}
       height={size}
-      viewBox={`0 0 ${size} ${size}`}
+      viewBox="0 0 24 24"
       fill="currentColor"
       preserveAspectRatio="xMidYMid meet"
     >

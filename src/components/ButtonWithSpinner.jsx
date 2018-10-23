@@ -47,6 +47,7 @@ const ButtonWithSpinner = ({
       />
     ) : (
       <Icon
+        size="30"
         className={css`
           right: -8px;
         `}
