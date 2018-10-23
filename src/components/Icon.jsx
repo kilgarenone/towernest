@@ -14,7 +14,7 @@ const defaultSvgCss = css`
   vertical-align: middle;
 `;
 
-function Icon({ icon, color, size = 30, className }: Props) {
+function Icon({ icon, color, size = 24, className }: Props) {
   return (
     <svg
       className={cx("icon", defaultSvgCss, className)}
