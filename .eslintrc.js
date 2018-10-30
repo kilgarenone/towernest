@@ -8,6 +8,15 @@ module.exports = {
   plugins: ["flowtype"],
   parser: "babel-eslint",
   rules: {
+    "react/jsx-filename-extension": ["error", { extensions: [".js", ".jsx"] }],
+    // 'jsx-a11y/anchor-is-valid': [
+    //   'error',
+    //   {
+    //     components: ['Link'],
+    //     specialLink: ['to'],
+    //     aspects: ['noHref', 'invalidHref', 'preferButton']
+    //   }
+    // ],
     "react/prop-types": "off",
     "no-use-before-define": "off",
     "no-param-reassign": ["error", { props: false }],
@@ -19,7 +28,8 @@ module.exports = {
     "jsx-a11y/label-has-for": "off"
   },
   env: {
-    browser: true
+    browser: true,
+    es6: true
   },
   settings: {
     flowtype: {
