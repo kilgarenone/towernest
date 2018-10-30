@@ -30,9 +30,15 @@
     "flow": "flow",
     "dummy-start": "concurrently -k -n \"app, jsonServer\" \"npm start\" \"npm run json-server\"",
     "json-server": "node scripts/jsonServer.js",
-    "pretty-quick": "pretty-quick --staged",
-    "fix-code": "prettier-eslint --write 'src/**/*.{js,jsx}' ",
+    "precommit": "lint-staged",
+    "prettier-eslint": "prettier-eslint --write 'src/**/*.{js,jsx}' ",
     "package-refresh": "rm -rf node_modules && rm -rf package-lock.json && npm i"
+  },
+  "lint-staged": {
+    "*.{js, jsx}": [
+      "npm run prettier-eslint",
+      "git add"
+    ]
   },
   "devDependencies": {
     "concurrently": "^4.0.1",
@@ -46,11 +52,12 @@
     "eslint-plugin-react": "^7.8.2",
     "express": "^4.16.3",
     "flow-bin": "^0.73.0",
+    "husky": "^1.1.2",
+    "lint-staged": "^8.0.3",
     "prettier": "^1.13.4",
     "prettier-eslint": "^8.8.2",
     "prettier-eslint-cli": "^4.7.1",
     "prettier-stylelint": "^0.4.2",
-    "pretty-quick": "^1.6.0",
     "stylelint": "^9.5.0",
     "stylelint-config-prettier": "^4.0.0",
     "stylelint-config-standard": "^18.2.0",

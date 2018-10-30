@@ -2,8 +2,8 @@ module.exports = {
   extends: [
     "airbnb",
     "plugin:flowtype/recommended",
+    "plugin:prettier/recommended", // this do 3 things 1) extends: 'prettier 2) plugins: 'prettier' 3) rules: prettier/pre: error
     "prettier/react",
-    "plugin:prettier/recommended" // this do 3 things 1) extends: 'prettier 2) plugins: 'prettier' 3) rules: prettier/pre: error
   ],
   plugins: ["flowtype"],
   parser: "babel-eslint",
