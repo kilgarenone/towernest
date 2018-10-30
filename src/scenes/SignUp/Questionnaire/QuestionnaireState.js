@@ -1,5 +1,5 @@
 import { CALL_API, POST } from "../../../redux/api";
-import { STORE_RECOMMENDED_PORTFOLIO } from "../PortfolioReview/PortfolioReview.state";
+import { STORE_RECOMMENDED_PORTFOLIO } from "../PortfolioReview/PortfolioReviewState";
 
 const STORE_QUESTIONNAIRE_ANSWERS =
   "matisa/scenes/questionnaire/storeQuestionnaireAnswers";

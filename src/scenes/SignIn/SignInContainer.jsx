@@ -1,8 +1,8 @@
 // @flow
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getAccessTokenAction } from "./SignIn.state";
-import SignInFields from "./SignIn.view";
+import { getAccessTokenAction } from "./SignInState";
+import SignInFields from "./SignInView";
 
 class SignIn extends Component<any, any> {
   state = {

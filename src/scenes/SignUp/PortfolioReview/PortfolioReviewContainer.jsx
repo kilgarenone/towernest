@@ -23,7 +23,7 @@ import {
   textAlignCenter,
   marginRight2
 } from "../../../styles/utilities";
-// import Register from "../Register/Register.container";
+// import Register from "../Register/RegisterContainer";
 
 function buildBarCss(holding, index) {
   return `

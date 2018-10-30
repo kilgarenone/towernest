@@ -5,16 +5,15 @@ import { fromEvent } from "rxjs";
 import { connect } from "react-redux";
 import Container from "../../components/Container";
 import Logo from "../../components/Logo";
-import { padding0 } from "../../styles/utilities";
-import Questionnaire from "./Questionnaire/Questionnaire.container";
-import Register from "./Register/Register.container";
+import Questionnaire from "./Questionnaire/QuestionnaireContainer";
+import Register from "./Register/RegisterContainer";
 import ProgressStatus from "./shared/ProgressStatus";
-import { setProgressStatus } from "./SignUp.state";
-import PortfolioReview from "./PortfolioReview/PortfolioReview.container";
+import { setProgressStatus } from "./SignUpState";
+import PortfolioReview from "./PortfolioReview/PortfolioReviewContainer";
 import ProgressBar from "../../components/ProgressBar";
 import spacing from "../../styles/spacing";
 import CenteredContainer from "../../components/CenteredContainer";
-import { padding3 } from "../../styles/utilities";
+import { padding3, padding0 } from "../../styles/utilities";
 
 class SignUp extends Component {
   constructor(props) {

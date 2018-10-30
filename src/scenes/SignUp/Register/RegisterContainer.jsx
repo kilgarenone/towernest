@@ -16,8 +16,8 @@ import {
 } from "../../../styles/utilities";
 import InfoCard from "../shared/InfoCard";
 import SignUpHeader from "../shared/SignUpHeader";
-import { setProgressStatus } from "../SignUp.state";
-import { registerClient } from "./Register.state";
+import { setProgressStatus } from "../SignUpState";
+import { registerClient } from "./RegisterState";
 
 const RegisterSchema = Yup.object().shape({
   first_name: Yup.string().required("First name is required"),
