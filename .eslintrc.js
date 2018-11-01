@@ -1,12 +1,12 @@
 module.exports = {
+  parser: "babel-eslint",
   extends: [
     "airbnb",
     "plugin:flowtype/recommended",
     "plugin:prettier/recommended", // this do 3 things 1) extends: 'prettier 2) plugins: 'prettier' 3) rules: prettier/pre: error
-    "prettier/react",
+    "prettier/react"
   ],
   plugins: ["flowtype"],
-  parser: "babel-eslint",
   rules: {
     "react/jsx-filename-extension": ["error", { extensions: [".js", ".jsx"] }],
     // 'jsx-a11y/anchor-is-valid': [
