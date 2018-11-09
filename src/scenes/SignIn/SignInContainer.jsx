@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { getAccessTokenAction } from "./SignInState";
 import SignInFields from "./SignInView";
 
-class SignIn extends Component<any, any> {
+class SignIn extends Component {
   state = {
     userName: "",
     passWord: ""

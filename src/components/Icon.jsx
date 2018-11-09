@@ -1,12 +1,11 @@
-// @flow
 import React from "react";
 import { css, cx } from "react-emotion";
 
-type Props = {
-  icon: string,
-  size: number,
-  color: string
-};
+// type Props = {
+//   icon: string,
+//   size: number,
+//   color: string
+// };
 
 const defaultSvgCss = css`
   position: relative;
@@ -14,7 +13,7 @@ const defaultSvgCss = css`
   vertical-align: middle;
 `;
 
-function Icon({ icon, color, size = 24, className }: Props) {
+function Icon({ icon, color, size = 24, className }) {
   return (
     <svg
       className={cx("icon", defaultSvgCss, className)}

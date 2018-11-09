@@ -1,13 +1,6 @@
-// @flow
 import * as React from "react";
 
-function OptionallyDisplayed({
-  display,
-  children
-}: {
-  display: boolean,
-  children: React.Node
-}) {
+function OptionallyDisplayed({ display, children }) {
   return display === true ? <React.Fragment>{children}</React.Fragment> : null;
 }
 

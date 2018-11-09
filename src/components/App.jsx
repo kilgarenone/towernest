@@ -1,10 +1,9 @@
-// @flow
 import React, { Component } from "react";
 import { Router } from "@reach/router";
 import Header from "../modules/Header";
 import GreetFunding from "../scenes/Funding/GreetFunding";
 
-class App extends Component<any, any> {
+class App extends Component {
   state = {};
 
   render() {

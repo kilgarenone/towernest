@@ -1,4 +1,3 @@
-// @flow
 import * as React from "react";
 import { css } from "react-emotion";
 import Input from "./Input";
@@ -8,14 +7,14 @@ import Icon from "./Icon";
 import ICONS from "../styles/icons";
 import Container from "./Container";
 
-type Props = {
-  name: string,
-  value: any,
-  required?: boolean,
-  children: any | React.Node,
-  onChange: (value: any) => any | void,
-  isChecked: boolean
-};
+// type Props = {
+//   name: string,
+//   value: any,
+//   required?: boolean,
+//   children: any | React.Node,
+//   onChange: (value: any) => any | void,
+//   isChecked: boolean
+// };
 
 const cssCheckBoxContainer = css`
   flex-shrink: 0;
@@ -67,7 +66,7 @@ function CheckBox({
   isChecked,
   handleChange,
   ...props
-}: Props) {
+}) {
   return (
     <label className={cssCheckBox} htmlFor={`${name}-${value}`}>
       <Input

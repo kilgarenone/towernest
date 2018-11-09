@@ -1,4 +1,3 @@
-// @flow
 import styled from "react-emotion";
 import { fontSize } from "../styles/typography";
 import { colors } from "../styles/colors";
@@ -19,7 +18,7 @@ const scales = {
   big: `
     padding: 0.5em 2em;
     font-size: ${fontSize.text};
-  `,
+  `
 };
 
 function kind(outline, noBorder) {
@@ -68,7 +67,7 @@ function kinds(outline, noBorder) {
     secondary: setKind(colors.secondaryOutline, "#fff"),
     cancel: setKind("#FF4949", "#fff"),
     dark: setKind("#273444", "#fff"),
-    gray: setKind("#8492A6", "#fff"),
+    gray: setKind("#8492A6", "#fff")
   };
 }
 

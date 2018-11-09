@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import { css, cx } from "react-emotion";
 import spacing from "../styles/spacing";
@@ -7,13 +6,13 @@ import ButtonWithSpinner from "./ButtonWithSpinner";
 import Container from "./Container";
 import OptionallyDisplayed from "./OptionallyDisplayed";
 
-type Props = {
-  showBackBtn: boolean,
-  handleBackBtnClick: () => any,
-  handleContinueBtnClick?: () => any,
-  backBtnText?: string,
-  continueBtnText?: string
-};
+// type Props = {
+//   showBackBtn: boolean,
+//   handleBackBtnClick: () => any,
+//   handleContinueBtnClick?: () => any,
+//   backBtnText?: string,
+//   continueBtnText?: string
+// };
 
 const cont = css`
   button:not(:last-of-type) {
@@ -30,7 +29,7 @@ function PrevAndNextBtn({
   handleContinueBtnClick,
   isSubmitting,
   isLastPage
-}: Props) {
+}) {
   return (
     <Container xAlign="center" className={cx(cont, className)}>
       <Container>

@@ -1,4 +1,3 @@
-// @flow
 import * as React from "react";
 import { css, cx } from "react-emotion";
 import {

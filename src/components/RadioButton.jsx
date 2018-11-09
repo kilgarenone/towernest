@@ -1,18 +1,17 @@
-// @flow
 import * as React from "react";
 import { css, cx } from "react-emotion";
 import { fontSize } from "../styles/typography";
 import spacing from "../styles/spacing";
 import Input from "./Input";
 
-type Props = {
-  name: string,
-  value: any,
-  required?: boolean,
-  children: any | React.Node,
-  onChange: (value: any) => any | void,
-  isChecked: boolean
-};
+// type Props = {
+//   name: string,
+//   value: any,
+//   required?: boolean,
+//   children: any | React.Node,
+//   onChange: (value: any) => any | void,
+//   isChecked: boolean
+// };
 
 const cssRadioButton = css`
   font-size: ${fontSize.text};
@@ -78,7 +77,7 @@ function RadioButton({
   handleChange,
   className,
   ...props
-}: Props) {
+}) {
   return (
     <div className={cssRadioButton}>
       <Input

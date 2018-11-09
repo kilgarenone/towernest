@@ -1,12 +1,11 @@
-// @flow
 import { Formik } from "formik";
 import React, { Component } from "react";
 import PrevAndNextBtn from "./PrevAndNextBtn";
 
-type Props = {
-  setProgressBarWidth: (num: number) => void
-};
-class Wizard extends Component<Props> {
+// type Props = {
+//   setProgressBarWidth: (num: number) => void
+// };
+class Wizard extends Component {
   static Page = ({ children }) => children;
 
   constructor(props) {
