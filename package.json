@@ -1,5 +1,5 @@
 {
-  "name": "matisa",
+  "name": "towernest",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,15 +27,18 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "flow": "flow",
     "dummy-start": "concurrently -k -n \"app, jsonServer\" \"npm start\" \"npm run json-server\"",
     "json-server": "node scripts/jsonServer.js",
-    "precommit": "lint-staged",
-    "prettier-eslint": "prettier-eslint --write 'src/**/*.{js,jsx}' ",
+    "prettier-eslint": "prettier-eslint --write 'src/**/*.{js,jsx,ts,tsx,json}' ",
     "package-refresh": "rm -rf node_modules && rm -rf package-lock.json && npm i"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
-    "*.{js, jsx}": [
+    "src/**/*.{js,jsx,ts,tsx,json}": [
       "npm run prettier-eslint",
       "git add"
     ]
