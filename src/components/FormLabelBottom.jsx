@@ -1,5 +1,5 @@
 import styled from "react-emotion";
-import { fontSize } from "../styles/typography";
+import { fontSize } from "../css/typography";
 
 const FormLabel = styled("label")`
   font-weight: 400;

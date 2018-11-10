@@ -3,7 +3,7 @@ import { css } from "react-emotion";
 import { ErrorMessage } from "formik";
 import { List } from "../../../../components/List";
 import RadioButton from "../../../../components/RadioButton";
-import spacing from "../../../../styles/spacing";
+import spacing from "../../../../css/spacing";
 import ErrorMsg from "../../../../components/ErrorMsg";
 
 const radioBtnCss = css`

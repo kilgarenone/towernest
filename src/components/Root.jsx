@@ -1,8 +1,8 @@
 import { Router } from "@reach/router";
 import React, { Component } from "react";
 import { connect, Provider } from "react-redux";
-import { getAccessTokenAction } from "../scenes/SignIn/SignInState";
-import SignUp from "../scenes/SignUp/SignUpContainer";
+import { getAccessTokenAction } from "../pages/SignIn/SignInState";
+import SignUp from "../pages/SignUp/SignUpContainer";
 
 class Root extends Component {
   componentDidMount() {

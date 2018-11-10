@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { cx, css } from "react-emotion";
-import { fontSize } from "../styles/typography";
+import { fontSize } from "../css/typography";
 
 const defaultCss = css`
   font-family: "Inter UI", "Helvetica Neue", HelveticaNeue, Helvetica, Arial,

@@ -1,10 +1,10 @@
 import * as React from "react";
 import { css } from "react-emotion";
 import Input from "./Input";
-import spacing from "../styles/spacing";
-import { fontSize } from "../styles/typography";
+import spacing from "../css/spacing";
+import { fontSize } from "../css/typography";
 import Icon from "./Icon";
-import ICONS from "../styles/icons";
+import ICONS from "../css/icons";
 import Container from "./Container";
 
 // type Props = {

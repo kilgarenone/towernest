@@ -1,7 +1,7 @@
 import React from "react";
 import { css } from "react-emotion";
 import Heading from "../../../components/Heading";
-import { marginBottom3 } from "../../../styles/utilities";
+import { marginBottom3 } from "../../../css/utilities";
 import SubText from "../../../components/SubText";
 
 function SignUpHeader({ title, desc }) {

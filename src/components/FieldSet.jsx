@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "react-emotion";
-import spacing from "../styles/spacing";
-import { fontSize } from "../styles/typography";
+import spacing from "../css/spacing";
+import { fontSize } from "../css/typography";
 
 const FieldSetBase = styled("fieldset")`
   border: 1px solid #9e9e9e;

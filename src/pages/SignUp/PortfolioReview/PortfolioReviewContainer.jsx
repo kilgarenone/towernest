@@ -8,9 +8,9 @@ import ButtonWithIcon from "../../../components/ButtonWithIcon";
 import Container from "../../../components/Container";
 import Heading from "../../../components/Heading";
 import Logo from "../../../components/Logo";
-import ICONS from "../../../styles/icons";
-import spacing from "../../../styles/spacing";
-import { fontSize } from "../../../styles/typography";
+import ICONS from "../../../css/icons";
+import spacing from "../../../css/spacing";
+import { fontSize } from "../../../css/typography";
 import {
   fontWeight500,
   marginBottom2,
@@ -22,7 +22,7 @@ import {
   relativeHeightWidth100,
   textAlignCenter,
   marginRight2
-} from "../../../styles/utilities";
+} from "../../../css/utilities";
 // import Register from "../Register/RegisterContainer";
 
 function buildBarCss(holding, index) {

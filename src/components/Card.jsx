@@ -1,5 +1,5 @@
 import styled from "react-emotion";
-import spacing from "../styles/spacing";
+import spacing from "../css/spacing";
 
 const Card = styled("div")`
   position: relative;

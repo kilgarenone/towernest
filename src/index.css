@@ -38,9 +38,8 @@ html {
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local("Inter UI"),
-    url("./assets/fonts/Inter-UI-Regular.woff2") format("woff2"),
-    url("./assets/fonts/Inter-UI-Regular.woff") format("woff");
+  src: local("Inter UI"), url("./fonts/Inter-UI-Regular.woff2") format("woff2"),
+    url("./fonts/Inter-UI-Regular.woff") format("woff");
 }
 
 @font-face {
@@ -48,9 +47,8 @@ html {
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: local("Inter UI"),
-    url("./assets/fonts/Inter-UI-Medium.woff2") format("woff2"),
-    url("./assets/fonts/Inter-UI-Medium.woff") format("woff");
+  src: local("Inter UI"), url("./fonts/Inter-UI-Medium.woff2") format("woff2"),
+    url("./fonts/Inter-UI-Medium.woff") format("woff");
 }
 
 @font-face {
@@ -58,9 +56,8 @@ html {
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local("Inter UI"),
-    url("./assets/fonts/Inter-UI-Bold.woff2") format("woff2"),
-    url("./assets/fonts/Inter-UI-Bold.woff") format("woff");
+  src: local("Inter UI"), url("./fonts/Inter-UI-Bold.woff2") format("woff2"),
+    url("./fonts/Inter-UI-Bold.woff") format("woff");
 }
 
 h1,

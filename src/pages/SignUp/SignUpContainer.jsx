@@ -11,9 +11,9 @@ import ProgressStatus from "./shared/ProgressStatus";
 import { setProgressStatus } from "./SignUpState";
 import PortfolioReview from "./PortfolioReview/PortfolioReviewContainer";
 import ProgressBar from "../../components/ProgressBar";
-import spacing from "../../styles/spacing";
+import spacing from "../../css/spacing";
 import CenteredContainer from "../../components/CenteredContainer";
-import { padding3, padding0 } from "../../styles/utilities";
+import { padding3, padding0 } from "../../css/utilities";
 
 class SignUp extends Component {
   constructor(props) {

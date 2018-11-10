@@ -1,7 +1,7 @@
 import React from "react";
 import { css } from "react-emotion";
 import ProgressBar from "../../../components/ProgressBar";
-import spacing from "../../../styles/spacing";
+import spacing from "../../../css/spacing";
 import Container from "../../../components/Container";
 
 const STEPS = ["Account", "Questionnaire", "Portfolio", "Funding", "Submit"];

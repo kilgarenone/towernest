@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
 import Header from "../modules/Header";
-import GreetFunding from "../scenes/Funding/GreetFunding";
+import GreetFunding from "../pages/Funding/GreetFunding";
 
 class App extends Component {
-  state = {};
+    state = {};
 
-  render() {
-    return (
-      <>
-        <Header />
+    render() {
+        return (
+            <>
+                <Header />
 
-        <Router style={{ padding: "40px" }}>
-          <GreetFunding path="/" />
-        </Router>
-      </>
-    );
-  }
+                <Router style={{ padding: "40px" }}>
+                    <GreetFunding path="/" />
+                </Router>
+            </>
+        );
+    }
 }
 
 export default App;

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { css } from "react-emotion";
-import buildingLarge from "../../assets/buildingLarge.png";
-import buildingSmall from "../../assets/buildingSmall.png";
+import buildingLarge from "../../images/buildingLarge.png";
+import buildingSmall from "../../images/buildingSmall.png";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
 import Heading from "../../components/Heading";
-import spacing from "../../styles/spacing";
-import { marginBottom2, marginBottom0 } from "../../styles/utilities";
-import { fontSize } from "../../styles/typography";
+import spacing from "../../css/spacing";
+import { marginBottom2, marginBottom0 } from "../../css/utilities";
+import { fontSize } from "../../css/typography";
 
 class GreetFunding extends Component {
   state = {};

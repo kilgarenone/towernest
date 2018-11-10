@@ -5,8 +5,8 @@ import {
   fontSize,
   fontWeight,
   lineHeight
-} from "../styles/typography";
-import { colors } from "../styles/colors";
+} from "../css/typography";
+import { colors } from "../css/colors";
 
 // type Props = {
 //   children: React.Node,

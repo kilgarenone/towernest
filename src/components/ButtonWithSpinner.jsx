@@ -2,7 +2,7 @@ import React from "react";
 import { css, cx } from "react-emotion";
 import Spinner from "./Spinner";
 import Button from "./Button";
-import ICONS from "../styles/icons";
+import ICONS from "../css/icons";
 import Icon from "./Icon";
 
 const isSubmittingClass = css`

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { css, cx } from "react-emotion";
-import { fontSize } from "../styles/typography";
-import spacing from "../styles/spacing";
+import { fontSize } from "../css/typography";
+import spacing from "../css/spacing";
 import Input from "./Input";
 
 // type Props = {

@@ -1,6 +1,6 @@
 import React from "react";
 import { css, cx } from "react-emotion";
-import spacing from "../styles/spacing";
+import spacing from "../css/spacing";
 import Button from "./Button";
 import ButtonWithSpinner from "./ButtonWithSpinner";
 import Container from "./Container";

@@ -1,19 +1,18 @@
-// @flow
-type Spacing = {
-  space0: string,
-  space1: string,
-  space2: string,
-  space3: string,
-  space4: string,
-  space5: string
-};
+// type Spacing = {
+//   space0: string;
+//   space1: string;
+//   space2: string;
+//   space3: string;
+//   space4: string;
+//   space5: string;
+// };
 function computeGoldenRatio(spacingFactor, exp) {
   return Math.floor(((spacingFactor * 1.618 ** exp) / 16) * 100) / 100;
 }
 
 const spacingFactor = 8;
 
-const spacing: Spacing = {
+const spacing = {
   space0: `${computeGoldenRatio(spacingFactor, 0)}em`, // 8
   space1: `${computeGoldenRatio(spacingFactor, 1)}em`, // 13
   space2: `${computeGoldenRatio(spacingFactor, 2)}em`, // 21

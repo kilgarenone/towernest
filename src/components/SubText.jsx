@@ -1,6 +1,6 @@
 import React from "react";
 import { css, cx } from "react-emotion";
-import { fontSize } from "../styles/typography";
+import { fontSize } from "../css/typography";
 
 const defaultCss = css`
   font-size: ${fontSize.subText};

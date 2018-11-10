@@ -13,7 +13,7 @@ import {
   marginBottom2,
   marginRight1,
   textAlignCenter
-} from "../../../styles/utilities";
+} from "../../../css/utilities";
 import InfoCard from "../shared/InfoCard";
 import SignUpHeader from "../shared/SignUpHeader";
 import { setProgressStatus } from "../SignUpState";
