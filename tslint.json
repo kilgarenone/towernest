@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-microsoft-contrib",
+    "tslint-config-standard",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
+  "rulesDirectory": [
+    "tslint-plugin-prettier",
+    "node_modules/tslint-microsoft-contrib"
+  ],
+  "rules": {
+    "prettier": true
+  }
+}
