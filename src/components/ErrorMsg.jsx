@@ -1,6 +1,6 @@
 import React from "react";
 import { css, cx } from "react-emotion";
-import { colors } from "../css/colors";
+import colors from "../css/colors";
 import { fontSize } from "../css/typography";
 import ICONS from "../css/icons";
 import Icon from "./Icon";

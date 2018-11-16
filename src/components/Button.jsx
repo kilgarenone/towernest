@@ -1,6 +1,6 @@
 import styled from "react-emotion";
 import { fontSize } from "../css/typography";
-import { colors } from "../css/colors";
+import colors from "../css/colors";
 
 // type Props = {
 //   secondary?: boolean,

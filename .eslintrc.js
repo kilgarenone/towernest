@@ -6,6 +6,7 @@ module.exports = {
     "prettier/react"
   ],
   rules: {
+    "no-unused-expressions": ["error", { allowTaggedTemplates: true }],
     "react/jsx-filename-extension": ["error", { extensions: [".js", ".jsx"] }],
     // 'jsx-a11y/anchor-is-valid': [
     //   'error',

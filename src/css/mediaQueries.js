@@ -4,10 +4,9 @@ import { css } from "react-emotion";
 
 const BREAKPOINTS = {
   // Numerical values will result in a min-width query
-  small: 36,
-  medium: 48,
-  large: 62,
-  xLarge: 75
+  md: 36,
+  md2: 49,
+  lg: 65
   // String values will be used as is
   // tallPhone: "(max-width: 360px) and (min-height: 740px)"
 };
