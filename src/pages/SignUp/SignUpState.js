@@ -1,5 +1,3 @@
-import { CALL_API, POST } from "../../redux/api";
-
 export const PROGRESS_STATUS = "towernest/scenes/SignUp/progressStatus";
 export const HIDE_INFO_BOX = "towernest/scenes/SignUp/hideInfoBox";
 

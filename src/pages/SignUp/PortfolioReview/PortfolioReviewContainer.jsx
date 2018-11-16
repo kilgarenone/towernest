@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AriaModal from "react-aria-modal";
 import { css } from "react-emotion";
 import { connect } from "react-redux";
 import AssistText from "../../../components/AssistText";
@@ -7,7 +6,6 @@ import Button from "../../../components/Button";
 import ButtonWithIcon from "../../../components/ButtonWithIcon";
 import Container from "../../../components/Container";
 import Heading from "../../../components/Heading";
-import Logo from "../../../components/Logo";
 import ICONS from "../../../css/icons";
 import spacing from "../../../css/spacing";
 import { fontSize } from "../../../css/typography";
@@ -15,15 +13,13 @@ import {
   fontWeight500,
   marginBottom2,
   marginBottom3,
-  padding0,
+  marginRight2,
   paddingBottom1,
   paddingBottom3,
   paddingY3,
   relativeHeightWidth100,
-  textAlignCenter,
-  marginRight2
+  textAlignCenter
 } from "../../../css/utilities";
-// import Register from "../Register/RegisterContainer";
 
 function buildBarCss(holding, index) {
   return `

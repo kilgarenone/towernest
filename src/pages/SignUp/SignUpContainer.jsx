@@ -1,19 +1,18 @@
 import { Router } from "@reach/router";
 import React, { Component } from "react";
 import { css } from "react-emotion";
-import { fromEvent } from "rxjs";
 import { connect } from "react-redux";
+import { fromEvent } from "rxjs";
+import CenteredContainer from "../../components/CenteredContainer";
 import Container from "../../components/Container";
 import Logo from "../../components/Logo";
-import Questionnaire from "./Questionnaire/QuestionnaireContainer";
-import Register from "./Register/RegisterContainer";
-import ProgressStatus from "./shared/ProgressStatus";
-import { setProgressStatus } from "./SignUpState";
-import PortfolioReview from "./PortfolioReview/PortfolioReviewContainer";
 import ProgressBar from "../../components/ProgressBar";
 import spacing from "../../css/spacing";
-import CenteredContainer from "../../components/CenteredContainer";
-import { padding3, padding0 } from "../../css/utilities";
+import { padding0, padding3 } from "../../css/utilities";
+import PortfolioReview from "./PortfolioReview/PortfolioReviewContainer";
+import Questionnaire from "./Questionnaire/QuestionnaireContainer";
+import Register from "./Register/RegisterContainer";
+import { setProgressStatus } from "./SignUpState";
 
 class SignUp extends Component {
   constructor(props) {
@@ -22,11 +21,10 @@ class SignUp extends Component {
 
     this.state = { scrolled: false };
 
-    this.scrollSubscription = fromEvent(window, "scroll").subscribe(
-      e =>
-        e.pageY > 0
-          ? this.setState({ scrolled: true })
-          : this.setState({ scrolled: false })
+    this.scrollSubscription = fromEvent(window, "scroll").subscribe(e =>
+      e.pageY > 0
+        ? this.setState({ scrolled: true })
+        : this.setState({ scrolled: false })
     );
   }
 

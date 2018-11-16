@@ -2,16 +2,15 @@ import { Field } from "formik";
 import React, { Component } from "react";
 import { css } from "react-emotion";
 import { connect } from "react-redux";
-import CenteredContainer from "../../../components/CenteredContainer";
+import Container from "../../../components/Container";
 import FieldSet from "../../../components/FieldSet";
 import Wizard from "../../../components/WizardForm";
-import { setProgressStatus, hideAdditionalInfoBox } from "../SignUpState";
+import InfoCard from "../shared/InfoCard";
+import SignUpHeader from "../shared/SignUpHeader";
+import { hideAdditionalInfoBox, setProgressStatus } from "../SignUpState";
 import { getRecommendedPortfolio } from "./QuestionnaireState";
 import ListRadioBtns from "./shared/ListRadioBtns";
 import riskProfileQuestions from "./shared/riskProfileQuestions";
-import InfoCard from "../shared/InfoCard";
-import Container from "../../../components/Container";
-import SignUpHeader from "../shared/SignUpHeader";
 
 const validator = fieldName => values => {
   const errors = {};
