@@ -1,10 +1,10 @@
 # Towernest
 
-This is my attempt to bring the purest passive investing to the masses as envisioned by Jack Bogle and other 'bogleheads' thinkers as a consumer product.
+This was my attempt to bring the purest passive investing to the masses as envisioned by Jack Bogle and other 'bogleheads' thinkers as a consumer product.
 
-As it turns out though, as of writing, this is a massive undertaking given the current circumstances in terms of bureaucracies and cross-border money transfer technology.
+As it turned out though, as of writing, this was a massive undertaking in terms of bureaucracies and cross-border money transfer technology and a whole bunch of other stuffs that I'm not aware of.
 
-Anyway, I couldn't complete the whole user flow. But every detail in this repo so far was paintakingly researched and executed to the greatest extent of my capacity and intellect during this duration of time. This repo will serve for my future reference and hopefully yours too. :pray:
+Anyway, I couldn't complete the whole user flow. But every detail in this repo was paintakingly researched and executed to the greatest extent of my capacity and intellect during the entire development. This repo will serve for my future reference and hopefully yours too. :pray:
 
 ## Usage
 The usual routine. `git clone`, `npm install`, `npm start`
